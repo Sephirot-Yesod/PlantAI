@@ -12,7 +12,7 @@ const plantiemojiData = {
     "Plantiemoji is a compact, beautiful sensor that monitors temperature, humidity, light, and soil moisture around your plant. But here's the magic: instead of confusing graphs or numbers, it translates all that data into simple, expressive emojis. A quick glance tells you exactly how your plant feels — no interpretation needed.",
   heroImage: "/images/products/plantiemoji-hero.jpg",
   logoImage: "/images/logos/plantiemoji-logo.png",
-  color: "#fbbf24",
+  color: "#4ade80",
   features: [
     { title: "4-in-1 Sensor", description: "Monitors temperature, humidity, light levels, and soil moisture simultaneously." },
     { title: "Emoji Expression", description: "Cute e-ink display shows your plant's current mood at a glance." },

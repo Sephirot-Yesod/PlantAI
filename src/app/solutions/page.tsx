@@ -14,7 +14,7 @@ const products = [
     description:
       "A delightful smart sensor that monitors your plant's environment and communicates its status through expressive emojis. See at a glance if your plant is happy, thirsty, cold, or basking in perfect conditions.",
     image: "/images/products/plantiemoji-hero.jpg",
-    color: "#fbbf24",
+    color: "#4ade80",
     features: ["Multi-sensor monitoring", "Expressive emoji feedback", "Real-time notifications", "Learning algorithms"],
     stats: { sensors: "4-in-1", battery: "6 months", setup: "30 sec" },
   },
@@ -25,7 +25,7 @@ const products = [
     description:
       "Our flagship product uses advanced computer vision and AI growth models to diagnose plant diseases in real-time. Get instant answers through photo analysis or live video consultation with our AI plant doctor.",
     image: "/images/products/ezplants-hero.jpg",
-    color: "#4ade80",
+    color: "#fbbf24",
     features: ["AI-powered disease detection", "Live video diagnosis", "Instant care recommendations", "Growth tracking & milestones"],
     stats: { accuracy: "99.2%", species: "180+", diagnoses: "50M+" },
   },

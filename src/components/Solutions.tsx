@@ -14,8 +14,8 @@ const products = [
       "Smart environmental sensor that monitors your plant's surroundings and communicates its status through expressive emojis. A fun, intuitive way to understand plant health at a glance.",
     features: ["Multi-sensor monitoring", "Real-time emoji status", "Mobile notifications", "Historical trends"],
     image: "/images/products/plantiemoji-hero.jpg",
-    color: "#fbbf24",
-    gradient: "from-[#fbbf24] to-[#f59e0b]",
+    color: "#4ade80",
+    gradient: "from-[#4ade80] to-[#22c55e]",
   },
   {
     id: "ezplants",
@@ -26,8 +26,8 @@ const products = [
       "Advanced AI growth model that diagnoses plant diseases in real-time and provides personalized care recommendations. Features live video consultation with our cutting-edge vision model.",
     features: ["Real-time disease detection", "Live video diagnosis", "Growth predictions", "Personalized care plans"],
     image: "/images/products/ezplants-hero.jpg",
-    color: "#4ade80",
-    gradient: "from-[#4ade80] to-[#22c55e]",
+    color: "#fbbf24",
+    gradient: "from-[#fbbf24] to-[#f59e0b]",
   },
   {
     id: "planttalk",

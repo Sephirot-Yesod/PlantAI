@@ -29,7 +29,7 @@ const productsData: Record<
       "EZplants combines cutting-edge computer vision with our proprietary plant growth models to deliver instant, accurate plant health assessments. Simply snap a photo or start a live video session, and our AI will identify issues, explain the causes, and provide step-by-step treatment plans tailored to your specific plant and environment.",
     heroImage: "/images/products/ezplants-hero.jpg",
     logoImage: "/images/logos/ezplants-logo.png",
-    color: "#4ade80",
+    color: "#fbbf24",
     features: [
       { title: "AI Disease Detection", description: "Our model recognizes 500+ plant diseases with 99.2% accuracy, trained on 50 million images." },
       { title: "Live Video Diagnosis", description: "Real-time consultation with our AI. Point your camera and get instant answers." },
@@ -67,7 +67,7 @@ const productsData: Record<
       "Plantiemoji is a compact, beautiful sensor that monitors temperature, humidity, light, and soil moisture around your plant. But here's the magic: instead of confusing graphs or numbers, it translates all that data into simple, expressive emojis. A quick glance tells you exactly how your plant feels — no interpretation needed.",
     heroImage: "/images/products/plantiemoji-hero.jpg",
     logoImage: "/images/logos/plantiemoji-logo.png",
-    color: "#fbbf24",
+    color: "#4ade80",
     features: [
       { title: "4-in-1 Sensor", description: "Monitors temperature, humidity, light levels, and soil moisture simultaneously." },
       { title: "Emoji Expression", description: "Cute e-ink display shows your plant's current mood at a glance." },
