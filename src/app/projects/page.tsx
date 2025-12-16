@@ -6,7 +6,6 @@ import Newsletter from "@/components/Newsletter";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { MapPin, ArrowUpRight, Filter } from "lucide-react";
 
 const categories = [
   "All",
@@ -173,7 +172,7 @@ export default function ProjectsPage() {
       <section className="py-8 border-y border-white/5">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex items-center gap-4 overflow-x-auto pb-2">
-            <Filter className="w-5 h-5 text-white/40 flex-shrink-0" />
+            <span className="text-white/40 text-sm flex-shrink-0">Filter:</span>
             {categories.map((category) => (
               <button
                 key={category}
@@ -225,8 +224,7 @@ export default function ProjectsPage() {
                       </div>
 
                       <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex items-center gap-2 text-white/60 text-sm mb-2">
-                          <MapPin className="w-4 h-4" />
+                        <div className="text-white/60 text-sm mb-2">
                           {project.location}
                         </div>
                         <h3 className="text-xl font-bold text-white group-hover:text-[#c9a86c] transition-colors">
@@ -240,8 +238,7 @@ export default function ProjectsPage() {
                         {project.description}
                       </p>
                       <span className="inline-flex items-center gap-2 text-[#c9a86c] text-sm font-medium group-hover:gap-3 transition-all">
-                        View Project
-                        <ArrowUpRight className="w-4 h-4" />
+                        View Project →
                       </span>
                     </div>
                   </div>
@@ -270,10 +267,9 @@ export default function ProjectsPage() {
             </p>
             <Link
               href="/contact"
-              className="btn-primary rounded-sm inline-flex items-center gap-2"
+              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center gap-2 hover:shadow-lg hover:shadow-green-500/25 transition-all"
             >
-              Start Your Project
-              <ArrowUpRight className="w-4 h-4" />
+              Start Your Project →
             </Link>
           </motion.div>
         </div>
