@@ -8,7 +8,7 @@ const products = [
   {
     id: "plantiemoji",
     name: "Plantiemoji",
-    href: "/solutions/plantiemoji",
+    href: "#plantiemoji",
     tagline: "Plants Speak Emoji",
     description:
       "Smart environmental sensor that monitors your plant's surroundings and communicates its status through expressive emojis. A fun, intuitive way to understand plant health at a glance.",
@@ -115,7 +115,7 @@ export default function Solutions() {
             >
               <Link href={product.href} className="block group h-full">
                 <div className={`relative bg-[#141414] rounded-xl overflow-hidden card-hover h-full ${
-                  index === 0 ? "min-h-[400px]" : "min-h-[320px]"
+                  index === 0 ? "min-h-[80vh]" : "min-h-[320px]"
                 }`}>
                   {/* Image */}
                   <div className="absolute inset-0">
@@ -123,7 +123,7 @@ export default function Solutions() {
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                       style={{ backgroundImage: `url(${product.image})` }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                   </div>
 
                   {/* Content */}

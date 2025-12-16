@@ -177,7 +177,7 @@ export default function SolutionsPage() {
                     </div>
 
                     <Link
-                      href={`/solutions/${product.id}`}
+                      href={product.id === "plantiemoji" ? "/#plantiemoji" : `/solutions/${product.id}`}
                       className="inline-flex items-center gap-2 font-semibold transition-all hover:gap-3"
                       style={{ color: product.color }}
                     >

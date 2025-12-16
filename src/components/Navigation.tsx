@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const products = [
   {
     name: "Plantiemoji",
-    href: "/solutions/plantiemoji",
+    href: "/#plantiemoji",
     description: "Smart sensors that speak in emojis",
   },
   {
@@ -53,14 +54,16 @@ export default function Navigation() {
             <Link href="/" className="relative z-10">
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="flex items-baseline gap-2"
+                className="flex items-center mt-6 -ml-7"
               >
-                <span className="text-2xl font-bold tracking-tight text-white">
-                  PlantTalk
-                </span>
-                <span className="text-sm uppercase tracking-[0.2em] text-[#4ade80] font-medium">
-                  AI
-                </span>
+                <Image
+                  src="/images/logos/logo.jpg"
+                  alt="PlantTalk AI"
+                  width={260}
+                  height={78}
+                  className="h-[73px] lg:h-[83px] w-auto invert"
+                  priority
+                />
               </motion.div>
             </Link>
 

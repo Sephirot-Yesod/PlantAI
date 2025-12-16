@@ -87,13 +87,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-8"
           >
-            <span className="block text-white/50 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal mb-4">
+            <span className="block text-white/60 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               In the age of AI,
             </span>
-            <span className="block text-white/90">Plants are humanity&apos;s</span>
-            <span className="block bg-gradient-to-r from-[#4ade80] via-[#22c55e] to-[#16a34a] bg-clip-text text-transparent">
+            <span className="block text-white font-black">Plants are humanity&apos;s</span>
+            <span className="block bg-gradient-to-r from-[#4ade80] via-[#22c55e] to-[#16a34a] bg-clip-text text-transparent font-black">
               last Eden.
             </span>
           </motion.h1>
