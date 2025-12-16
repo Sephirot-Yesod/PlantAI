@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "PlantTalk AI | Horticulture is the Garden of Eden in the AI Era",
-  description: "Using AI to help people better interact with plants. From disease diagnosis to plant conversations, discover the future of plant care.",
+  description: "PlantTalk AI | The AI Plants Company",
   keywords: "AI plant care, plant diagnosis, talk to plants, plant health, PlantTalk, EZplants, Plantiemoji",
 };
 
