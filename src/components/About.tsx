@@ -65,7 +65,7 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8"
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8"
             >
               Using AI to Help People{" "}
               <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
@@ -102,7 +102,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="p-6 bg-[#141414] rounded-xl border border-white/5 mb-8"
+              className="p-6 bg-[#141414] rounded border border-white/5 mb-8"
             >
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-2 h-2 rounded-full bg-[#4ade80]" />
@@ -124,14 +124,14 @@ export default function About() {
             >
               <Link
                 href="/vision"
-                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-6 py-3 rounded-lg font-semibold inline-flex items-center gap-2 group hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-6 py-3 rounded font-semibold inline-flex items-center gap-2 group hover:shadow-lg hover:shadow-green-500/25 transition-all"
               >
                 Explore Our Vision
                 <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
               </Link>
               <Link
                 href="/about"
-                className="border border-white/20 text-white px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2 hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
+                className="border border-white/20 text-white px-6 py-3 rounded font-medium inline-flex items-center gap-2 hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
               >
                 Meet the Team
               </Link>
@@ -146,7 +146,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="group p-6 bg-[#141414] rounded-xl border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300"
+                className="group p-6 bg-[#141414] rounded border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300"
               >
                 <div 
                   className="w-3 h-3 rounded-full mb-4 group-hover:scale-125 transition-transform"

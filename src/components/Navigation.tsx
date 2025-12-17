@@ -89,13 +89,13 @@ export default function Navigation() {
                       transition={{ duration: 0.2 }}
                       className="absolute top-full left-1/2 -translate-x-1/2 pt-4"
                     >
-                      <div className="bg-[#141414] border border-white/10 rounded-lg shadow-2xl p-6 min-w-[380px]">
+                      <div className="bg-[#141414] border border-white/10 rounded shadow-2xl p-6 min-w-[380px]">
                         <div className="space-y-1">
                           {products.map((product) => (
                             <Link
                               key={product.name}
                               href={product.href}
-                              className="group/item flex flex-col gap-1 p-3 rounded-lg hover:bg-white/5 transition-colors"
+                              className="group/item flex flex-col gap-1 p-3 rounded hover:bg-white/5 transition-colors"
                             >
                               <h4 className="font-semibold text-white group-hover/item:text-[#4ade80] transition-colors">
                                 {product.name}
@@ -140,7 +140,7 @@ export default function Navigation() {
               {/* CTA */}
               <Link
                 href="/contact"
-                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-6 py-3 rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-green-500/25 transition-all hover:-translate-y-0.5"
+                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-6 py-3 rounded font-semibold text-sm hover:shadow-lg hover:shadow-green-500/25 transition-all hover:-translate-y-0.5"
               >
                 Get in Touch
               </Link>
@@ -216,7 +216,7 @@ export default function Navigation() {
                     <Link
                       href="/contact"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black w-full block text-center py-4 rounded-lg font-semibold"
+                      className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black w-full block text-center py-4 rounded font-semibold"
                     >
                       Get in Touch
                     </Link>

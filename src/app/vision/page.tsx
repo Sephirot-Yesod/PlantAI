@@ -59,8 +59,8 @@ export default function VisionPage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(/images/hero/vision-hero.jpg)` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-[#0a0a0a]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/30" />
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 text-center w-full">
@@ -80,7 +80,7 @@ export default function VisionPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 max-w-5xl mx-auto leading-tight"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8 max-w-5xl mx-auto leading-tight"
           >
             Use AI to Help People{" "}
             <span className="bg-gradient-to-r from-[#4ade80] via-[#22c55e] to-[#16a34a] bg-clip-text text-transparent">
@@ -112,7 +112,7 @@ export default function VisionPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
               Two Core <span className="text-[#4ade80]">Pillars</span>
             </h2>
             <p className="text-white/50 max-w-2xl mx-auto">
@@ -128,14 +128,14 @@ export default function VisionPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-[#141414] rounded-2xl p-8 lg:p-12 border border-white/5"
+                className="bg-[#141414] rounded p-8 lg:p-12 border border-white/5"
               >
                 <div 
                   className="w-4 h-4 rounded-full mb-6"
                   style={{ backgroundColor: pillar.color }}
                 />
 
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4" style={{ color: pillar.color }}>
+                <h3 className="text-2xl lg:text-3xl font-extrabold mb-4" style={{ color: pillar.color }}>
                   {pillar.title}
                 </h3>
 
@@ -199,7 +199,7 @@ export default function VisionPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
               Our <span className="text-[#4ade80]">Journey</span>
             </h2>
             <p className="text-white/50 max-w-2xl mx-auto">
@@ -228,8 +228,8 @@ export default function VisionPage() {
 
                   {/* Content */}
                   <div className={`ml-20 lg:ml-0 lg:w-1/2 ${index % 2 === 0 ? "lg:pr-16 lg:text-right" : "lg:pl-16"}`}>
-                    <span className="text-[#4ade80] font-bold text-xl">{item.year}</span>
-                    <h3 className="text-xl font-bold text-white mt-2">{item.title}</h3>
+                    <span className="text-[#4ade80] font-extrabold text-xl">{item.year}</span>
+                    <h3 className="text-xl font-extrabold text-white mt-2">{item.title}</h3>
                     <p className="text-white/50 mt-2">{item.description}</p>
                   </div>
 
@@ -251,7 +251,7 @@ export default function VisionPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
               What We <span className="text-[#4ade80]">Stand For</span>
             </h2>
             <p className="text-white/50 max-w-2xl mx-auto">
@@ -267,11 +267,11 @@ export default function VisionPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group p-8 bg-[#141414] rounded-xl border border-white/5 hover:border-[#4ade80]/30 transition-all text-center"
+                className="group p-8 bg-[#141414] rounded border border-white/5 hover:border-[#4ade80]/30 transition-all text-center"
               >
                 <div className="w-3 h-3 rounded-full bg-[#4ade80] mx-auto mb-6 group-hover:scale-150 transition-transform" />
 
-                <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#4ade80] transition-colors">
+                <h3 className="text-lg font-extrabold text-white mb-3 group-hover:text-[#4ade80] transition-colors">
                   {value.title}
                 </h3>
 
@@ -298,7 +298,7 @@ export default function VisionPage() {
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6">
               Ready to Transform Your
               <br />
               <span className="text-[#4ade80]">Plant Relationship?</span>
@@ -311,13 +311,13 @@ export default function VisionPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/solutions"
-                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-green-500/25 transition-all"
               >
                 Explore Products →
               </Link>
               <Link
                 href="/contact"
-                className="border border-white/20 text-white px-8 py-4 rounded-lg font-medium inline-flex items-center justify-center gap-2 hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
+                className="border border-white/20 text-white px-8 py-4 rounded font-medium inline-flex items-center justify-center gap-2 hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
               >
                 Get in Touch
               </Link>

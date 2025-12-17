@@ -69,8 +69,8 @@ export default function ContactPage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(/images/hero/contact-hero.jpg)` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-[#0a0a0a]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/30" />
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
@@ -90,7 +90,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6"
           >
             Let&apos;s Grow
             <br />
@@ -142,8 +142,8 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="bg-[#141414] rounded-2xl p-8 lg:p-12 border border-white/5">
-              <h2 className="text-2xl font-bold mb-2">Send Us a Message</h2>
+            <div className="bg-[#141414] rounded p-8 lg:p-12 border border-white/5">
+              <h2 className="text-2xl font-extrabold mb-2">Send Us a Message</h2>
               <p className="text-white/50 mb-8">
                 Fill out the form below and we&apos;ll get back to you within 24 hours.
               </p>
@@ -154,7 +154,7 @@ export default function ContactPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12"
                 >
-                  <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                  <h3 className="text-2xl font-extrabold mb-2">Message Sent!</h3>
                   <p className="text-white/50 mb-6">
                     Thanks for reaching out. We&apos;ll be in touch soon.
                   </p>
@@ -178,7 +178,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
                         placeholder="Your name"
                       />
                     </div>
@@ -192,7 +192,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
                         placeholder="you@company.com"
                       />
                     </div>
@@ -208,7 +208,7 @@ export default function ContactPage() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
                         placeholder="Your company (optional)"
                       />
                     </div>
@@ -221,7 +221,7 @@ export default function ContactPage() {
                         value={formData.reason}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white focus:outline-none focus:border-[#4ade80] transition-colors"
                       >
                         <option value="" className="bg-[#141414]">
                           Select a reason
@@ -245,7 +245,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
                       placeholder="Tell us about your plants, your needs, or just say hello..."
                     />
                   </div>
@@ -271,7 +271,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black w-full py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                    className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black w-full py-4 rounded font-semibold inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-green-500/25 transition-all"
                   >
                     {status === "loading" ? "Sending..." : "Send Message →"}
                   </button>

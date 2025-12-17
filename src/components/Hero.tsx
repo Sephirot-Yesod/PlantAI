@@ -31,8 +31,8 @@ export default function Hero() {
           style={{ backgroundImage: `url(/images/hero/home-hero.jpg)` }}
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-[#0a0a0a]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/20" />
         
         {/* Animated floating elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -87,13 +87,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-8"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-8"
           >
-            <span className="block text-white/60 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <span className="block text-white/60 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
               In the age of AI,
             </span>
-            <span className="block text-white font-black">Plants are humanity&apos;s</span>
-            <span className="block bg-gradient-to-r from-[#4ade80] via-[#22c55e] to-[#16a34a] bg-clip-text text-transparent font-black">
+            <span className="block text-white font-extrabold">Plants are humanity&apos;s</span>
+            <span className="block bg-gradient-to-r from-[#4ade80] via-[#22c55e] to-[#16a34a] bg-clip-text text-transparent font-extrabold">
               last Eden.
             </span>
           </motion.h1>
@@ -119,13 +119,13 @@ export default function Hero() {
           >
             <Link
               href="/solutions"
-              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 group hover:shadow-lg hover:shadow-green-500/25 transition-all hover:-translate-y-0.5"
+              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 group hover:shadow-lg hover:shadow-green-500/25 transition-all hover:-translate-y-0.5"
             >
               Explore Our Products
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
             
-            <button className="relative px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-3 group border border-white/20 text-white hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all">
+            <button className="relative px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-3 group border border-white/20 text-white hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all">
               <span className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#4ade80] group-hover:bg-[#4ade80]/10 transition-all">
                 ▶
               </span>
@@ -150,7 +150,7 @@ export default function Hero() {
             { value: "180+", label: "Plant Species" },
           ].map((stat, index) => (
             <div key={index} className="text-right">
-              <div className="text-4xl xl:text-5xl font-bold bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
+              <div className="text-4xl xl:text-5xl font-extrabold bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
                 {stat.value}
               </div>
               <div className="text-sm text-white/40 mt-1">{stat.label}</div>

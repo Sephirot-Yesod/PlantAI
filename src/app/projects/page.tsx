@@ -128,8 +128,8 @@ export default function ProjectsPage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(/images/hero/projects-hero.jpg)` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-[#0a0a0a]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/30" />
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -149,7 +149,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6"
           >
             Creating Spaces That
             <br />
@@ -203,7 +203,7 @@ export default function ProjectsPage() {
                 layout
               >
                 <Link href={`/projects/${project.id}`} className="block group">
-                  <div className="bg-[#141414] rounded-lg overflow-hidden border border-white/5 hover:border-[#c9a86c]/30 transition-all duration-300 card-hover">
+                  <div className="bg-[#141414] rounded overflow-hidden border border-white/5 hover:border-[#c9a86c]/30 transition-all duration-300 card-hover">
                     <div className="relative h-[300px] overflow-hidden">
                       <div
                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -227,7 +227,7 @@ export default function ProjectsPage() {
                         <div className="text-white/60 text-sm mb-2">
                           {project.location}
                         </div>
-                        <h3 className="text-xl font-bold text-white group-hover:text-[#c9a86c] transition-colors">
+                        <h3 className="text-xl font-extrabold text-white group-hover:text-[#c9a86c] transition-colors">
                           {project.title}
                         </h3>
                       </div>
@@ -258,7 +258,7 @@ export default function ProjectsPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
               Have a Project in Mind?
             </h2>
             <p className="text-white/60 mb-8 max-w-xl mx-auto">
@@ -267,7 +267,7 @@ export default function ProjectsPage() {
             </p>
             <Link
               href="/contact"
-              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center gap-2 hover:shadow-lg hover:shadow-green-500/25 transition-all"
+              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center gap-2 hover:shadow-lg hover:shadow-green-500/25 transition-all"
             >
               Start Your Project →
             </Link>

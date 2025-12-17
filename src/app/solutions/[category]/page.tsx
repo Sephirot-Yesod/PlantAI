@@ -90,7 +90,7 @@ export default function ProductPage() {
       <main className="min-h-screen bg-[#0a0a0a]">
         <Navigation />
         <div className="pt-32 pb-20 text-center">
-          <h1 className="text-4xl font-bold mb-4">Product not found</h1>
+          <h1 className="text-4xl font-extrabold mb-4">Product not found</h1>
           <Link href="/solutions" className="text-[#4ade80] hover:underline">
             ← Back to Solutions
           </Link>
@@ -144,7 +144,7 @@ export default function ProductPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6"
           >
             {product.name}
           </motion.h1>
@@ -171,13 +171,13 @@ export default function ProductPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="p-5 bg-[#141414]/80 backdrop-blur-sm rounded-xl border border-white/5 hover:border-white/10 transition-colors"
+                className="p-5 bg-[#141414]/80 backdrop-blur-sm rounded border border-white/5 hover:border-white/10 transition-colors"
               >
                 <div
                   className="w-2 h-2 rounded-full mb-3"
                   style={{ backgroundColor: product.color }}
                 />
-                <h3 className="text-base font-bold text-white mb-1">{feature.title}</h3>
+                <h3 className="text-base font-extrabold text-white mb-1">{feature.title}</h3>
                 <p className="text-white/50 text-sm">{feature.description}</p>
               </motion.div>
             ))}
@@ -190,7 +190,7 @@ export default function ProductPage() {
         {/* Background Logo on Left - Rotated 20 degrees */}
         <div className="absolute top-1/2 left-1/8 -translate-y-1/2 hidden lg:block pointer-events-none">
           <div 
-            className="w-[500px] h-[500px] bg-contain bg-center bg-no-repeat opacity-100 rounded-3xl overflow-hidden"
+            className="w-[500px] h-[500px] bg-contain bg-center bg-no-repeat opacity-100 rounded overflow-hidden"
               style={{ 
                 backgroundImage: `url(${product.logoImage})`,
                 transform: 'rotate(-10deg)',
@@ -208,7 +208,7 @@ export default function ProductPage() {
               transition={{ duration: 0.6 }}
               className="mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
                 Perfect <span style={{ color: product.color }}>For</span>
               </h2>
             </motion.div>
@@ -221,7 +221,7 @@ export default function ProductPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-[#141414] rounded-xl"
+                  className="flex items-center gap-4 p-4 bg-[#141414] rounded"
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
@@ -244,7 +244,7 @@ export default function ProductPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
               Ready to Try{" "}
               <span style={{ color: product.color }}>{product.name}</span>?
             </h2>
@@ -255,14 +255,14 @@ export default function ProductPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                className="text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all"
                 style={{ backgroundColor: product.color }}
               >
                 Start Free Trial →
               </Link>
               <Link
                 href="/solutions"
-                className="border border-white/20 text-white px-8 py-4 rounded-lg font-medium inline-flex items-center justify-center gap-2 hover:border-white/40 transition-all"
+                className="border border-white/20 text-white px-8 py-4 rounded font-medium inline-flex items-center justify-center gap-2 hover:border-white/40 transition-all"
               >
                 Explore Other Products
               </Link>

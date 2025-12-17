@@ -149,7 +149,7 @@ function PlantGrowthTheory() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-4">
               Beautiful <span className="text-[#4ade80]">Hardware</span> Design
             </h3>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
@@ -166,7 +166,7 @@ function PlantGrowthTheory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="lg:row-span-2 rounded-2xl overflow-hidden bg-gradient-to-b from-gray-100 to-gray-300 aspect-[3/4] lg:aspect-auto"
+              className="lg:row-span-2 rounded overflow-hidden bg-gradient-to-b from-gray-100 to-gray-300 aspect-[3/4] lg:aspect-auto"
             >
               <div 
                 className="w-full h-full bg-cover bg-center"
@@ -180,7 +180,7 @@ function PlantGrowthTheory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="aspect-[16/10] lg:col-span-2 rounded-2xl overflow-hidden bg-gradient-to-b from-gray-100 to-gray-300"
+              className="aspect-[16/10] lg:col-span-2 rounded overflow-hidden bg-gradient-to-b from-gray-100 to-gray-300"
             >
               <div 
                 className="w-full h-full bg-cover bg-center"
@@ -192,7 +192,7 @@ function PlantGrowthTheory() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="aspect-[16/10] lg:col-span-2 rounded-2xl overflow-hidden bg-gradient-to-b from-gray-100 to-gray-300"
+              className="aspect-[16/10] lg:col-span-2 rounded overflow-hidden bg-gradient-to-b from-gray-100 to-gray-300"
             >
               <div 
                 className="w-full h-full bg-cover bg-center"
@@ -210,7 +210,7 @@ function PlantGrowthTheory() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-center p-6"
             >
-              <div className="text-4xl font-bold text-[#4ade80] mb-2">Soil Temp</div>
+              <div className="text-4xl font-extrabold text-[#4ade80] mb-2">Soil Temp</div>
               <p className="text-white/60">Real-time soil temperature monitoring</p>
             </motion.div>
 
@@ -221,7 +221,7 @@ function PlantGrowthTheory() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center p-6"
             >
-              <div className="text-4xl font-bold text-[#60a5fa] mb-2">Watering Cycle</div>
+              <div className="text-4xl font-extrabold text-[#60a5fa] mb-2">Watering Cycle</div>
               <p className="text-white/60">Smart watering schedule tracking</p>
             </motion.div>
 
@@ -232,7 +232,7 @@ function PlantGrowthTheory() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center p-6"
             >
-              <div className="text-4xl font-bold text-[#fbbf24] mb-2">Status Display</div>
+              <div className="text-4xl font-extrabold text-[#fbbf24] mb-2">Status Display</div>
               <p className="text-white/60">Expressive emoji feedback system</p>
             </motion.div>
           </div>
@@ -282,7 +282,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6"
           >
             {product.name}
           </motion.h2>
@@ -320,7 +320,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
                 Key Features
               </span>
             </div>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold">
               What Makes{" "}
               <span style={{ color: product.color }}>{product.name}</span>
               {" "}Special
@@ -338,13 +338,13 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
                 transition={{ duration: 0.6, delay: featureIndex * 0.1 }}
                 className="group"
               >
-                <div className="p-5 bg-[#141414] rounded-xl border border-white/5 hover:border-white/10 transition-all duration-300 h-full">
+                <div className="p-5 bg-[#141414] rounded border border-white/5 hover:border-white/10 transition-all duration-300 h-full">
                   <div className="flex items-start gap-3 mb-2">
                     <div
                       className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
                       style={{ backgroundColor: product.color }}
                     />
-                    <h4 className="text-base lg:text-lg font-bold text-white group-hover:text-white/90 transition-colors">
+                    <h4 className="text-base lg:text-lg font-extrabold text-white group-hover:text-white/90 transition-colors">
                       {feature.title}
                     </h4>
                   </div>
@@ -359,49 +359,77 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
       </div>
 
       {/* Use Cases */}
-      <div className="py-24 relative overflow-hidden bg-[#0a0a0a]">
-        {/* Background Logo */}
-        <div className="absolute top-1/2 left-30 lg:left-60 -translate-y-1/2 hidden lg:block pointer-events-none">
-          <div
-            className="w-[500px] h-[500px] bg-contain bg-center bg-no-repeat rounded-3xl overflow-hidden"
-            style={{
-              backgroundImage: `url(${product.logoImage})`,
-              transform: "rotate(-10deg)",
-            }}
-          />
-        </div>
-
-        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="lg:ml-auto lg:max-w-2xl">
+      <div className="min-h-screen relative overflow-hidden bg-[#0a0a0a] flex items-center py-16">
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+            {/* Left side - Demo Photos */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="mb-12"
+              className="grid grid-cols-2 gap-4 min-h-[500px]"
             >
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                Perfect <span style={{ color: product.color }}>For</span>
-              </h3>
+              <div className="bg-[#141414] rounded overflow-hidden">
+                <div 
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url(/images/${product.id}/demo-1.jpg)` }}
+                />
+              </div>
+              <div className="bg-[#141414] rounded overflow-hidden">
+                <div 
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: `url(/images/${product.id}/demo-2.jpg)` }}
+                />
+              </div>
             </motion.div>
 
-            <div className="grid grid-cols-1 gap-4">
-              {product.useCases.map((useCase, useCaseIndex) => (
-                <motion.div
-                  key={useCase}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: useCaseIndex * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-[#141414] rounded-xl"
-                >
-                  <span
-                    className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: product.color }}
-                  />
-                  <span className="text-white/80">{useCase}</span>
-                </motion.div>
-              ))}
+            {/* Right side - Logo and Use Cases */}
+            <div>
+              {/* Logo above text */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-8"
+              >
+                <div
+                  className="w-[200px] h-[200px] bg-contain bg-center bg-no-repeat rounded overflow-hidden mx-auto lg:mx-0"
+                  style={{ backgroundImage: `url(${product.logoImage})` }}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-8"
+              >
+                <h3 className="text-3xl md:text-4xl font-extrabold mb-4">
+                  Perfect <span style={{ color: product.color }}>For</span>
+                </h3>
+              </motion.div>
+
+              <div className="grid grid-cols-1 gap-4">
+                {product.useCases.map((useCase, useCaseIndex) => (
+                  <motion.div
+                    key={useCase}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: useCaseIndex * 0.1 }}
+                    className="flex items-center gap-4 p-4 bg-[#141414] rounded"
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: product.color }}
+                    />
+                    <span className="text-white/80">{useCase}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -416,7 +444,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-6">
               Ready to Try{" "}
               <span style={{ color: product.color }}>{product.name}</span>?
             </h3>
@@ -427,14 +455,14 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                className="text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all"
                 style={{ backgroundColor: product.color }}
               >
                 Get in Touch →
               </Link>
               <Link
                 href="/solutions"
-                className="border border-white/20 text-white px-8 py-4 rounded-lg font-medium inline-flex items-center justify-center gap-2 hover:border-white/40 transition-all"
+                className="border border-white/20 text-white px-8 py-4 rounded font-medium inline-flex items-center justify-center gap-2 hover:border-white/40 transition-all"
               >
                 Explore All Products
               </Link>
@@ -477,7 +505,7 @@ function SectionHeader() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
             >
               Three Ways to Connect
               <br />

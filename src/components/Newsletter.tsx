@@ -55,7 +55,7 @@ export default function Newsletter() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-extrabold mb-4"
           >
             Join the <span className="text-[#4ade80]">PlantTalk</span> Community
           </motion.h2>
@@ -82,13 +82,13 @@ export default function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
                 required
               />
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 min-w-[160px] disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 min-w-[160px] disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-green-500/25 transition-all"
               >
                 {status === "loading" ? (
                   "Joining..."

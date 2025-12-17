@@ -68,7 +68,7 @@ export default function Plantiemoji() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6"
           >
             {plantiemojiData.name}
           </motion.h2>
@@ -95,13 +95,13 @@ export default function Plantiemoji() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="p-5 bg-[#141414]/80 backdrop-blur-sm rounded-xl border border-white/5 hover:border-white/10 transition-colors"
+                className="p-5 bg-[#141414]/80 backdrop-blur-sm rounded border border-white/5 hover:border-white/10 transition-colors"
               >
                 <div
                   className="w-2 h-2 rounded-full mb-3"
                   style={{ backgroundColor: plantiemojiData.color }}
                 />
-                <h3 className="text-base font-bold text-white mb-1">{feature.title}</h3>
+                <h3 className="text-base font-extrabold text-white mb-1">{feature.title}</h3>
                 <p className="text-white/50 text-sm">{feature.description}</p>
               </motion.div>
             ))}
@@ -114,7 +114,7 @@ export default function Plantiemoji() {
         {/* Background Logo */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 hidden lg:block pointer-events-none">
           <div
-            className="w-[500px] h-[500px] bg-contain bg-center bg-no-repeat opacity-20 rounded-3xl overflow-hidden"
+            className="w-[500px] h-[500px] bg-contain bg-center bg-no-repeat opacity-20 rounded overflow-hidden"
             style={{
               backgroundImage: `url(${plantiemojiData.logoImage})`,
               transform: "rotate(-10deg)",
@@ -132,7 +132,7 @@ export default function Plantiemoji() {
               transition={{ duration: 0.6 }}
               className="mb-12"
             >
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
+              <h3 className="text-3xl md:text-4xl font-extrabold mb-4">
                 Perfect <span style={{ color: plantiemojiData.color }}>For</span>
               </h3>
             </motion.div>
@@ -145,7 +145,7 @@ export default function Plantiemoji() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-[#141414] rounded-xl"
+                  className="flex items-center gap-4 p-4 bg-[#141414] rounded"
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
@@ -168,7 +168,7 @@ export default function Plantiemoji() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">
+            <h3 className="text-3xl md:text-4xl font-extrabold mb-6">
               Ready to Try{" "}
               <span style={{ color: plantiemojiData.color }}>{plantiemojiData.name}</span>?
             </h3>
@@ -179,14 +179,14 @@ export default function Plantiemoji() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                className="text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all"
                 style={{ backgroundColor: plantiemojiData.color }}
               >
                 Get in Touch →
               </Link>
               <Link
                 href="/solutions"
-                className="border border-white/20 text-white px-8 py-4 rounded-lg font-medium inline-flex items-center justify-center gap-2 hover:border-white/40 transition-all"
+                className="border border-white/20 text-white px-8 py-4 rounded font-medium inline-flex items-center justify-center gap-2 hover:border-white/40 transition-all"
               >
                 Explore Other Products
               </Link>

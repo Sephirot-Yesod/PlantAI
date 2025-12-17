@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-montserrat",
+});
 
 export const metadata: Metadata = {
   title: "Plantalk AI | THE AI Plant Company",
@@ -13,15 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://api.fontshare.com" />
-        <link 
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400,300&display=swap" 
-          rel="stylesheet"
-        />
-      </head>
-      <body className="antialiased">
+    <html lang="en" className={montserrat.variable}>
+      <body className={`${montserrat.className} antialiased`}>
         {children}
       </body>
     </html>

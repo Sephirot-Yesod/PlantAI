@@ -76,7 +76,7 @@ export default function Solutions() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
             >
               Three Ways to Connect
               <br />
@@ -93,7 +93,7 @@ export default function Solutions() {
           >
             <Link
               href="/solutions"
-              className="border border-white/20 text-white px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2 group hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
+              className="border border-white/20 text-white px-6 py-3 rounded font-medium inline-flex items-center gap-2 group hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
             >
               View All Products
               <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
@@ -114,7 +114,7 @@ export default function Solutions() {
               className={index === 0 ? "lg:col-span-2" : ""}
             >
               <Link href={product.href} className="block group h-full">
-                <div className={`relative bg-[#141414] rounded-xl overflow-hidden card-hover h-full ${
+                <div className={`relative bg-[#141414] rounded overflow-hidden card-hover h-full ${
                   index === 0 ? "min-h-[80vh]" : "min-h-[320px]"
                 }`}>
                   {/* Image */}
@@ -138,7 +138,7 @@ export default function Solutions() {
                       </span>
                     </div>
 
-                    <h3 className={`font-bold text-white mb-3 group-hover:text-[#4ade80] transition-colors ${
+                    <h3 className={`font-extrabold text-white mb-3 group-hover:text-[#4ade80] transition-colors ${
                       index === 0 ? "text-3xl lg:text-4xl" : "text-xl lg:text-2xl"
                     }`}>
                       {product.name}
@@ -154,7 +154,7 @@ export default function Solutions() {
                         {product.features.map((feature) => (
                           <span
                             key={feature}
-                            className="px-3 py-1.5 bg-white/10 rounded-lg text-xs text-white/70 backdrop-blur-sm"
+                            className="px-3 py-1.5 bg-white/10 rounded text-xs text-white/70 backdrop-blur-sm"
                           >
                             {feature}
                           </span>
@@ -170,7 +170,7 @@ export default function Solutions() {
 
                   {/* Hover border */}
                   <div
-                    className="absolute inset-0 border-2 border-transparent group-hover:border-white/10 rounded-xl transition-colors duration-300"
+                    className="absolute inset-0 border-2 border-transparent group-hover:border-white/10 rounded transition-colors duration-300"
                     style={{ 
                       borderColor: hoveredId === product.id ? `${product.color}30` : 'transparent' 
                     }}

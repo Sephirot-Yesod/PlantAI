@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-8">
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-bold tracking-tight text-white">
+                <span className="text-4xl font-extrabold tracking-tight text-white">
                   PlantTalk
                 </span>
                 <span className="text-lg uppercase tracking-[0.2em] text-[#4ade80] font-medium">

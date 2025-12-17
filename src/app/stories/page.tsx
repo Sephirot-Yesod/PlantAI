@@ -111,8 +111,8 @@ export default function StoriesPage() {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(/images/hero/stories-hero.jpg)` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-[#0a0a0a]/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-[#0a0a0a]/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/30" />
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
@@ -132,7 +132,7 @@ export default function StoriesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6"
           >
             From the
             <br />
@@ -164,7 +164,7 @@ export default function StoriesPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search stories..."
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
               />
             </div>
 
@@ -174,7 +174,7 @@ export default function StoriesPage() {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
+                  className={`px-4 py-2 rounded text-sm font-medium whitespace-nowrap transition-all ${
                     activeCategory === category
                       ? "bg-[#4ade80] text-black"
                       : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
@@ -192,7 +192,7 @@ export default function StoriesPage() {
       {featuredStories.length > 0 && (
         <section className="py-16">
           <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-2">
+            <h2 className="text-2xl font-extrabold mb-8 flex items-center gap-2">
 Featured
             </h2>
 
@@ -205,7 +205,7 @@ Featured
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <Link href={`/stories/${story.id}`} className="block group">
-                    <div className="relative h-[400px] lg:h-[450px] bg-[#141414] rounded-2xl overflow-hidden border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300 card-hover">
+                    <div className="relative h-[400px] lg:h-[450px] bg-[#141414] rounded overflow-hidden border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300 card-hover">
                       <div className="absolute inset-0">
                         <div
                           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -215,10 +215,10 @@ Featured
                       </div>
 
                       <div className="absolute top-6 left-6 flex items-center gap-3">
-                        <span className="px-3 py-1 bg-[#4ade80] text-black text-xs font-semibold uppercase tracking-wider rounded-lg">
+                        <span className="px-3 py-1 bg-[#4ade80] text-black text-xs font-semibold uppercase tracking-wider rounded">
                           Featured
                         </span>
-                        <span className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs font-medium rounded-lg">
+                        <span className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs font-medium rounded">
                           {story.category}
                         </span>
                       </div>
@@ -230,7 +230,7 @@ Featured
                           <span className="text-white/50">{story.readTime}</span>
                         </div>
 
-                        <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 group-hover:text-[#4ade80] transition-colors">
+                        <h3 className="text-2xl lg:text-3xl font-extrabold text-white mb-4 group-hover:text-[#4ade80] transition-colors">
                           {story.title}
                         </h3>
 
@@ -256,7 +256,7 @@ Featured
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           {regularStories.length > 0 && (
             <>
-              <h2 className="text-2xl font-bold mb-8">All Stories</h2>
+              <h2 className="text-2xl font-extrabold mb-8">All Stories</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {regularStories.map((story, index) => (
@@ -267,7 +267,7 @@ Featured
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
                     <Link href={`/stories/${story.id}`} className="block group">
-                      <div className="bg-[#141414] rounded-2xl overflow-hidden border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300 card-hover">
+                      <div className="bg-[#141414] rounded overflow-hidden border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300 card-hover">
                         <div className="relative h-[200px] overflow-hidden">
                           <div
                             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -276,7 +276,7 @@ Featured
                           <div className="absolute inset-0 bg-black/20" />
 
                           <div className="absolute top-4 left-4">
-                            <span className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs font-medium rounded-lg">
+                            <span className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs font-medium rounded">
                               {story.category}
                             </span>
                           </div>
@@ -289,7 +289,7 @@ Featured
                             <span className="text-white/40">{story.readTime}</span>
                           </div>
 
-                          <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#4ade80] transition-colors line-clamp-2">
+                          <h3 className="text-lg font-extrabold text-white mb-3 group-hover:text-[#4ade80] transition-colors line-clamp-2">
                             {story.title}
                           </h3>
 
