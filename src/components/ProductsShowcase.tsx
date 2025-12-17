@@ -302,16 +302,16 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
       {isPlantiemoji && <PlantGrowthTheory />}
 
       {/* Dedicated Features Section */}
-      <div className="py-24 bg-[#0a0a0a]">
+      <div className="py-12 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-16"
+            className="mb-8"
           >
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-12" style={{ backgroundColor: product.color }} />
               <span 
                 className="text-xs uppercase tracking-[0.3em] font-medium"
@@ -320,7 +320,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
                 Key Features
               </span>
             </div>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
               What Makes{" "}
               <span style={{ color: product.color }}>{product.name}</span>
               {" "}Special
@@ -328,7 +328,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
           </motion.div>
 
           {/* Features Grid - 2 columns on desktop */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {product.features.map((feature, featureIndex) => (
               <motion.div
                 key={feature.title}
@@ -338,17 +338,17 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
                 transition={{ duration: 0.6, delay: featureIndex * 0.1 }}
                 className="group"
               >
-                <div className="p-8 bg-[#141414] rounded-2xl border border-white/5 hover:border-white/10 transition-all duration-300 h-full">
-                  <div className="flex items-start gap-4 mb-4">
+                <div className="p-5 bg-[#141414] rounded-xl border border-white/5 hover:border-white/10 transition-all duration-300 h-full">
+                  <div className="flex items-start gap-3 mb-2">
                     <div
-                      className="w-3 h-3 rounded-full mt-2 flex-shrink-0"
+                      className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
                       style={{ backgroundColor: product.color }}
                     />
-                    <h4 className="text-xl lg:text-2xl font-bold text-white group-hover:text-white/90 transition-colors">
+                    <h4 className="text-base lg:text-lg font-bold text-white group-hover:text-white/90 transition-colors">
                       {feature.title}
                     </h4>
                   </div>
-                  <p className="text-white/60 text-base lg:text-lg leading-relaxed pl-7">
+                  <p className="text-white/60 text-sm leading-relaxed pl-5">
                     {feature.description}
                   </p>
                 </div>
