@@ -13,12 +13,12 @@ const products = [
   },
   {
     name: "EZplants",
-    href: "/solutions/ezplants",
+    href: "/#ezplants",
     description: "AI-powered plant diagnosis & growth optimization",
   },
   {
     name: "PlantTalk",
-    href: "/solutions/planttalk",
+    href: "/#planttalk",
     description: "Converse with your plants through AI agents",
   },
 ];

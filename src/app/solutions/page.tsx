@@ -19,17 +19,6 @@ const products = [
     stats: { sensors: "4-in-1", battery: "6 months", setup: "30 sec" },
   },
   {
-    id: "ezplants",
-    name: "EZplants",
-    tagline: "AI Plant Doctor",
-    description:
-      "Our flagship product uses advanced computer vision and AI growth models to diagnose plant diseases in real-time. Get instant answers through photo analysis or live video consultation with our AI plant doctor.",
-    image: "/images/products/ezplants-hero.jpg",
-    color: "#fbbf24",
-    features: ["AI-powered disease detection", "Live video diagnosis", "Instant care recommendations", "Growth tracking & milestones"],
-    stats: { accuracy: "99.2%", species: "180+", diagnoses: "50M+" },
-  },
-  {
     id: "planttalk",
     name: "PlantTalk",
     tagline: "Converse with Nature",
@@ -39,6 +28,17 @@ const products = [
     color: "#60a5fa",
     features: ["Natural conversations", "Unique plant personalities", "Plant social network", "Emotional intelligence"],
     stats: { plants: "1M+", messages: "100M+", happiness: "+89%" },
+  },
+  {
+    id: "ezplants",
+    name: "EZplants",
+    tagline: "AI Plant Doctor",
+    description:
+      "Our flagship product uses advanced computer vision and AI growth models to diagnose plant diseases in real-time. Get instant answers through photo analysis or live video consultation with our AI plant doctor.",
+    image: "/images/products/ezplants-hero.jpg",
+    color: "#fbbf24",
+    features: ["AI-powered disease detection", "Live video diagnosis", "Instant care recommendations", "Growth tracking & milestones"],
+    stats: { accuracy: "99.2%", species: "180+", diagnoses: "50M+" },
   },
 ];
 
@@ -177,7 +177,7 @@ export default function SolutionsPage() {
                     </div>
 
                     <Link
-                      href={product.id === "plantiemoji" ? "/#plantiemoji" : `/solutions/${product.id}`}
+                      href={`/#${product.id}`}
                       className="inline-flex items-center gap-2 font-semibold transition-all hover:gap-3"
                       style={{ color: product.color }}
                     >
