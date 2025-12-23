@@ -36,16 +36,37 @@ export default function ContactPage() {
     if (!formData.privacy) return;
 
     setStatus("loading");
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setStatus("success");
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      reason: "",
-      message: "",
-      privacy: false,
-    });
+    
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          reason: formData.reason,
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        reason: "",
+        message: "",
+        privacy: false,
+      });
+    } catch (error) {
+      console.error("Contact form error:", error);
+      setStatus("error");
+    }
   };
 
   const handleChange = (
@@ -163,6 +184,23 @@ export default function ContactPage() {
                     className="text-[#4ade80] hover:underline"
                   >
                     Send another message
+                  </button>
+                </motion.div>
+              ) : status === "error" ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <h3 className="text-2xl font-extrabold mb-2 text-red-400">Something went wrong</h3>
+                  <p className="text-white/50 mb-6">
+                    We couldn&apos;t send your message. Please try again or email us directly.
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="text-[#4ade80] hover:underline"
+                  >
+                    Try again
                   </button>
                 </motion.div>
               ) : (
