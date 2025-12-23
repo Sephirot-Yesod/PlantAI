@@ -25,7 +25,8 @@ export async function POST(request: Request) {
       other: "Other",
       // CES landing page reasons
       preorder: "Preorder Question",
-      investor: "Investor Inquiry",
+      investor: "Invest in Us",
+      distributor: "Become Distributor",
     };
 
     const finalMessage = message || "No message provided";

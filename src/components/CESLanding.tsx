@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CESLanding() {
   const [formData, setFormData] = useState({
@@ -13,10 +14,10 @@ export default function CESLanding() {
   });
 
   const contactReasons = [
-    { value: "preorder", label: "Preorder Question" },
-    { value: "partnership", label: "Partnership" },
+    { value: "investor", label: "Invest in us" },
+    { value: "distributor", label: "Become our distributor" },
     { value: "press", label: "Press & Media" },
-    { value: "investor", label: "Investor Inquiry" },
+    { value: "preorder", label: "Preorder question" },
     { value: "other", label: "Other" },
   ];
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -154,54 +155,44 @@ export default function CESLanding() {
                 {/* Left: Pricing & Features */}
                 <div>
                   <div className="inline-block bg-[#4ade80]/10 rounded-full px-4 py-1.5 mb-4">
-                    <span className="text-xs font-bold text-[#4ade80] tracking-wider uppercase">Limited Early Bird</span>
+                    <span className="text-xs font-bold text-[#4ade80] tracking-wider uppercase">Limited Early Bird • Free Shipping</span>
                   </div>
                   
-                  <h2 className="text-3xl lg:text-6xl font-extrabold text-white mb-4 whitespace-nowrap">Preorder Now</h2>
-                  <p className="text-white/50 mb-5 text-lg lg:text-xl">
+                  <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-4 whitespace-nowrap">Preorder Now</h2>
+                  <p className="text-white/50 mb-5 text-base lg:text-lg">
                     Be among the first to experience Plantiemoji.
                   </p>
 
-                  <div className="mb-4">
-                    <div className="flex items-baseline gap-2 mb-1">
-                      <span className="text-5xl lg:text-6xl font-black text-white">$69</span>
-                      <span className="text-white/40 line-through text-lg">$99</span>
-                    </div>
-                    <span className="text-[#4ade80] text-sm font-medium">Save 30% • Early Bird Pricing</span>
+                  {/* Two Products */}
+                  <div className="space-y-4">
+                    {/* Root Snorkel */}
+                    <Link href="/#plantiemoji" className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-[#4ade80]/30 transition-all cursor-pointer">
+                      <div>
+                        <h3 className="text-lg font-bold text-white">Root Snorkel</h3>
+                        <p className="text-sm text-white/50">Smart soil moisture sensor</p>
+                      </div>
+                      <div className="text-right flex items-baseline gap-2">
+                        <span className="text-lg text-white/40 line-through">$39</span>
+                        <span className="text-3xl font-black text-white">$29</span>
+                      </div>
+                    </Link>
+
+                    {/* Emoji LED */}
+                    <Link href="/#plantiemoji" className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-[#4ade80]/30 transition-all cursor-pointer">
+                      <div>
+                        <h3 className="text-lg font-bold text-white">Emoji LED</h3>
+                        <p className="text-sm text-white/50">Expressive plant display</p>
+                      </div>
+                      <div className="text-right flex items-baseline gap-2">
+                        <span className="text-lg text-white/40 line-through">$49</span>
+                        <span className="text-3xl font-black text-white">$39</span>
+                      </div>
+                    </Link>
                   </div>
 
-                  <ul className="space-y-2 text-sm">
-                    {["Smart emoji display", "Real-time plant health", "Mobile app included", "Free shipping"].map((item) => (
-                      <li key={item} className="flex items-center gap-2 text-white/70">
-                        <span className="text-[#4ade80]">✓</span> {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-[#4ade80] font-medium mt-4">Kickstarter coming March 2026!</p>
                 </div>
 
-                {/* QR Codes - Absolutely Positioned */}
-                <div className="absolute bottom-0 right-8 flex gap-6">
-                  <div className="flex flex-col items-center">
-                    <p className="text-xs text-white/40 mb-3 text-center">Instagram</p>
-                    <Image
-                      src="/QRCode/QRCode1.png"
-                      alt="Instagram QR Code"
-                      width={112}
-                      height={112}
-                      className="w-24 h-24 lg:w-28 lg:h-28 rounded-lg"
-                    />
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <p className="text-xs text-white/40 mb-3 text-center">Facebook</p>
-                    <Image
-                      src="/QRCode/QRCode2.png"
-                      alt="Facebook QR Code"
-                      width={112}
-                      height={112}
-                      className="w-24 h-24 lg:w-28 lg:h-28 rounded-lg"
-                    />
-                  </div>
-                </div>
               </div>
             </motion.div>
 
@@ -218,7 +209,7 @@ export default function CESLanding() {
               </p>
 
               {status === "success" ? (
-                <div className="flex-1 flex flex-col items-center justify-center text-center py-8">
+                <div className="flex flex-col items-center justify-center text-center py-8">
                   <div className="w-16 h-16 bg-[#4ade80]/20 rounded-full flex items-center justify-center mb-4">
                     <span className="text-3xl">✓</span>
                   </div>
@@ -229,7 +220,8 @@ export default function CESLanding() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="flex-1 flex flex-col space-y-4">
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 flex-1">
+                  {/* Name, Email, Reason - Full Width */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                       <label className="block text-xs font-medium text-white/60 mb-1.5">Name *</label>
@@ -274,29 +266,59 @@ export default function CESLanding() {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-medium text-white/60 mb-1.5">Message</label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={3}
-                      className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
-                      placeholder="Tell us what you're curious about..."
-                    />
+                  {/* Message + QR Codes Row */}
+                  <div className="flex gap-6 flex-1">
+                    {/* Message & Button - 2/3 */}
+                    <div className="flex-[2] flex flex-col space-y-4">
+                      <div>
+                        <label className="block text-xs font-medium text-white/60 mb-1.5">Message</label>
+                        <textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          rows={4}
+                          className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
+                          placeholder="Tell us what you're curious about..."
+                        />
+                      </div>
+
+                      {status === "error" && (
+                        <p className="text-red-400 text-xs">Something went wrong. Please try again.</p>
+                      )}
+
+                      <button
+                        type="submit"
+                        disabled={status === "loading"}
+                        className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white py-3 rounded-lg font-semibold text-sm transition-all disabled:opacity-50"
+                      >
+                        {status === "loading" ? "Sending..." : "Send Message →"}
+                      </button>
+                    </div>
+
+                    {/* QR Codes - 1/3 */}
+                    <div className="flex-1 flex items-center justify-center gap-4 border-l border-white/10 pl-6">
+                      <div className="flex flex-col items-center">
+                        <Image
+                          src="/QRCode/QRCode1.png"
+                          alt="Instagram QR Code"
+                          width={80}
+                          height={80}
+                          className="w-16 h-16 lg:w-20 lg:h-20 rounded-lg"
+                        />
+                        <p className="text-xs text-white/40 mt-1">Instagram</p>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <Image
+                          src="/QRCode/QRCode2.png"
+                          alt="Facebook QR Code"
+                          width={80}
+                          height={80}
+                          className="w-16 h-16 lg:w-20 lg:h-20 rounded-lg"
+                        />
+                        <p className="text-xs text-white/40 mt-1">Facebook</p>
+                      </div>
+                    </div>
                   </div>
-
-                  {status === "error" && (
-                    <p className="text-red-400 text-xs">Something went wrong. Please try again.</p>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white py-3 rounded-lg font-semibold text-sm transition-all disabled:opacity-50"
-                  >
-                    {status === "loading" ? "Sending..." : "Send Message →"}
-                  </button>
                 </form>
               )}
             </motion.div>
