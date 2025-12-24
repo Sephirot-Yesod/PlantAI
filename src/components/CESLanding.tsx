@@ -52,7 +52,7 @@ export default function CESLanding() {
   };
 
   return (
-    <section className="min-h-screen h-screen flex flex-col bg-gradient-to-b from-[#0a0a0a] via-[#0d1a0f] to-[#0a0a0a] relative overflow-hidden">
+    <section className="min-h-screen lg:h-screen flex flex-col bg-gradient-to-b from-[#0a0a0a] via-[#0d1a0f] to-[#0a0a0a] relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl" />
@@ -61,8 +61,8 @@ export default function CESLanding() {
       </div>
 
       {/* CES Banner */}
-      <div className="pt-28 lg:pt-32 pb-6 lg:pb-8 relative z-10">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
+      <div className="pt-24 sm:pt-28 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 text-center">
           <div className="relative inline-block">
             {/* Boom/Burst Effect */}
             <motion.div
@@ -119,9 +119,10 @@ export default function CESLanding() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 200 }}
-              className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-6 tracking-tight whitespace-nowrap relative z-10"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 lg:mb-6 tracking-tight lg:whitespace-nowrap relative z-10"
             >
               <span className="text-white">Plantiemoji</span>
+              <br className="sm:hidden" />
               <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent"> is on CES</span>
             </motion.h1>
           </div>
@@ -130,7 +131,7 @@ export default function CESLanding() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl lg:text-3xl text-white/50 max-w-3xl mx-auto"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/50 max-w-3xl mx-auto px-4"
           >
             The future of plant care arrives <span className="text-[#4ade80] font-semibold">Spring 2026</span>
           </motion.p>
@@ -138,27 +139,27 @@ export default function CESLanding() {
       </div>
 
       {/* Two Column Section */}
-      <div className="flex-1 relative z-10 pb-20">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 h-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+      <div className="flex-1 relative z-10 pb-16 lg:pb-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 h-full">
             
             {/* Preorder Section */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-gradient-to-br from-[#141414] to-[#1a1a1a] border border-white/10 rounded-2xl p-8 lg:p-10 relative overflow-hidden"
+              className="bg-gradient-to-br from-[#141414] to-[#1a1a1a] border border-white/10 rounded-2xl p-5 sm:p-8 lg:p-10 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-40 h-40 bg-[#4ade80]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
               
               <div className="relative h-full">
                 {/* Left: Pricing & Features */}
                 <div>
-                  <div className="inline-block bg-[#4ade80]/10 rounded-full px-4 py-1.5 mb-4">
-                    <span className="text-xs font-bold text-[#4ade80] tracking-wider uppercase">Limited Early Bird • Free Shipping</span>
+                  <div className="inline-block bg-[#4ade80]/10 rounded-full px-3 sm:px-4 py-1.5 mb-3 sm:mb-4">
+                    <span className="text-[10px] sm:text-xs font-bold text-[#4ade80] tracking-wider uppercase">Limited Early Bird • Free Shipping</span>
                   </div>
                   
-                  <h2 className="text-3xl lg:text-5xl font-extrabold text-white mb-4 whitespace-nowrap">Preorder Now</h2>
+                  <h2 className="text-2xl sm:text-3xl lg:text-5xl font-extrabold text-white mb-3 sm:mb-4">Preorder Now</h2>
                   <p className="text-white/50 mb-5 text-base lg:text-lg">
                     Be among the first to experience Plantiemoji.
                   </p>
@@ -201,10 +202,10 @@ export default function CESLanding() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-[#141414] border border-white/10 rounded-2xl p-8 lg:p-10 flex flex-col"
+              className="bg-[#141414] border border-white/10 rounded-2xl p-5 sm:p-8 lg:p-10 flex flex-col"
             >
-              <h2 className="text-2xl lg:text-3xl font-extrabold text-white mb-2">Interested in Us?</h2>
-              <p className="text-white/50 mb-6 text-sm lg:text-base">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mb-2">Interested in Us?</h2>
+              <p className="text-white/50 mb-4 sm:mb-6 text-sm lg:text-base">
                 Have questions or want to learn more? Drop us a message.
               </p>
 
@@ -267,7 +268,7 @@ export default function CESLanding() {
                   </div>
 
                   {/* Message + QR Codes Row */}
-                  <div className="flex gap-6 flex-1">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 flex-1">
                     {/* Message & Button - 2/3 */}
                     <div className="flex-[2] flex flex-col space-y-4">
                       <div>
@@ -276,7 +277,7 @@ export default function CESLanding() {
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
-                          rows={4}
+                          rows={3}
                           className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
                           placeholder="Tell us what you're curious about..."
                         />
@@ -296,14 +297,14 @@ export default function CESLanding() {
                     </div>
 
                     {/* QR Codes - 1/3 */}
-                    <div className="flex-1 flex items-center justify-center gap-4 border-l border-white/10 pl-6">
+                    <div className="flex-1 flex items-center justify-center gap-4 md:border-l border-t md:border-t-0 border-white/10 pt-4 md:pt-0 md:pl-6">
                       <div className="flex flex-col items-center">
                         <Image
                           src="/QRCode/QRCode1.png"
                           alt="Instagram QR Code"
                           width={80}
                           height={80}
-                          className="w-16 h-16 lg:w-20 lg:h-20 rounded-lg"
+                          className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg"
                         />
                         <p className="text-xs text-white/40 mt-1">Instagram</p>
                       </div>
@@ -313,7 +314,7 @@ export default function CESLanding() {
                           alt="Facebook QR Code"
                           width={80}
                           height={80}
-                          className="w-16 h-16 lg:w-20 lg:h-20 rounded-lg"
+                          className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg"
                         />
                         <p className="text-xs text-white/40 mt-1">Facebook</p>
                       </div>
@@ -326,12 +327,12 @@ export default function CESLanding() {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Hidden on mobile */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="hidden lg:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
       >
         <span className="text-xs text-white/30 uppercase tracking-widest">Scroll to explore</span>
         <motion.div
