@@ -53,8 +53,8 @@ export default function CESLanding() {
 
   return (
     <section className="min-h-screen lg:h-screen flex flex-col bg-gradient-to-b from-[#0a0a0a] via-[#0d1a0f] to-[#0a0a0a] relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Background Elements - hidden on mobile for cleaner look */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
         <div className="absolute top-20 left-10 w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#22c55e]/5 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#4ade80]/3 rounded-full blur-[100px]" />
@@ -64,45 +64,47 @@ export default function CESLanding() {
       <div className="pt-24 sm:pt-28 lg:pt-32 pb-4 sm:pb-6 lg:pb-8 relative z-10">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 text-center">
           <div className="relative inline-block">
-            {/* Boom/Burst Effect */}
+            {/* Boom/Burst Effect - hidden on mobile */}
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: [0, 1.5, 1.2], opacity: [0, 0.8, 0] }}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              className="hidden sm:flex absolute inset-0 items-center justify-center pointer-events-none"
             >
               <div className="w-[120%] h-[120%] bg-gradient-radial from-[#4ade80]/30 via-[#4ade80]/10 to-transparent rounded-full blur-xl" />
             </motion.div>
 
-            {/* Sparkles */}
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ 
-                  scale: [0, 1, 0],
-                  opacity: [0, 1, 0],
-                }}
-                transition={{ 
-                  duration: 1.5, 
-                  delay: 0.5 + i * 0.1,
-                  repeat: Infinity,
-                  repeatDelay: 3
-                }}
-                className="absolute w-3 h-3 bg-[#4ade80] rounded-full blur-sm"
-                style={{
-                  top: `${20 + Math.sin(i * 0.8) * 40}%`,
-                  left: `${10 + i * 11}%`,
-                }}
-              />
-            ))}
+            {/* Sparkles - hidden on mobile */}
+            <div className="hidden sm:block">
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ 
+                    scale: [0, 1, 0],
+                    opacity: [0, 1, 0],
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    delay: 0.5 + i * 0.1,
+                    repeat: Infinity,
+                    repeatDelay: 3
+                  }}
+                  className="absolute w-3 h-3 bg-[#4ade80] rounded-full blur-sm"
+                  style={{
+                    top: `${20 + Math.sin(i * 0.8) * 40}%`,
+                    left: `${10 + i * 11}%`,
+                  }}
+                />
+              ))}
+            </div>
 
-            {/* Rays */}
+            {/* Rays - hidden on mobile */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: [0, 0.5, 0], scale: [0.8, 1.1, 1.2] }}
               transition={{ duration: 1.5, delay: 0.2 }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              className="hidden sm:flex absolute inset-0 items-center justify-center pointer-events-none"
             >
               {[...Array(12)].map((_, i) => (
                 <div
@@ -164,40 +166,40 @@ export default function CESLanding() {
                     Be among the first to experience Plantiemoji.
                   </p>
 
-                  {/* Two Products */}
-                  <div className="space-y-4">
-                    {/* Root Snorkel */}
-                    <Link href="/#plantiemoji" className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-[#4ade80]/30 transition-all cursor-pointer">
-                      <div>
-                        <h3 className="text-lg font-bold text-white">Root Snorkel</h3>
-                        <p className="text-sm text-white/50">Smart soil moisture sensor</p>
-                      </div>
-                      <div className="text-right flex items-baseline gap-2">
-                        <span className="text-lg text-white/40 line-through">$39</span>
-                        <span className="text-3xl font-black text-white">$29</span>
-                      </div>
-                    </Link>
+                    {/* Two Products */}
+                    <div className="space-y-3 sm:space-y-4">
+                      {/* Root Snorkel */}
+                      <Link href="/#plantiemoji" className="flex items-center justify-between p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-[#4ade80]/30 transition-all cursor-pointer gap-3">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-base sm:text-lg font-bold text-white">Root Snorkel</h3>
+                          <p className="text-xs sm:text-sm text-white/50">Smart soil moisture sensor</p>
+                        </div>
+                        <div className="text-right flex items-baseline gap-1 sm:gap-2 flex-shrink-0">
+                          <span className="text-sm sm:text-lg text-white/40 line-through">$39</span>
+                          <span className="text-2xl sm:text-3xl font-black text-white">$29</span>
+                        </div>
+                      </Link>
 
-                    {/* Emoji LED */}
-                    <Link href="/#plantiemoji" className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-[#4ade80]/30 transition-all cursor-pointer">
-                      <div>
-                        <h3 className="text-lg font-bold text-white">Emoji LED</h3>
-                        <p className="text-sm text-white/50">Expressive plant display</p>
-                      </div>
-                      <div className="text-right flex items-baseline gap-2">
-                        <span className="text-lg text-white/40 line-through">$49</span>
-                        <span className="text-3xl font-black text-white">$39</span>
-                      </div>
-                    </Link>
-                  </div>
+                      {/* Emoji LED */}
+                      <Link href="/#plantiemoji" className="flex items-center justify-between p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-[#4ade80]/30 transition-all cursor-pointer gap-3">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-base sm:text-lg font-bold text-white">Emoji LED</h3>
+                          <p className="text-xs sm:text-sm text-white/50">Expressive plant display</p>
+                        </div>
+                        <div className="text-right flex items-baseline gap-1 sm:gap-2 flex-shrink-0">
+                          <span className="text-sm sm:text-lg text-white/40 line-through">$49</span>
+                          <span className="text-2xl sm:text-3xl font-black text-white">$39</span>
+                        </div>
+                      </Link>
+                    </div>
 
-                  <p className="text-[#4ade80] font-medium mt-4">Kickstarter coming March 2026!</p>
+                  <p className="text-[#4ade80] font-medium mt-3 sm:mt-4 text-sm sm:text-base">Kickstarter coming March 2026!</p>
                 </div>
 
               </div>
             </motion.div>
 
-            {/* Interested Section */}
+            {/* Interested Section - Full form on desktop, simple CTA on mobile */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -209,119 +211,136 @@ export default function CESLanding() {
                 Have questions or want to learn more? Drop us a message.
               </p>
 
-              {status === "success" ? (
-                <div className="flex flex-col items-center justify-center text-center py-8">
-                  <div className="w-16 h-16 bg-[#4ade80]/20 rounded-full flex items-center justify-center mb-4">
-                    <span className="text-3xl">✓</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                  <p className="text-white/50 text-sm mb-4">We&apos;ll be in touch soon.</p>
-                  <button onClick={() => setStatus("idle")} className="text-[#4ade80] text-sm hover:underline">
-                    Send another
-                  </button>
+              {/* Mobile: Simple CTA button */}
+              <div className="sm:hidden flex flex-col gap-4">
+                <Link
+                  href="/contact"
+                  className="w-full bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black py-3 rounded-lg font-semibold text-sm text-center"
+                >
+                  Contact Us →
+                </Link>
+                <div className="flex items-center justify-center gap-6 pt-2">
+                  <a href="https://instagram.com" className="text-white/40 hover:text-[#4ade80] text-sm">Instagram</a>
+                  <a href="https://facebook.com" className="text-white/40 hover:text-[#4ade80] text-sm">Facebook</a>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 flex-1">
-                  {/* Name, Email, Reason - Full Width */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                      <label className="block text-xs font-medium text-white/60 mb-1.5">Name *</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-white/60 mb-1.5">Email *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
-                        placeholder="you@email.com"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-white/60 mb-1.5">Reason *</label>
-                      <select
-                        name="reason"
-                        value={formData.reason}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-[#4ade80] transition-colors"
-                      >
-                        <option value="" className="bg-[#141414]">Select reason</option>
-                        {contactReasons.map((reason) => (
-                          <option key={reason.value} value={reason.value} className="bg-[#141414]">
-                            {reason.label}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
+              </div>
 
-                  {/* Message + QR Codes Row */}
-                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 flex-1">
-                    {/* Message & Button - 2/3 */}
-                    <div className="flex-[2] flex flex-col space-y-4">
+              {/* Desktop: Full form */}
+              <div className="hidden sm:block">
+                {status === "success" ? (
+                  <div className="flex flex-col items-center justify-center text-center py-8">
+                    <div className="w-16 h-16 bg-[#4ade80]/20 rounded-full flex items-center justify-center mb-4">
+                      <span className="text-3xl">✓</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
+                    <p className="text-white/50 text-sm mb-4">We&apos;ll be in touch soon.</p>
+                    <button onClick={() => setStatus("idle")} className="text-[#4ade80] text-sm hover:underline">
+                      Send another
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="flex flex-col space-y-4 flex-1">
+                    {/* Name, Email, Reason - Full Width */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       <div>
-                        <label className="block text-xs font-medium text-white/60 mb-1.5">Message</label>
-                        <textarea
-                          name="message"
-                          value={formData.message}
+                        <label className="block text-xs font-medium text-white/60 mb-1.5">Name *</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
                           onChange={handleChange}
-                          rows={3}
-                          className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
-                          placeholder="Tell us what you're curious about..."
+                          required
+                          className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                          placeholder="Your name"
                         />
                       </div>
-
-                      {status === "error" && (
-                        <p className="text-red-400 text-xs">Something went wrong. Please try again.</p>
-                      )}
-
-                      <button
-                        type="submit"
-                        disabled={status === "loading"}
-                        className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white py-3 rounded-lg font-semibold text-sm transition-all disabled:opacity-50"
-                      >
-                        {status === "loading" ? "Sending..." : "Send Message →"}
-                      </button>
-                    </div>
-
-                    {/* QR Codes - 1/3 */}
-                    <div className="flex-1 flex items-center justify-center gap-4 md:border-l border-t md:border-t-0 border-white/10 pt-4 md:pt-0 md:pl-6">
-                      <div className="flex flex-col items-center">
-                        <Image
-                          src="/QRCode/QRCode1.png"
-                          alt="Instagram QR Code"
-                          width={80}
-                          height={80}
-                          className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg"
+                      <div>
+                        <label className="block text-xs font-medium text-white/60 mb-1.5">Email *</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                          placeholder="you@email.com"
                         />
-                        <p className="text-xs text-white/40 mt-1">Instagram</p>
                       </div>
-                      <div className="flex flex-col items-center">
-                        <Image
-                          src="/QRCode/QRCode2.png"
-                          alt="Facebook QR Code"
-                          width={80}
-                          height={80}
-                          className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-lg"
-                        />
-                        <p className="text-xs text-white/40 mt-1">Facebook</p>
+                      <div className="col-span-2 md:col-span-1">
+                        <label className="block text-xs font-medium text-white/60 mb-1.5">Reason *</label>
+                        <select
+                          name="reason"
+                          value={formData.reason}
+                          onChange={handleChange}
+                          required
+                          className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm focus:outline-none focus:border-[#4ade80] transition-colors"
+                        >
+                          <option value="" className="bg-[#141414]">Select reason</option>
+                          {contactReasons.map((reason) => (
+                            <option key={reason.value} value={reason.value} className="bg-[#141414]">
+                              {reason.label}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
-                  </div>
-                </form>
-              )}
+
+                    {/* Message + QR Codes Row */}
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-6 flex-1">
+                      {/* Message & Button - 2/3 */}
+                      <div className="flex-[2] flex flex-col space-y-4">
+                        <div>
+                          <label className="block text-xs font-medium text-white/60 mb-1.5">Message</label>
+                          <textarea
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            rows={3}
+                            className="w-full px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
+                            placeholder="Tell us what you're curious about..."
+                          />
+                        </div>
+
+                        {status === "error" && (
+                          <p className="text-red-400 text-xs">Something went wrong. Please try again.</p>
+                        )}
+
+                        <button
+                          type="submit"
+                          disabled={status === "loading"}
+                          className="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white py-3 rounded-lg font-semibold text-sm transition-all disabled:opacity-50"
+                        >
+                          {status === "loading" ? "Sending..." : "Send Message →"}
+                        </button>
+                      </div>
+
+                      {/* QR Codes - 1/3 */}
+                      <div className="flex flex-1 items-center justify-center gap-4 md:border-l border-t md:border-t-0 border-white/10 pt-4 md:pt-0 md:pl-6">
+                        <div className="flex flex-col items-center">
+                          <Image
+                            src="/QRCode/QRCode1.png"
+                            alt="Instagram QR Code"
+                            width={80}
+                            height={80}
+                            className="w-16 h-16 lg:w-20 lg:h-20 rounded-lg"
+                          />
+                          <p className="text-xs text-white/40 mt-1">Instagram</p>
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <Image
+                            src="/QRCode/QRCode2.png"
+                            alt="Facebook QR Code"
+                            width={80}
+                            height={80}
+                            className="w-16 h-16 lg:w-20 lg:h-20 rounded-lg"
+                          />
+                          <p className="text-xs text-white/40 mt-1">Facebook</p>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                )}
+              </div>
             </motion.div>
           </div>
         </div>

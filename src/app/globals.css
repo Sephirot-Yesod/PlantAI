@@ -240,6 +240,74 @@ body {
   box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
 }
 
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Improve tap targets */
+  button, a {
+    min-height: 44px;
+  }
+  
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Reduce blur effects on mobile for performance */
+  .blur-3xl {
+    filter: blur(40px);
+  }
+  
+  .blur-\[100px\], .blur-\[120px\], .blur-\[150px\] {
+    filter: blur(60px);
+  }
+  
+  /* Smoother animations on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Disable complex animations on mobile for better performance */
+  .animate-float {
+    animation: none;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  
+  /* Simpler card hover on mobile (no transform) */
+  .card-hover:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Disable image zoom on mobile */
+  .img-zoom:hover img {
+    transform: none;
+  }
+  
+  /* Simpler button hover on mobile */
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
+/* Safe area padding for devices with notches */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));

@@ -28,23 +28,24 @@ export default function Newsletter() {
   };
 
   return (
-    <section ref={containerRef} className="relative py-24 bg-[#141414]">
+    <section ref={containerRef} className="relative py-16 sm:py-20 lg:py-24 bg-[#141414]">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#141414] to-[#141414]" />
       
-      {/* Decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Decorative elements - hidden on mobile */}
+      <div className="hidden sm:block absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 rounded-full bg-[#4ade80]/5 blur-[100px] -translate-y-1/2" />
         <div className="absolute top-1/2 right-1/4 w-96 h-96 rounded-full bg-[#22c55e]/5 blur-[100px] -translate-y-1/2" />
       </div>
 
-      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-2xl mx-auto text-center">
+          {/* Decorative line elements - hidden on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="flex items-center justify-center gap-3 mb-6"
+            className="hidden sm:flex items-center justify-center gap-3 mb-6"
           >
             <div className="h-px w-12 bg-[#4ade80]" />
             <span className="w-2 h-2 rounded-full bg-[#4ade80]" />
@@ -55,16 +56,17 @@ export default function Newsletter() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-extrabold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 sm:mb-4"
           >
             Join the <span className="text-[#4ade80]">PlantTalk</span> Community
           </motion.h2>
 
+          {/* Description - hidden on mobile for cleaner look */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white/50 mb-8"
+            className="hidden sm:block text-white/50 mb-8 text-base"
           >
             Get early access to new features, plant care tips from our AI, and stories from fellow plant lovers.
           </motion.p>
@@ -74,21 +76,21 @@ export default function Newsletter() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
             onSubmit={handleSubmit}
-            className="space-y-4"
+            className="space-y-3 sm:space-y-4"
           >
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email address"
-                className="flex-1 px-6 py-4 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                className="flex-1 px-4 sm:px-6 py-3 sm:py-4 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors text-sm sm:text-base"
                 required
               />
               <button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
-                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 min-w-[160px] disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-6 sm:px-8 py-3 sm:py-4 rounded font-semibold inline-flex items-center justify-center gap-2 min-w-[140px] sm:min-w-[160px] disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-green-500/25 transition-all text-sm sm:text-base"
               >
                 {status === "loading" ? (
                   "Joining..."
@@ -100,15 +102,17 @@ export default function Newsletter() {
               </button>
             </div>
 
-            <label className="flex items-start gap-3 text-left cursor-pointer justify-center">
+            {/* Checkbox - simplified on mobile */}
+            <label className="flex items-start gap-2 sm:gap-3 text-left cursor-pointer justify-center">
               <input
                 type="checkbox"
                 checked={agreed}
                 onChange={(e) => setAgreed(e.target.checked)}
-                className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-[#4ade80] focus:ring-[#4ade80] focus:ring-offset-0"
+                className="mt-0.5 sm:mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-[#4ade80] focus:ring-[#4ade80] focus:ring-offset-0 flex-shrink-0"
               />
-              <span className="text-sm text-white/40">
-                I agree to receive updates and accept the{" "}
+              <span className="text-xs sm:text-sm text-white/40">
+                <span className="sm:hidden">I accept the </span>
+                <span className="hidden sm:inline">I agree to receive updates and accept the </span>
                 <a href="/privacy" className="text-[#4ade80] hover:underline">
                   Privacy Policy
                 </a>

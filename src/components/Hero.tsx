@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
+      className="relative h-screen min-h-[600px] sm:min-h-[700px] flex items-center justify-center overflow-hidden"
     >
       {/* Background */}
       <motion.div
@@ -34,8 +34,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-[#0a0a0a]/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/20" />
         
-        {/* Animated floating elements */}
-        <div className="absolute inset-0 overflow-hidden">
+        {/* Animated floating elements - hidden on mobile */}
+        <div className="absolute inset-0 overflow-hidden hidden sm:block">
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
@@ -59,13 +59,13 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Decorative glow orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#4ade80]/10 blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#22c55e]/8 blur-[150px]" />
+        {/* Decorative glow orbs - hidden on mobile */}
+        <div className="hidden sm:block absolute top-1/4 left-1/4 w-72 lg:w-96 h-72 lg:h-96 rounded-full bg-[#4ade80]/10 blur-[120px]" />
+        <div className="hidden sm:block absolute bottom-1/4 right-1/4 w-96 lg:w-[500px] h-96 lg:h-[500px] rounded-full bg-[#22c55e]/8 blur-[150px]" />
         
-        {/* Subtle grid pattern */}
+        {/* Subtle grid pattern - hidden on mobile */}
         <div 
-          className="absolute inset-0 opacity-[0.03]"
+          className="hidden sm:block absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `linear-gradient(#4ade80 1px, transparent 1px), linear-gradient(90deg, #4ade80 1px, transparent 1px)`,
             backgroundSize: '60px 60px',
@@ -79,7 +79,7 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 w-full"
+        className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 w-full"
       >
         <div className="max-w-5xl">
           {/* Main Heading */}
@@ -103,29 +103,30 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-lg md:text-xl text-white/60 max-w-2xl mb-12 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mb-8 sm:mb-12 leading-relaxed"
           >
             We build AI that understands plants. From diagnosing diseases to enabling 
             genuine conversations with your greenery — PlantTalk AI bridges the gap 
             between technology and nature.
           </motion.p>
 
-          {/* CTAs */}
+          {/* CTAs - only primary CTA on mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4"
           >
             <Link
               href="/solutions"
-              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 group hover:shadow-lg hover:shadow-green-500/25 transition-all hover:-translate-y-0.5"
+              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-6 sm:px-8 py-3 sm:py-4 rounded font-semibold inline-flex items-center justify-center gap-2 group hover:shadow-lg hover:shadow-green-500/25 transition-all hover:-translate-y-0.5 text-sm sm:text-base"
             >
               Explore Our Products
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
             
-            <button className="relative px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-3 group border border-white/20 text-white hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all">
+            {/* Watch Demo button - hidden on mobile */}
+            <button className="hidden sm:inline-flex relative px-8 py-4 rounded font-semibold items-center justify-center gap-3 group border border-white/20 text-white hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all text-base">
               <span className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#4ade80] group-hover:bg-[#4ade80]/10 transition-all">
                 ▶
               </span>
@@ -159,14 +160,14 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - hidden on very small screens */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
       >
-        <span className="text-xs uppercase tracking-wider text-white/40">
+        <span className="text-[10px] sm:text-xs uppercase tracking-wider text-white/40">
           Discover more
         </span>
         <motion.div
