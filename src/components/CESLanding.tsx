@@ -111,7 +111,7 @@ export default function CESLanding() {
                       </div>
                       <div className="text-right flex items-baseline gap-2 flex-shrink-0">
                         <span className="text-base text-white/40 line-through">$39</span>
-                        <span className="text-3xl font-black text-white">$29</span>
+                        <span className="text-3xl font-black text-white">$??</span>
                       </div>
                     </Link>
 
@@ -123,7 +123,7 @@ export default function CESLanding() {
                       </div>
                       <div className="text-right flex items-baseline gap-2 flex-shrink-0">
                         <span className="text-base text-white/40 line-through">$49</span>
-                        <span className="text-3xl font-black text-white">$39</span>
+                        <span className="text-3xl font-black text-white">$??</span>
                       </div>
                     </Link>
                   </div>
