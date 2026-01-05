@@ -75,19 +75,19 @@ export default function Solutions() {
         <div className="hidden lg:block absolute bottom-1/3 right-1/4 w-40 h-40 rounded-full bg-[#00a896]/10 blur-[80px]" />
         
         {/* Tech grid with enhanced visibility */}
-        <div className="absolute inset-0 tech-grid opacity-50" />
+        <div className="tech-grid" />
         
         {/* Hex pattern for AI feel */}
-        <div className="hidden lg:block absolute inset-0 hex-grid opacity-30" />
+        <div className="hidden lg:block hex-grid" />
         
         {/* Neural dots */}
-        <div className="hidden sm:block absolute inset-0 neural-dots opacity-25" />
+        <div className="hidden sm:block neural-dots" />
         
         {/* Radial glow */}
-        <div className="absolute inset-0 radial-glow opacity-30" />
+        <div className="radial-glow" />
         
         {/* Wave lines */}
-        <div className="hidden sm:block wave-lines opacity-40" />
+        <div className="hidden sm:block wave-lines" />
         
         {/* Floating particles */}
         <div className="hidden lg:block absolute inset-0 overflow-hidden">

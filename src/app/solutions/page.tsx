@@ -219,10 +219,10 @@ export default function SolutionsPage() {
         </div>
         
         {/* Tech grid */}
-        <div className="absolute inset-0 tech-grid opacity-50" />
+        <div className="tech-grid" />
         
         {/* Neural dots */}
-        <div className="hidden lg:block absolute inset-0 neural-dots opacity-30" />
+        <div className="hidden lg:block neural-dots" />
         
         {/* Floating particles */}
         <div className="hidden lg:block absolute inset-0 overflow-hidden">
@@ -253,7 +253,7 @@ export default function SolutionsPage() {
         </div>
         
         {/* Wave lines */}
-        <div className="hidden sm:block wave-lines opacity-40" />
+        <div className="hidden sm:block wave-lines" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
           {/* Badge */}
@@ -369,10 +369,10 @@ export default function SolutionsPage() {
           />
           
           {/* Tech grid */}
-          <div className="absolute inset-0 tech-grid opacity-40" />
+          <div className="tech-grid" />
           
           {/* Hex grid pattern */}
-          <div className="hidden lg:block absolute inset-0 hex-grid opacity-25" />
+          <div className="hidden lg:block hex-grid" />
           
           {/* Data stream lines on sides */}
           <div className="hidden xl:block absolute left-8 top-1/4 bottom-1/4 w-px bg-gradient-to-b from-transparent via-[#00e5d0]/30 to-transparent" />
@@ -403,13 +403,13 @@ export default function SolutionsPage() {
           />
           
           {/* Tech grid */}
-          <div className="absolute inset-0 tech-grid opacity-40" />
+          <div className="tech-grid" />
           
           {/* Wave lines */}
-          <div className="hidden sm:block wave-lines opacity-30" />
+          <div className="hidden sm:block wave-lines" />
           
           {/* Neural dots */}
-          <div className="hidden lg:block absolute inset-0 neural-dots opacity-20" />
+          <div className="hidden lg:block neural-dots" />
         </div>
         
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 text-center">

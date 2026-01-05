@@ -30,7 +30,7 @@ export default function Footer() {
       {/* Enhanced background effects */}
       <div className="absolute inset-0">
         {/* Tech grid */}
-        <div className="absolute inset-0 tech-grid opacity-30" />
+        <div className="tech-grid" />
         
         {/* Animated glow orbs */}
         <motion.div 
@@ -51,7 +51,7 @@ export default function Footer() {
         />
         
         {/* Neural dots - subtle in footer */}
-        <div className="hidden lg:block absolute inset-0 neural-dots opacity-15" />
+        <div className="hidden lg:block neural-dots" />
         
         {/* Gradient overlay from top */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30" />

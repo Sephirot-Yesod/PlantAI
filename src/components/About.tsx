@@ -37,67 +37,17 @@ export default function About() {
 
   return (
     <section ref={containerRef} className="relative py-16 sm:py-24 lg:py-32 bg-[#0a0a0a] overflow-hidden">
-      {/* Enhanced Background Elements */}
+      {/* Background Elements */}
       <div className="absolute inset-0">
-        {/* Main glow orbs - animated */}
-        <motion.div 
-          className="absolute top-1/4 -left-48 w-[600px] h-[600px] rounded-full bg-[#00e5d0]/12 blur-[180px]"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.12, 0.18, 0.12]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 -right-48 w-[600px] h-[600px] rounded-full bg-[#00c4b0]/10 blur-[180px]"
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.1, 0.16, 0.1]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-        
-        {/* Additional accent glows */}
-        <div className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#00e5d0]/5 blur-[200px]" />
-        <div className="hidden lg:block absolute top-20 right-1/4 w-40 h-40 rounded-full bg-[#4df8e8]/15 blur-[80px]" />
-        <div className="hidden lg:block absolute bottom-32 left-1/4 w-32 h-32 rounded-full bg-[#00a896]/15 blur-[60px]" />
+        {/* Static glow orbs */}
+        <div className="absolute top-1/4 -left-48 w-[500px] h-[500px] rounded-full bg-[#00e5d0]/10 blur-[150px]" />
+        <div className="absolute bottom-1/4 -right-48 w-[500px] h-[500px] rounded-full bg-[#00c4b0]/8 blur-[150px]" />
         
         {/* Tech grid */}
-        <div className="absolute inset-0 tech-grid opacity-40" />
+        <div className="tech-grid" />
         
         {/* Neural dots - hidden on mobile */}
-        <div className="hidden sm:block absolute inset-0 neural-dots opacity-30" />
-        
-        {/* Wave lines */}
-        <div className="hidden sm:block wave-lines opacity-50" />
-        
-        {/* Scanning line effect */}
-        <div className="hidden lg:block absolute inset-0 scan-line opacity-20" />
-        
-        {/* Floating particles */}
-        <div className="hidden lg:block absolute inset-0 overflow-hidden">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full bg-[#00e5d0]/50"
-              style={{
-                left: `${10 + i * 12}%`,
-                top: `${20 + (i % 4) * 20}%`,
-              }}
-              animate={{ 
-                y: [0, -30, 0],
-                opacity: [0.3, 0.7, 0.3],
-                scale: [1, 1.5, 1]
-              }}
-              transition={{
-                duration: 4 + i * 0.5,
-                repeat: Infinity,
-                delay: i * 0.3,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </div>
+        <div className="hidden sm:block neural-dots" />
       </div>
 
       <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">

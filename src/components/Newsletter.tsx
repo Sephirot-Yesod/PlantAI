@@ -56,13 +56,13 @@ export default function Newsletter() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-[#00e5d0]/5 blur-[150px]" />
         
         {/* Tech grid */}
-        <div className="absolute inset-0 tech-grid opacity-40" />
+        <div className="tech-grid" />
         
         {/* Neural dots - hidden on mobile */}
-        <div className="hidden sm:block absolute inset-0 neural-dots opacity-30" />
+        <div className="hidden sm:block neural-dots" />
         
         {/* Wave lines - hidden on mobile */}
-        <div className="hidden sm:block wave-lines opacity-40" />
+        <div className="hidden sm:block wave-lines" />
         
         {/* Floating particles - hidden on mobile */}
         <div className="hidden lg:block absolute inset-0">

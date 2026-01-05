@@ -34,120 +34,15 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/95 via-[#0a0a0a]/60 to-[#0a0a0a]/40" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/40" />
         
-        {/* AI Glow background effect */}
-        <div className="absolute inset-0 ai-glow-bg opacity-60" />
-        
-        {/* Wave lines pattern - hidden on mobile */}
-        <div className="hidden sm:block wave-lines" />
-        
-        {/* Animated floating particles - hidden on mobile */}
-        <div className="absolute inset-0 overflow-hidden hidden sm:block">
-          {[...Array(12)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full"
-              style={{
-                width: `${3 + (i % 3) * 2}px`,
-                height: `${3 + (i % 3) * 2}px`,
-                background: i % 3 === 0 
-                  ? 'radial-gradient(circle, rgba(0, 245, 212, 0.8) 0%, transparent 70%)'
-                  : i % 3 === 1
-                  ? 'radial-gradient(circle, rgba(0, 212, 170, 0.6) 0%, transparent 70%)'
-                  : 'radial-gradient(circle, rgba(92, 255, 232, 0.7) 0%, transparent 70%)',
-                boxShadow: `0 0 ${10 + i * 2}px rgba(0, 245, 212, ${0.3 + (i % 3) * 0.1})`
-              }}
-              initial={{ 
-                x: `${5 + i * 8}%`, 
-                y: "-10%",
-                opacity: 0.3
-              }}
-              animate={{ 
-                y: "110%",
-                opacity: [0.3, 0.9, 0.3],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 10 + i * 1.5,
-                repeat: Infinity,
-                delay: i * 0.8,
-                ease: "linear"
-              }}
-            />
-          ))}
-        </div>
-        
-        {/* Additional small particles for depth */}
-        <div className="absolute inset-0 overflow-hidden hidden lg:block">
-          {[...Array(20)].map((_, i) => {
-            // Deterministic positions based on index
-            const xPos = ((i * 17 + 5) % 100);
-            const yPos = ((i * 23 + 10) % 100);
-            const duration = 3 + (i % 5) * 0.5;
-            const delay = (i % 8) * 0.25;
-            return (
-              <motion.div
-                key={`small-${i}`}
-                className="absolute w-1 h-1 rounded-full bg-[#00e5d0]/40"
-                style={{
-                  left: `${xPos}%`,
-                  top: `${yPos}%`,
-                }}
-                animate={{ 
-                  opacity: [0.2, 0.6, 0.2],
-                  scale: [1, 1.5, 1]
-                }}
-                transition={{
-                  duration,
-                  repeat: Infinity,
-                  delay,
-                  ease: "easeInOut"
-                }}
-              />
-            );
-          })}
-        </div>
-
-        {/* Large ethereal glow orbs - hidden on mobile */}
-        <motion.div 
-          className="hidden sm:block absolute top-1/4 left-1/4 w-72 lg:w-[600px] h-72 lg:h-[600px] rounded-full bg-[#00e5d0]/20 blur-[180px]"
-          animate={{ 
-            scale: [1, 1.1, 1],
-            opacity: [0.2, 0.3, 0.2]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="hidden sm:block absolute bottom-1/3 right-1/4 w-96 lg:w-[700px] h-96 lg:h-[700px] rounded-full bg-[#00c4b0]/15 blur-[200px]"
-          animate={{ 
-            scale: [1.1, 1, 1.1],
-            opacity: [0.15, 0.25, 0.15]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full bg-[#00e5d0]/8 blur-[220px]"
-          animate={{ 
-            scale: [1, 1.05, 1],
-            rotate: [0, 180, 360]
-          }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        />
-        
-        {/* Additional accent orbs */}
-        <div className="hidden lg:block absolute top-20 right-1/3 w-32 h-32 rounded-full bg-[#4df8e8]/20 blur-[80px]" />
-        <div className="hidden lg:block absolute bottom-40 left-1/3 w-48 h-48 rounded-full bg-[#00a896]/15 blur-[100px]" />
+        {/* Simple glow orbs - static, no animation */}
+        <div className="hidden sm:block absolute top-1/4 left-1/4 w-72 lg:w-[500px] h-72 lg:h-[500px] rounded-full bg-[#00e5d0]/15 blur-[150px]" />
+        <div className="hidden sm:block absolute bottom-1/3 right-1/4 w-80 lg:w-[600px] h-80 lg:h-[600px] rounded-full bg-[#00c4b0]/10 blur-[180px]" />
         
         {/* Tech grid pattern - hidden on mobile */}
-        <div className="hidden sm:block absolute inset-0 tech-grid opacity-60" />
+        <div className="hidden sm:block tech-grid" />
         
         {/* Neural network dots effect - hidden on mobile */}
-        <div className="hidden lg:block absolute inset-0 neural-dots opacity-40" />
-        
-        {/* Radial glow from center */}
-        <div className="absolute inset-0 radial-glow opacity-40" />
-        
-        {/* Vignette effect */}
-        <div className="absolute inset-0 vignette" />
+        <div className="hidden lg:block neural-dots" />
         
         {/* Final gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
@@ -159,23 +54,6 @@ export default function Hero() {
         className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 w-full"
       >
         <div className="max-w-5xl">
-          {/* Glowing badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card-glow border border-[#00e5d0]/20 mb-6"
-          >
-            <motion.span 
-              className="w-2 h-2 rounded-full bg-[#00e5d0]"
-              animate={{ 
-                boxShadow: ['0 0 5px rgba(0, 245, 212, 0.5)', '0 0 15px rgba(0, 245, 212, 0.8)', '0 0 5px rgba(0, 245, 212, 0.5)']
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            <span className="text-xs text-[#00e5d0]/80 font-medium tracking-wide">AI-Powered Plant Intelligence</span>
-          </motion.div>
-
           {/* Main Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -230,7 +108,7 @@ export default function Hero() {
             </Link>
             
             {/* Watch Demo button - hidden on mobile */}
-            <button className="hidden sm:inline-flex relative px-8 py-4 rounded-lg font-semibold items-center justify-center gap-3 group border border-[#00e5d0]/30 text-white hover:border-[#00e5d0]/60 hover:bg-[#00e5d0]/5 transition-all text-base backdrop-blur-sm overflow-hidden">
+            <button className="hidden sm:inline-flex relative px-8 py-4 rounded-lg font-semibold items-center justify-center gap-3 group border border-[#00e5d0]/30 text-white hover:border-[#00e5d0]/60 hover:bg-[#00e5d0]/5 transition-all text-base backdrop-blur-sm">
               <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
                 <span className="absolute inset-0 bg-gradient-to-r from-[#00e5d0]/5 to-transparent" />
               </span>

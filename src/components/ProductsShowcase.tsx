@@ -164,9 +164,9 @@ function PlantGrowthTheory() {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         {/* Tech grid */}
-        <div className="absolute inset-0 tech-grid opacity-40" />
+        <div className="tech-grid" />
         {/* Neural dots */}
-        <div className="absolute inset-0 neural-dots opacity-25" />
+        <div className="neural-dots" />
       </div>
       
       {/* Hardware Showcase */}
@@ -285,7 +285,7 @@ function ProductSection({ product, index }: { product: typeof products[0]; index
           {/* Cyan glow overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#00e5d0]/8 via-transparent to-transparent" />
           {/* Tech grid */}
-          <div className="absolute inset-0 tech-grid opacity-30" />
+          <div className="tech-grid" />
           {/* Animated glow orb */}
           <motion.div 
             className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full blur-[180px]"
