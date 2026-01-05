@@ -138,7 +138,7 @@ export default function CESLanding() {
                   transition={{ duration: 0.6, delay: 0.4 }}
                   className="bg-black/40 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8"
                 >
-                  <h2 className="text-3xl sm:text-4xl font-black text-white mb-2">Interested or Not Satisfied? Cocreate with Us!</h2>
+                  <h2 className="text-3xl sm:text-4xl font-black text-white mb-2">Interested or Got Better Ideas? Cocreate with Us!</h2>
                   <p className="text-white/50 mb-5 text-base">
                     Interested in partnering or collaborating? Drop us a message.
                   </p>
@@ -268,7 +268,7 @@ export default function CESLanding() {
           transition={{ duration: 0.6 }}
           className="max-w-md mx-auto"
         >
-          <h2 className="text-3xl font-black text-white mb-2 text-center">Interested or Not Satisfied? Cocreate with Us!</h2>
+          <h2 className="text-3xl font-black text-white mb-2 text-center">Interested or Got Better Ideas? Cocreate with Us!</h2>
           <p className="text-white/50 mb-6 text-base text-center">
             Interested in partnering or collaborating? Drop us a message.
           </p>
