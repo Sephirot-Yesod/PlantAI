@@ -48,16 +48,12 @@ export default function Projects() {
   const otherCases = useCases.filter((p) => !p.featured);
 
   return (
-    <section ref={containerRef} className="relative py-32 bg-[#0d0d0d]">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, #4ade80 1px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        />
+    <section ref={containerRef} className="relative py-32 bg-[#0a0a0a]">
+      {/* Background effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 tech-grid opacity-30" />
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full bg-[#00e5d0]/5 blur-[180px]" />
+        <div className="absolute bottom-1/4 left-0 w-[600px] h-[600px] rounded-full bg-[#00c4b0]/5 blur-[180px]" />
       </div>
 
       <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -70,8 +66,8 @@ export default function Projects() {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-6"
             >
-              <div className="h-px w-12 bg-[#4ade80]" />
-              <span className="text-xs uppercase tracking-[0.3em] text-[#4ade80] font-medium">
+              <div className="h-px w-12 bg-[#00e5d0]" />
+              <span className="text-xs uppercase tracking-[0.3em] text-[#00e5d0] font-medium">
                 Success Stories
               </span>
             </motion.div>
@@ -84,7 +80,7 @@ export default function Projects() {
             >
               Growing Success
               <br />
-              <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] bg-clip-text text-transparent">
                 Across Industries
               </span>
             </motion.h2>
@@ -97,7 +93,7 @@ export default function Projects() {
           >
             <Link
               href="/stories"
-              className="border border-white/20 text-white px-6 py-3 rounded font-medium inline-flex items-center gap-2 group hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
+              className="border border-[#00e5d0]/30 text-white px-6 py-3 rounded-lg font-medium inline-flex items-center gap-2 group hover:border-[#00e5d0]/60 hover:bg-[#00e5d0]/5 transition-all"
             >
               View All Cases
               <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
@@ -117,7 +113,7 @@ export default function Projects() {
               onMouseLeave={() => setHoveredId(null)}
             >
               <Link href={`/stories/${useCase.id}`} className="block group">
-                <div className="relative h-[500px] lg:h-[550px] bg-[#141414] rounded overflow-hidden card-hover">
+                <div className="relative h-[500px] lg:h-[550px] glass-card rounded-xl overflow-hidden card-hover border border-white/5 hover:border-[#00e5d0]/20 transition-all">
                   {/* Image */}
                   <div className="absolute inset-0">
                     <div
@@ -125,13 +121,15 @@ export default function Projects() {
                       style={{ backgroundImage: `url(${useCase.image})` }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                    {/* Cyan overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#00e5d0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
 
                   {/* Content */}
                   <div className="absolute inset-0 p-8 flex flex-col justify-end">
                     {/* Category Badge */}
                     <div className="absolute top-8 left-8">
-                      <span className="px-4 py-2 bg-[#4ade80] text-black text-xs font-semibold uppercase tracking-wider rounded">
+                      <span className="px-4 py-2 bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] text-black text-xs font-semibold uppercase tracking-wider rounded-lg">
                         {useCase.category}
                       </span>
                     </div>
@@ -147,7 +145,7 @@ export default function Projects() {
                       {useCase.client}
                     </div>
 
-                    <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 group-hover:text-[#4ade80] transition-colors">
+                    <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-3 group-hover:text-[#00e5d0] transition-colors">
                       {useCase.title}
                     </h3>
 
@@ -160,26 +158,26 @@ export default function Projects() {
                       <div className="flex gap-6 mb-6">
                         {Object.entries(useCase.stats).map(([key, value]) => (
                           <div key={key}>
-                            <div className="text-2xl font-extrabold text-[#4ade80]">{value}</div>
+                            <div className="text-2xl font-extrabold text-[#00e5d0]">{value}</div>
                             <div className="text-xs text-white/40 capitalize">{key}</div>
                           </div>
                         ))}
                       </div>
                     )}
 
-                    <div className="flex items-center gap-2 text-[#4ade80] font-medium opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    <div className="flex items-center gap-2 text-[#00e5d0] font-medium opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                       Read Case Study
                       <span>→</span>
                     </div>
                   </div>
 
-                  {/* Animated border */}
+                  {/* Animated border & glow */}
                   <div
-                    className={`absolute inset-0 border-2 rounded transition-colors duration-300 ${
-                      hoveredId === useCase.id
-                        ? "border-[#4ade80]/50"
-                        : "border-transparent"
-                    }`}
+                    className="absolute inset-0 rounded-xl border-2 transition-all duration-300 pointer-events-none"
+                    style={{
+                      borderColor: hoveredId === useCase.id ? 'rgba(0, 245, 212, 0.3)' : 'transparent',
+                      boxShadow: hoveredId === useCase.id ? 'inset 0 0 40px rgba(0, 245, 212, 0.1)' : 'none'
+                    }}
                   />
                 </div>
               </Link>
@@ -197,7 +195,7 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
             >
               <Link href={`/stories/${useCase.id}`} className="block group">
-                <div className="relative h-[280px] bg-[#141414] rounded overflow-hidden card-hover flex">
+                <div className="relative h-[280px] glass-card rounded-xl overflow-hidden card-hover flex border border-white/5 hover:border-[#00e5d0]/20 transition-all">
                   {/* Image */}
                   <div className="relative w-2/5">
                     <div
@@ -209,11 +207,11 @@ export default function Projects() {
                   {/* Content */}
                   <div className="w-3/5 p-6 flex flex-col justify-between">
                     <div>
-                      <span className="inline-block px-3 py-1 bg-white/10 text-[#4ade80] text-xs font-semibold uppercase tracking-wider rounded mb-4">
+                      <span className="inline-block px-3 py-1 glass-card border border-[#00e5d0]/20 text-[#00e5d0] text-xs font-semibold uppercase tracking-wider rounded-lg mb-4">
                         {useCase.category}
                       </span>
 
-                      <h3 className="text-xl font-extrabold text-white mb-2 group-hover:text-[#4ade80] transition-colors">
+                      <h3 className="text-xl font-extrabold text-white mb-2 group-hover:text-[#00e5d0] transition-colors">
                         {useCase.title}
                       </h3>
 
@@ -226,7 +224,7 @@ export default function Projects() {
                       </p>
                     </div>
 
-                    <div className="flex items-center gap-2 text-[#4ade80] text-sm font-medium">
+                    <div className="flex items-center gap-2 text-[#00e5d0] text-sm font-medium">
                       Read Story
                       <span className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
                     </div>

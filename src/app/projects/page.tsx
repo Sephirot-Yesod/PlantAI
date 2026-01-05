@@ -267,7 +267,7 @@ export default function ProjectsPage() {
             </p>
             <Link
               href="/contact"
-              className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center gap-2 hover:shadow-lg hover:shadow-green-500/25 transition-all"
+              className="bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] text-black px-8 py-4 rounded font-semibold inline-flex items-center gap-2 hover:shadow-lg hover:shadow-[#00e5d0]/25 transition-all"
             >
               Start Your Project →
             </Link>

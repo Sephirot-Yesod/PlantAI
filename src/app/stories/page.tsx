@@ -122,8 +122,8 @@ export default function StoriesPage() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-3 mb-6"
           >
-            <div className="w-2 h-2 rounded-full bg-[#4ade80]" />
-            <span className="text-xs uppercase tracking-[0.3em] text-[#4ade80] font-medium">
+            <div className="w-2 h-2 rounded-full bg-[#00e5d0]" />
+            <span className="text-xs uppercase tracking-[0.3em] text-[#00e5d0] font-medium">
               Stories & Updates
             </span>
           </motion.div>
@@ -136,7 +136,7 @@ export default function StoriesPage() {
           >
             From the
             <br />
-            <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] bg-clip-text text-transparent">
               PlantTalk Garden
             </span>
           </motion.h1>
@@ -164,7 +164,7 @@ export default function StoriesPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search stories..."
-                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#00e5d0] transition-colors"
               />
             </div>
 
@@ -176,7 +176,7 @@ export default function StoriesPage() {
                   onClick={() => setActiveCategory(category)}
                   className={`px-4 py-2 rounded text-sm font-medium whitespace-nowrap transition-all ${
                     activeCategory === category
-                      ? "bg-[#4ade80] text-black"
+                      ? "bg-[#00e5d0] text-black"
                       : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
                   }`}
                 >
@@ -205,7 +205,7 @@ Featured
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
                   <Link href={`/stories/${story.id}`} className="block group">
-                    <div className="relative h-[400px] lg:h-[450px] bg-[#141414] rounded overflow-hidden border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300 card-hover">
+                    <div className="relative h-[400px] lg:h-[450px] bg-[#141414] rounded overflow-hidden border border-white/5 hover:border-[#00e5d0]/30 transition-all duration-300 card-hover">
                       <div className="absolute inset-0">
                         <div
                           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -215,7 +215,7 @@ Featured
                       </div>
 
                       <div className="absolute top-6 left-6 flex items-center gap-3">
-                        <span className="px-3 py-1 bg-[#4ade80] text-black text-xs font-semibold uppercase tracking-wider rounded">
+                        <span className="px-3 py-1 bg-[#00e5d0] text-black text-xs font-semibold uppercase tracking-wider rounded">
                           Featured
                         </span>
                         <span className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white text-xs font-medium rounded">
@@ -230,7 +230,7 @@ Featured
                           <span className="text-white/50">{story.readTime}</span>
                         </div>
 
-                        <h3 className="text-2xl lg:text-3xl font-extrabold text-white mb-4 group-hover:text-[#4ade80] transition-colors">
+                        <h3 className="text-2xl lg:text-3xl font-extrabold text-white mb-4 group-hover:text-[#00e5d0] transition-colors">
                           {story.title}
                         </h3>
 
@@ -238,7 +238,7 @@ Featured
                           {story.excerpt}
                         </p>
 
-                        <span className="inline-flex items-center gap-2 text-[#4ade80] font-medium group-hover:gap-3 transition-all">
+                        <span className="inline-flex items-center gap-2 text-[#00e5d0] font-medium group-hover:gap-3 transition-all">
                           Read Story →
                         </span>
                       </div>
@@ -267,7 +267,7 @@ Featured
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
                     <Link href={`/stories/${story.id}`} className="block group">
-                      <div className="bg-[#141414] rounded overflow-hidden border border-white/5 hover:border-[#4ade80]/30 transition-all duration-300 card-hover">
+                      <div className="bg-[#141414] rounded overflow-hidden border border-white/5 hover:border-[#00e5d0]/30 transition-all duration-300 card-hover">
                         <div className="relative h-[200px] overflow-hidden">
                           <div
                             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -289,7 +289,7 @@ Featured
                             <span className="text-white/40">{story.readTime}</span>
                           </div>
 
-                          <h3 className="text-lg font-extrabold text-white mb-3 group-hover:text-[#4ade80] transition-colors line-clamp-2">
+                          <h3 className="text-lg font-extrabold text-white mb-3 group-hover:text-[#00e5d0] transition-colors line-clamp-2">
                             {story.title}
                           </h3>
 
@@ -297,7 +297,7 @@ Featured
                             {story.excerpt}
                           </p>
 
-                          <span className="inline-flex items-center gap-2 text-[#4ade80] text-sm font-medium group-hover:gap-3 transition-all">
+                          <span className="inline-flex items-center gap-2 text-[#00e5d0] text-sm font-medium group-hover:gap-3 transition-all">
                             Read Story →
                           </span>
                         </div>
@@ -319,7 +319,7 @@ Featured
                   setActiveCategory("All");
                   setSearchQuery("");
                 }}
-                className="mt-4 text-[#4ade80] hover:underline"
+                className="mt-4 text-[#00e5d0] hover:underline"
               >
                 Clear filters
               </button>

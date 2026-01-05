@@ -101,8 +101,8 @@ export default function ContactPage() {
             transition={{ duration: 0.6 }}
             className="flex items-center gap-3 mb-6"
           >
-            <div className="w-2 h-2 rounded-full bg-[#4ade80]" />
-            <span className="text-xs uppercase tracking-[0.3em] text-[#4ade80] font-medium">
+            <div className="w-2 h-2 rounded-full bg-[#00e5d0]" />
+            <span className="text-xs uppercase tracking-[0.3em] text-[#00e5d0] font-medium">
               Get In Touch
             </span>
           </motion.div>
@@ -115,7 +115,7 @@ export default function ContactPage() {
           >
             Let&apos;s Grow
             <br />
-            <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] bg-clip-text text-transparent">
               Together
             </span>
           </motion.h1>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                 className="flex items-center gap-4"
               >
-                <div className="w-3 h-3 rounded-full bg-[#4ade80]" />
+                <div className="w-3 h-3 rounded-full bg-[#00e5d0]" />
                 <div>
                   <div className="font-semibold text-white">{feature.title}</div>
                   <div className="text-sm text-white/50">{feature.description}</div>
@@ -181,7 +181,7 @@ export default function ContactPage() {
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
-                    className="text-[#4ade80] hover:underline"
+                    className="text-[#00e5d0] hover:underline"
                   >
                     Send another message
                   </button>
@@ -198,7 +198,7 @@ export default function ContactPage() {
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
-                    className="text-[#4ade80] hover:underline"
+                    className="text-[#00e5d0] hover:underline"
                   >
                     Try again
                   </button>
@@ -216,7 +216,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#00e5d0] transition-colors"
                         placeholder="Your name"
                       />
                     </div>
@@ -230,7 +230,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#00e5d0] transition-colors"
                         placeholder="you@company.com"
                       />
                     </div>
@@ -246,7 +246,7 @@ export default function ContactPage() {
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#00e5d0] transition-colors"
                         placeholder="Your company (optional)"
                       />
                     </div>
@@ -259,7 +259,7 @@ export default function ContactPage() {
                         value={formData.reason}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white focus:outline-none focus:border-[#4ade80] transition-colors"
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white focus:outline-none focus:border-[#00e5d0] transition-colors"
                       >
                         <option value="" className="bg-[#141414]">
                           Select a reason
@@ -283,7 +283,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#4ade80] transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded text-white placeholder-white/30 focus:outline-none focus:border-[#00e5d0] transition-colors resize-none"
                       placeholder="Tell us about your plants, your needs, or just say hello..."
                     />
                   </div>
@@ -295,11 +295,11 @@ export default function ContactPage() {
                       checked={formData.privacy}
                       onChange={handleChange}
                       required
-                      className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-[#4ade80] focus:ring-[#4ade80] focus:ring-offset-0"
+                      className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 text-[#00e5d0] focus:ring-[#00e5d0] focus:ring-offset-0"
                     />
                     <span className="text-sm text-white/50">
                       I agree to the{" "}
-                      <a href="/privacy" className="text-[#4ade80] hover:underline">
+                      <a href="/privacy" className="text-[#00e5d0] hover:underline">
                         Privacy Policy
                       </a>{" "}
                       and consent to being contacted about PlantTalk AI products.
@@ -309,7 +309,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black w-full py-4 rounded font-semibold inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                    className="bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] text-black w-full py-4 rounded font-semibold inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-[#00e5d0]/25 transition-all"
                   >
                     {status === "loading" ? "Sending..." : "Send Message →"}
                   </button>

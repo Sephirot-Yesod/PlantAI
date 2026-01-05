@@ -29,7 +29,7 @@ const productsData: Record<
       "EZplants combines cutting-edge computer vision with our proprietary plant growth models to deliver instant, accurate plant health assessments. Simply snap a photo or start a live video session, and our AI will identify issues, explain the causes, and provide step-by-step treatment plans tailored to your specific plant and environment.",
     heroImage: "/images/products/ezplants-hero.jpg",
     logoImage: "/images/logos/ezplants-logo.png",
-    color: "#fbbf24",
+    color: "#4df8e8",
     features: [
       { title: "AI Disease Detection", description: "Our model recognizes 500+ plant diseases with 99.2% accuracy, trained on 50 million images." },
       { title: "Live Video Diagnosis", description: "Real-time consultation with our AI. Point your camera and get instant answers." },
@@ -48,7 +48,7 @@ const productsData: Record<
       "PlantTalk creates a unique AI personality for each of your plants based on their species, age, health, and environment. These AI agents can express needs, share 'thoughts' about their day, and even interact with other plants. It's not just a notification system — it's a relationship builder that makes plant care deeply personal and emotionally rewarding.",
     heroImage: "/images/products/planttalk-hero.jpg",
     logoImage: "/images/logos/planttalk-logo.png",
-    color: "#60a5fa",
+    color: "#00c4b0",
     features: [
       { title: "Natural Conversations", description: "Chat naturally with your plants. Ask questions, get updates, and hear their 'thoughts'." },
       { title: "Unique Personalities", description: "Each plant develops a distinct personality based on species traits and your interactions." },
@@ -67,7 +67,7 @@ const productsData: Record<
       "Plantiemoji is a compact, beautiful sensor that monitors temperature, humidity, light, and soil moisture around your plant. But here's the magic: instead of confusing graphs or numbers, it translates all that data into simple, expressive emojis. A quick glance tells you exactly how your plant feels — no interpretation needed.",
     heroImage: "/images/products/plantiemoji-hero.jpg",
     logoImage: "/images/logos/plantiemoji-logo.png",
-    color: "#4ade80",
+    color: "#00e5d0",
     features: [
       { title: "4-in-1 Sensor", description: "Monitors temperature, humidity, light levels, and soil moisture simultaneously." },
       { title: "Emoji Expression", description: "Cute e-ink display shows your plant's current mood at a glance." },
@@ -91,7 +91,7 @@ export default function ProductPage() {
         <Navigation />
         <div className="pt-32 pb-20 text-center">
           <h1 className="text-4xl font-extrabold mb-4">Product not found</h1>
-          <Link href="/solutions" className="text-[#4ade80] hover:underline">
+          <Link href="/solutions" className="text-[#00e5d0] hover:underline">
             ← Back to Solutions
           </Link>
         </div>

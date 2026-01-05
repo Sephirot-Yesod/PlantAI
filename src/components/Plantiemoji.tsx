@@ -12,7 +12,7 @@ const plantiemojiData = {
     "Plantiemoji is a compact, beautiful sensor that monitors temperature, humidity, light, and soil moisture around your plant. But here's the magic: instead of confusing graphs or numbers, it translates all that data into simple, expressive emojis. A quick glance tells you exactly how your plant feels — no interpretation needed.",
   heroImage: "/images/products/plantiemoji-hero.jpg",
   logoImage: "/images/logos/plantiemoji-logo.png",
-  color: "#4ade80",
+  color: "#00e5d0",
   features: [
     { title: "4-in-1 Sensor", description: "Monitors temperature, humidity, light levels, and soil moisture simultaneously." },
     { title: "Emoji Expression", description: "Cute e-ink display shows your plant's current mood at a glance." },
@@ -43,6 +43,8 @@ export default function Plantiemoji() {
             style={{ backgroundImage: `url(${plantiemojiData.heroImage})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-[#0a0a0a]/30" />
+          {/* Cyan glow overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#00e5d0]/5 via-transparent to-transparent" />
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 w-full">
@@ -54,7 +56,10 @@ export default function Plantiemoji() {
           >
             <div
               className="w-4 h-4 rounded-full"
-              style={{ backgroundColor: plantiemojiData.color }}
+              style={{ 
+                backgroundColor: plantiemojiData.color,
+                boxShadow: `0 0 20px ${plantiemojiData.color}60`
+              }}
             />
             <span
               className="text-xs uppercase tracking-[0.3em] font-medium"
@@ -95,11 +100,14 @@ export default function Plantiemoji() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="p-5 bg-[#141414]/80 backdrop-blur-sm rounded border border-white/5 hover:border-white/10 transition-colors"
+                className="p-5 glass-card rounded-xl border border-white/5 hover:border-[#00e5d0]/20 transition-all"
               >
                 <div
                   className="w-2 h-2 rounded-full mb-3"
-                  style={{ backgroundColor: plantiemojiData.color }}
+                  style={{ 
+                    backgroundColor: plantiemojiData.color,
+                    boxShadow: `0 0 10px ${plantiemojiData.color}60`
+                  }}
                 />
                 <h3 className="text-base font-extrabold text-white mb-1">{feature.title}</h3>
                 <p className="text-white/50 text-sm">{feature.description}</p>
@@ -111,6 +119,10 @@ export default function Plantiemoji() {
 
       {/* Use Cases */}
       <div className="py-24 relative overflow-hidden bg-[#0a0a0a]">
+        {/* Background effects */}
+        <div className="absolute inset-0 tech-grid opacity-30" />
+        <div className="absolute inset-0 radial-glow opacity-20" />
+        
         {/* Background Logo */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 hidden lg:block pointer-events-none">
           <div
@@ -118,7 +130,7 @@ export default function Plantiemoji() {
             style={{
               backgroundImage: `url(${plantiemojiData.logoImage})`,
               transform: "rotate(-10deg)",
-              filter: `drop-shadow(0 0 30px ${plantiemojiData.color}30)`,
+              filter: `drop-shadow(0 0 40px ${plantiemojiData.color}40)`,
             }}
           />
         </div>
@@ -145,11 +157,14 @@ export default function Plantiemoji() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 bg-[#141414] rounded"
+                  className="flex items-center gap-4 p-4 glass-card rounded-xl border border-white/5 hover:border-[#00e5d0]/20 transition-all"
                 >
                   <span
                     className="w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: plantiemojiData.color }}
+                    style={{ 
+                      backgroundColor: plantiemojiData.color,
+                      boxShadow: `0 0 10px ${plantiemojiData.color}60`
+                    }}
                   />
                   <span className="text-white/80">{useCase}</span>
                 </motion.div>
@@ -160,8 +175,11 @@ export default function Plantiemoji() {
       </div>
 
       {/* CTA */}
-      <div className="py-24 bg-[#0d0d0d]">
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
+      <div className="py-24 bg-[#0a0a0a] relative">
+        {/* Background wave pattern */}
+        <div className="absolute inset-0 wave-lines opacity-30" />
+        
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -179,14 +197,18 @@ export default function Plantiemoji() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg transition-all"
+                className="relative text-black px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center gap-2 transition-all group overflow-hidden"
                 style={{ backgroundColor: plantiemojiData.color }}
               >
-                Get in Touch →
+                <span 
+                  className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-50 transition-opacity"
+                  style={{ backgroundColor: plantiemojiData.color }}
+                />
+                <span className="relative">Get in Touch →</span>
               </Link>
               <Link
                 href="/solutions"
-                className="border border-white/20 text-white px-8 py-4 rounded font-medium inline-flex items-center justify-center gap-2 hover:border-white/40 transition-all"
+                className="border border-[#00e5d0]/30 text-white px-8 py-4 rounded-lg font-medium inline-flex items-center justify-center gap-2 hover:border-[#00e5d0]/60 hover:bg-[#00e5d0]/5 transition-all"
               >
                 Explore Other Products
               </Link>
@@ -197,4 +219,3 @@ export default function Plantiemoji() {
     </section>
   );
 }
-

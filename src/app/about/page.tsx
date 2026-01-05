@@ -43,8 +43,8 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="flex items-center justify-center gap-3 mb-8"
           >
-            <div className="w-2 h-2 rounded-full bg-[#4ade80]" />
-            <span className="text-xs uppercase tracking-[0.3em] text-[#4ade80] font-medium">
+            <div className="w-2 h-2 rounded-full bg-[#00e5d0]" />
+            <span className="text-xs uppercase tracking-[0.3em] text-[#00e5d0] font-medium">
               About Us
             </span>
           </motion.div>
@@ -56,7 +56,7 @@ export default function AboutPage() {
             className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8"
           >
             We&apos;re Building the Future of{" "}
-            <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] bg-clip-text text-transparent">
               Human-Plant Connection
             </span>
           </motion.h1>
@@ -88,7 +88,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
+                <div className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] bg-clip-text text-transparent">
                   {stat.value}
                 </div>
                 <div className="text-sm text-white/50 mt-2">{stat.label}</div>
@@ -123,7 +123,7 @@ export default function AboutPage() {
             className="max-w-2xl"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-12">
-              Our <span className="text-[#4ade80]">Story</span>
+              Our <span className="text-[#00e5d0]">Story</span>
             </h2>
 
             <div className="space-y-8 text-lg text-white/70 leading-relaxed">
@@ -154,7 +154,7 @@ export default function AboutPage() {
             className="max-w-2xl mt-20"
           >
             <h3 className="text-2xl md:text-3xl font-extrabold mb-8">
-              Where we&apos;re <span className="text-[#4ade80]">going</span>
+              Where we&apos;re <span className="text-[#00e5d0]">going</span>
             </h3>
 
             <p className="text-lg text-white/70 mb-8 leading-relaxed">
@@ -163,19 +163,19 @@ export default function AboutPage() {
 
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
-                <span className="w-2 h-2 rounded-full bg-[#4ade80] flex-shrink-0 mt-2.5" />
+                <span className="w-2 h-2 rounded-full bg-[#00e5d0] flex-shrink-0 mt-2.5" />
                 <span className="text-lg text-white/70">
                   Home and lifestyle experiences that nurture everyday connection with nature
                 </span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="w-2 h-2 rounded-full bg-[#4ade80] flex-shrink-0 mt-2.5" />
+                <span className="w-2 h-2 rounded-full bg-[#00e5d0] flex-shrink-0 mt-2.5" />
                 <span className="text-lg text-white/70">
                   Education and wellbeing programs that make learning and care more accessible
                 </span>
               </li>
               <li className="flex items-start gap-4">
-                <span className="w-2 h-2 rounded-full bg-[#4ade80] flex-shrink-0 mt-2.5" />
+                <span className="w-2 h-2 rounded-full bg-[#00e5d0] flex-shrink-0 mt-2.5" />
                 <span className="text-lg text-white/70">
                   Long-term solutions that support more resilient, sustainable agricultural systems
                 </span>
@@ -196,7 +196,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
-              Our <span className="text-[#4ade80]">Values</span>
+              Our <span className="text-[#00e5d0]">Values</span>
             </h2>
             <p className="text-white/50 max-w-2xl mx-auto">
               The principles that guide everything we do
@@ -211,11 +211,11 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group p-8 bg-[#141414] rounded border border-white/5 hover:border-[#4ade80]/30 transition-all text-center"
+                className="group p-8 bg-[#141414] rounded border border-white/5 hover:border-[#00e5d0]/30 transition-all text-center"
               >
-                <div className="w-3 h-3 rounded-full bg-[#4ade80] mx-auto mb-6 group-hover:scale-150 transition-transform" />
+                <div className="w-3 h-3 rounded-full bg-[#00e5d0] mx-auto mb-6 group-hover:scale-150 transition-transform" />
 
-                <h3 className="text-lg font-extrabold text-white mb-3 group-hover:text-[#4ade80] transition-colors">
+                <h3 className="text-lg font-extrabold text-white mb-3 group-hover:text-[#00e5d0] transition-colors">
                   {value.title}
                 </h3>
 
@@ -237,7 +237,7 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6">
               Ready to Start Your{" "}
-              <span className="text-[#4ade80]">Plant Journey?</span>
+              <span className="text-[#00e5d0]">Plant Journey?</span>
             </h2>
             <p className="text-white/60 mb-10 max-w-xl mx-auto">
               Join millions of plant lovers using PlantTalk AI to nurture their green companions.
@@ -245,13 +245,13 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/solutions"
-                className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-green-500/25 transition-all"
+                className="bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] text-black px-8 py-4 rounded font-semibold inline-flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#00e5d0]/25 transition-all"
               >
                 Explore Our Products →
               </Link>
               <Link
                 href="/contact"
-                className="border border-white/20 text-white px-8 py-4 rounded font-medium inline-flex items-center justify-center gap-2 hover:border-[#4ade80]/50 hover:bg-[#4ade80]/5 transition-all"
+                className="border border-white/20 text-white px-8 py-4 rounded font-medium inline-flex items-center justify-center gap-2 hover:border-[#00e5d0]/50 hover:bg-[#00e5d0]/5 transition-all"
               >
                 Get in Touch
               </Link>
