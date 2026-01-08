@@ -13,6 +13,10 @@ export default function CESLanding() {
     message: "",
   });
 
+  // Preorder email signup state
+  const [preorderEmail, setPreorderEmail] = useState("");
+  const [preorderStatus, setPreorderStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
   const contactReasons = [
     { value: "investor", label: "Invest in us" },
     { value: "distributor", label: "Become our distributor" },
@@ -49,6 +53,34 @@ export default function CESLanding() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  // Handle preorder email signup
+  const handlePreorderSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!preorderEmail) return;
+    
+    setPreorderStatus("loading");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Preorder Interest",
+          email: preorderEmail,
+          company: "",
+          reason: "preorder",
+          message: "User signed up for preorder notifications from CES landing page.",
+        }),
+      });
+
+      if (!response.ok) throw new Error("Failed");
+      setPreorderStatus("success");
+      setPreorderEmail("");
+    } catch {
+      setPreorderStatus("error");
+    }
   };
 
   return (
@@ -128,7 +160,39 @@ export default function CESLanding() {
                     </Link>
                   </div>
 
-                  <p className="text-[#00e5d0] font-semibold mt-5 text-base">Kickstarter coming March 2026!</p>
+                  {/* Email Signup */}
+                  <div className="mt-5 pt-5 border-t border-white/10">
+                    <p className="text-white/70 text-sm mb-3">Get notified when we launch:</p>
+                    {preorderStatus === "success" ? (
+                      <div className="flex items-center gap-2 text-[#00e5d0]">
+                        <span>✓</span>
+                        <span className="text-sm">You&apos;re on the list! We&apos;ll notify you.</span>
+                      </div>
+                    ) : (
+                      <form onSubmit={handlePreorderSubmit} className="flex gap-2">
+                        <input
+                          type="email"
+                          value={preorderEmail}
+                          onChange={(e) => setPreorderEmail(e.target.value)}
+                          required
+                          placeholder="Enter your email"
+                          className="flex-1 px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#00e5d0] transition-colors"
+                        />
+                        <button
+                          type="submit"
+                          disabled={preorderStatus === "loading"}
+                          className="px-5 py-2.5 bg-gradient-to-r from-[#00e5d0] to-[#00c4b0] text-black rounded-lg font-semibold text-sm transition-all disabled:opacity-50 hover:shadow-lg hover:shadow-[#00e5d0]/20 whitespace-nowrap"
+                        >
+                          {preorderStatus === "loading" ? "..." : "Notify Me"}
+                        </button>
+                      </form>
+                    )}
+                    {preorderStatus === "error" && (
+                      <p className="text-red-400 text-xs mt-2">Something went wrong. Try again.</p>
+                    )}
+                  </div>
+
+                  <p className="text-[#00e5d0] font-semibold mt-4 text-base">Kickstarter coming March 2026!</p>
                 </motion.div>
 
                 {/* Cocreate Section - Desktop */}
