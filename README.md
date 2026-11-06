@@ -1,131 +1,65 @@
-# PlantTalk AI Website
+# plantalk.ai
 
-A modern, beautiful website for **PlantTalk AI** — an AI plant company focused on building environmental models for monitoring and helping with plant growth.
+The website for **Plantalk AI**, the free AI plant care app for iPhone, iPad and Android by Plantalk LLC.
 
-## 🌱 About PlantTalk AI
+- App Store: https://apps.apple.com/app/plantalk-ai/id6753168877
+- Google Play: https://play.google.com/store/apps/details?id=plantalk.ai.app
 
-**Vision:** Use AI to help people better interact with plants through emotional value and intelligent growth modeling.
+## Run it
 
-**Hero Message:** *"Horticulture is the only remaining garden of eden in this AI era"*
-
-## 🛠️ Our Products
-
-### EZplants
-AI-powered plant diagnosis platform with real-time disease detection and live video consultation.
-- 99.2% diagnosis accuracy
-- 180+ plant species supported
-- 50M+ plants analyzed
-
-### PlantTalk
-Revolutionary AI that creates unique personalities for each plant, enabling genuine conversations.
-- Natural language conversations
-- Emotional expressions
-- Plant social network
-
-### PlantEmoji
-Smart sensor that monitors plant environment and communicates status through expressive emojis.
-- 4-in-1 sensors (temperature, humidity, light, soil moisture)
-- Real-time emoji feedback
-- 6-month battery life
-
-### Plart
-AI art studio that transforms plant photos into stunning artwork in 50+ styles.
-- Watercolor, oil painting, anime, and more
-- 4K resolution output
-- Print-ready exports
-
-### PlantScape
-Nature experience platform that generates ambient soundscapes from visual scenes.
-- AI music generation
-- Scene recognition
-- Immersive spatial audio
-
-## 🚀 Tech Stack
-
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS 4
-- **Animations:** Framer Motion
-- **Icons:** Lucide React
-- **Font:** Satoshi
-
-## 📁 Project Structure
-
-```
-src/
-├── app/
-│   ├── page.tsx              # Homepage
-│   ├── layout.tsx            # Root layout
-│   ├── globals.css           # Global styles
-│   ├── vision/               # Vision & mission page
-│   ├── about/                # About the company
-│   ├── solutions/
-│   │   ├── page.tsx          # All products overview
-│   │   └── [category]/       # Individual product pages
-│   ├── stories/              # Blog & updates
-│   └── contact/              # Contact form
-└── components/
-    ├── Navigation.tsx        # Header with mega menu
-    ├── Hero.tsx              # Hero section
-    ├── Solutions.tsx         # Products showcase
-    ├── Projects.tsx          # Success stories
-    ├── About.tsx             # Vision section
-    ├── Stories.tsx           # Blog section
-    ├── Newsletter.tsx        # Email signup
-    └── Footer.tsx            # Site footer
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build && npm start   # production build
 ```
 
-## 🎨 Design System
+The support form needs `RESEND_API_KEY` and `CONTACT_EMAIL` in `.env.local` (and in the host's environment).
 
-### Colors
-- **Background:** `#0a0a0a` (near black)
-- **Accent:** `#4ade80` (vibrant green)
-- **Accent Dark:** `#22c55e` (darker green)
-- **Card:** `#141414` (dark gray)
-- **Text:** `#fafafa` (off-white)
+## Deploy (Google Cloud Run)
 
-### Typography
-- **Font:** Satoshi (from Fontshare)
-- **Headings:** Bold, tight tracking
-- **Body:** Regular weight, relaxed leading
+Hosted on Cloud Run in its own GCP project, `plantalk-website` (region `us-central1`, service `plantalk-website`). The `Dockerfile` builds a standalone Next.js server; `.gcloudignore` keeps `.env*` and build output out of the upload.
 
-## 🏃 Getting Started
+```bash
+gcloud run deploy plantalk-website --source . --region us-central1 --project plantalk-website \
+  --memory 2Gi --cpu 2 --min-instances 1 --max-instances 3 --port 8080
+```
 
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
+Contact form secrets (Secret Manager), once:
 
-2. **Run development server**
-   ```bash
-   npm run dev
-   ```
+```bash
+printf %s "re_..." | gcloud secrets create resend-api-key --data-file=- --project plantalk-website
+printf %s "you@example.com" | gcloud secrets create contact-email --data-file=- --project plantalk-website
+gcloud run services update plantalk-website --region us-central1 --project plantalk-website \
+  --set-secrets RESEND_API_KEY=resend-api-key:latest,CONTACT_EMAIL=contact-email:latest
+```
 
-3. **Open in browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+The runtime service account needs `roles/secretmanager.secretAccessor` on both secrets.
 
-## 📄 Pages
+plantalk.ai is served through a global external Application Load Balancer in the same project (static IP `plantalk-ip`, Certificate Manager certificate `plantalk-ai-cert` with DNS authorization, URL maps `plantalk-urlmap` and `plantalk-http-redirect`, which send www and plain HTTP to https://plantalk.ai). `/_next/image` and `/_next/static/*` go through a second backend, `plantalk-backend-cdn`, with Cloud CDN (cache mode USE_ORIGIN_HEADERS, request logging on), so each optimized image is made once and then served from Google's edge. Pages are not cached, and asset URLs are content-hashed, so redeploying the Cloud Run service needs no load balancer changes or cache invalidation.
 
-| Page | Route | Description |
-|------|-------|-------------|
-| Home | `/` | Hero, products, success stories, vision |
-| Vision | `/vision` | Mission, values, timeline |
-| About | `/about` | Team, story, values |
-| Solutions | `/solutions` | All 5 products overview |
-| EZplants | `/solutions/ezplants` | AI plant diagnosis |
-| PlantTalk | `/solutions/planttalk` | Plant conversations |
-| PlantEmoji | `/solutions/plantemoji` | Emoji sensors |
-| Plart | `/solutions/plart` | AI art studio |
-| PlantScape | `/solutions/plantscape` | Nature soundscapes |
-| Stories | `/stories` | Blog & updates |
-| Contact | `/contact` | Contact form |
+Keep the service at 2 GiB and 2 CPUs: on-demand image optimization ran a 512 MiB instance out of memory on a cold page load, so `next.config.ts` serves WebP only.
 
-## 🌿 Philosophy
+## Where things live
 
-> "When plants can speak, and humans can listen, we rediscover our place in the garden."
+| What | Where |
+|------|-------|
+| App facts, store links, FAQ | `src/lib/site.ts` (change facts here, not in pages) |
+| Home page | `src/app/page.tsx` |
+| Support page and contact form | `src/app/support/page.tsx`, `src/components/ContactForm.tsx`, `src/app/api/contact/route.ts` |
+| "What's new" | `src/lib/app-store.ts`: read from Apple's lookup API, refreshed every 12 hours, with a stored fallback in `site.ts` |
+| Smart store link | `/download` sends iPhones to the App Store and Android phones to Google Play |
+| Legal pages | `/privacy`, `/terms`, `/delete-account` show the policies published on the Plantiemoji store (`lib/policies.ts`, `components/PolicyPage.tsx`). They refresh at most every 6 hours, keep only headings, paragraphs, lists, bold and links, and render them as text. Edit a policy in Shopify, not here. A failed refresh keeps the last good copy |
+| Redirects | `next.config.ts`: the old store addresses `/pages/privacy-policy` (used by both app store listings), `/pages/terms-of-use` and `/pages/account-deletion` go to the legal pages above; every other Shopify path (`/pages/*`, `/policies/*`, `/products/*`…) goes to the store |
+| Share image | `src/app/opengraph-image.tsx` |
+| Design system | `src/app/globals.css` mirrors the new Plantiemoji store design (Figma "G - 光合植语 - 2609", TouchShop brand guide): lime #C2F277 as the anchor, plus pastels of the brand guide's sub colours (sky, sun, blush, mint, lilac, tangerine, cream) with saturated `*-2` versions for shapes, icon circles and the `.hl` title highlighter; forest #006443 statement band; glow backgrounds `.hero-sky`, `.sky-glow`, `.lime-glow`, `.mesh` (glows fade out inside their band); Poppins; 40 px hero, 32 px centred section titles with an emoji; 48 px pill buttons; 24 px cards; 1280 px content width |
+| Page patterns | Copied from the store design: lime announcement bar with arrows, hero on the original site's jungle photo (`src/assets/brand/jungle.jpg`) in natural colours, melting into frosted glass behind the text (`.hero-photo`, `.hero-photo-veil`), a basil photo card, the phone and a painted face, curved bottom and mood strip (`MoodStrip`), emoji-badge cards, "Act I/II/III" switch (`StepTabs`) on lilac, forest statement band, product-style app card, cream "What's …?" block and pastel bento, chat-bubble wall on sky, lime app band with QR codes, mint FAQ accordion, lime footer with the emoji row |
+| Painted emoji faces | `src/assets/faces` and `src/assets/brand/emoji-row.webp` were cut from 2x renders of the Figma prototype. Replace them with original exports from the designers when you have them (same file names) |
+| UI fragments | `src/assets/fragments`: close crops of real app UI (task list, light range, health chart, plant cards, calendar, quiz, weather tip…) cut from the App Store screenshots, shown with `components/Fragment.tsx` so the page doesn't repeat whole phones |
+| Other brand art | `src/assets/brand`: flat smiling face (store favicon), squiggle, sensor photo, basil photo and phone shot from plantiemoji.com |
+| QR codes | `src/assets/qr` (App Store, Google Play with `utm_medium=qr`). Made with macOS Core Image and checked by decoding; regenerate if the store links change |
 
-PlantTalk AI believes technology should deepen our connection to nature, not replace it. Every product is designed to amplify the emotional bond between humans and plants.
+## Updating screenshots
 
----
+App screens in `src/assets/screens` are cropped from the App Store screenshots (phone screen at x 210–1079, y 815–2702 of the 1290×2803 originals). Full store cards are in `src/assets/cards`. When the store screenshots change, re-export both.
 
-Built with 🌱 by the PlantTalk AI team
+Store badges in `src/assets/badges` are the official artwork from Apple and Google. Don't edit them.
