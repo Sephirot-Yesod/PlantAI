@@ -29,6 +29,25 @@ export const PLAY_URL = `${PLAY_URL_CLEAN}&referrer=utm_source%3Dplantalk.ai%26u
 
 export const PLANTIEMOJI_URL = "https://www.plantiemoji.com/";
 export const PLANTIEMOJI_MANUAL_URL = "https://www.plantiemoji.com/pages/user-manual";
+
+// The company's public profiles. Structured data lists them as sameAs, so search engines
+// and AI assistants can connect them to this site.
+export const APPLE_DEVELOPER_URL = "https://apps.apple.com/us/developer/plantalk-llc/id6829752111";
+export const PLAY_DEVELOPER_URL = "https://play.google.com/store/apps/developer?id=Plantalk+LLC";
+export const INSTAGRAM_URL = "https://www.instagram.com/plantiemoji/";
+
+// First App Store release (releaseDate in Apple's lookup API) and the app's languages.
+export const FIRST_RELEASE_DATE = "2026-04-15";
+export const LANGUAGES = "English";
+
+// When each page's own text last changed, for the sitemap's lastmod. Change a date only when
+// what the page says changes, not for styling. The home page also counts each App Store
+// release, and the legal pages use the "Last updated" line in their own text.
+export const PAGE_UPDATED = { home: "2026-11-08", support: "2026-11-08" } as const;
+
+// IndexNow (https://www.indexnow.org): served at /<key>.txt by app/<key>.txt/route.ts, so
+// rename that folder if this changes. `npm run indexnow` pings with it after a deploy.
+export const INDEXNOW_KEY = "d38798170a31bca83cd2d9d36fbd2799";
 export const TAGLINE = "Your AI plant care companion";
 // Keep this sentence identical everywhere (site, stores, press): search engines and
 // AI assistants trust facts that repeat across sources.
@@ -36,6 +55,13 @@ export const DESCRIPTION =
   "Plantalk AI is a free plant care app for iPhone, iPad and Android. Add plants with a photo, get daily care tasks and a care calendar, track each plant's health, and ask an AI assistant your plant questions.";
 export const META_DESCRIPTION =
   "Free plant care app for iPhone, iPad and Android. Add plants with a photo, sort daily care, track plant health and ask an AI assistant.";
+export const ORG_DESCRIPTION =
+  "Plantalk LLC makes Plantalk AI, a plant care app for iPhone, iPad and Android, and Plantiemoji, a plant sensor with an emoji screen.";
+// Unrelated products have similar names, so say plainly which one this is.
+export const DISAMBIGUATION =
+  "Plantalk AI is not affiliated with OpenAI's open-source Plant Talk project or with other apps called PlantTalk.";
+// Alt text of the shared share image (app/opengraph-image.tsx).
+export const OG_ALT = "Plantalk AI: your AI plant care companion. Free on iPhone, iPad and Android.";
 
 export const PLATFORMS = {
   ios: "iPhone and iPod touch with iOS 15 or later",
@@ -52,24 +78,38 @@ export const FAQS: Faq[] = [
     a: "Plantalk AI is a free plant care app for iPhone, iPad and Android. You add plants with a photo, and each one gets a profile, daily care tasks, a care calendar and a health score you can follow over time. You can ask the built-in Plantie Assistant plant questions, and connect a Plantiemoji sensor for live readings.",
   },
   {
+    q: "Who makes Plantalk AI?",
+    a: `Plantalk AI is made by Plantalk LLC, based in Missouri City, Texas. Plantalk also makes Plantiemoji, a plant sensor with an emoji screen that works with the app. You can reach the team at ${SUPPORT_EMAIL}.`,
+    links: { [SUPPORT_EMAIL]: `mailto:${SUPPORT_EMAIL}` },
+  },
+  {
     q: "Is Plantalk AI free?",
     a: "Yes. Plantalk AI is free to download from the App Store and Google Play. The app also offers optional Pro access as an in-app subscription, which is billed and managed through your Apple or Google account.",
   },
   {
     q: "Which phones and tablets does it work on?",
-    a: "iPhone and iPod touch with iOS 15 or later, iPad with iPadOS 15 or later, and Android devices through Google Play. Features can differ slightly between the iPhone and Android versions.",
+    a: "iPhone and iPod touch with iOS 15 or later, iPad with iPadOS 15 or later, and Android devices through Google Play. The app is in English. Features can differ slightly between the iPhone and Android versions.",
+  },
+  {
+    q: "Can Plantalk AI identify a plant from a photo?",
+    a: "Yes. Tap + on the Plants screen, then take a photo or choose one from your library. Plantalk AI shows what it detected, you confirm, and the plant gets its own profile with Overview, Environment and Visual health views.",
+  },
+  {
+    q: "Can Plantalk AI tell what's wrong with my plant?",
+    a: "It can help. Each plant has a Visual health view, the home screen points out plants that need attention, and you can send the Plantie Assistant a photo and ask about symptoms such as yellow leaves or drooping. Treat the answers as guidance; for serious pest or disease problems, check with a local nursery as well.",
+  },
+  {
+    q: "Does Plantalk AI remind me when to water my plants?",
+    a: "Yes. Each plant gets a care schedule, and the Care screen lists what to water and check each day. The care calendar shows every plant's routine across the month, and with location on, tips adjust for local heat and humidity.",
   },
   {
     q: "Do I need a Plantiemoji sensor?",
     a: "No. Without a sensor, Plantalk AI still identifies plants from photos and gives you care tasks, reminders, plant details and the AI assistant. A Plantiemoji sensor adds live readings of light, temperature, humidity, air pressure and soil moisture, plus VPD and DLI history.",
   },
   {
-    q: "How do I add a plant?",
-    a: "Tap + on the Plants screen, then take a photo or choose one from your library. Plantalk AI shows what it detected, you confirm, and the plant gets its own profile with Overview, Environment and Visual health views.",
-  },
-  {
-    q: "Can Plantalk AI tell what's wrong with my plant?",
-    a: "It can help. Each plant has a Visual health view, the home screen points out plants that need attention, and you can send the Plantie Assistant a photo and ask about symptoms such as yellow leaves or drooping. Treat the answers as guidance; for serious pest or disease problems, check with a local nursery as well.",
+    q: "What's the difference between Plantalk AI and Plantiemoji?",
+    a: "Plantalk AI is the app. Plantiemoji is a plant sensor with an emoji screen, sold separately at plantiemoji.com. The app works on its own. With a sensor, the plant's Environment view adds live readings, and the sensor's screen shows a face you can design in the app.",
+    links: { "plantiemoji.com": PLANTIEMOJI_URL },
   },
   {
     q: "Does Plantalk AI use my location?",
@@ -85,8 +125,8 @@ export const FAQS: Faq[] = [
     links: { "account deletion page": DELETE_ACCOUNT_PATH, [SUPPORT_EMAIL]: `mailto:${SUPPORT_EMAIL}` },
   },
   {
-    q: "Is Plantalk AI the same as other apps called PlantTalk?",
-    a: "No. Plantalk AI, spelled with one t, is made by Plantalk LLC and is the companion app for the Plantiemoji plant sensor. It isn't affiliated with other apps or projects named PlantTalk.",
+    q: "Is Plantalk AI the same as Plant Talk or PlantTalk?",
+    a: "No. Plantalk AI, one word with one t, is a plant care app made by Plantalk LLC and the companion app for the Plantiemoji sensor. It isn't affiliated with OpenAI's open-source Plant Talk project, which gives a houseplant a voice through ChatGPT, or with other apps called PlantTalk.",
   },
 ];
 

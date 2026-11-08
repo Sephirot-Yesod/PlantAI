@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
 import { Emoji } from "@/components/Decor";
 import { Icon, type IconName } from "@/components/Icon";
+import { pageMetadata } from "@/lib/seo";
 import {
   COMPANY,
   COMPANY_ADDRESS,
@@ -11,12 +12,13 @@ import {
   SUPPORT_EMAIL,
 } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Support",
+  shareTitle: "Plantalk AI support: help and contact",
   description:
     "Help with Plantalk AI: getting started, connecting a Plantiemoji sensor, subscriptions, deleting your account and contacting the team.",
-  alternates: { canonical: "/support" },
-};
+  path: "/support",
+});
 
 // Pastel card with the matching saturated icon circle, as on the home page.
 const TONES = {

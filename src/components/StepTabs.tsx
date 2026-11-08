@@ -46,7 +46,7 @@ export function StepTabs({ steps }: { steps: Step[] }) {
           src={s.screen}
           alt={s.alt}
           className="relative w-[220px] translate-y-[14%] sm:w-[262px]"
-          sizes="262px"
+          sizes="(min-width: 640px) 242px, 203px"
         />
       </div>
 

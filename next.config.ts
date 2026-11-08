@@ -15,6 +15,13 @@ const nextConfig: NextConfig = {
     // memory-hungry: a cold page load (about 35 images at once) ran a 512 MiB Cloud Run
     // instance out of memory. Optimized images are cached at the CDN in front of the site.
     formats: ["image/webp"],
+    // 55 is for the hero photo, which sits under a frosted veil; everything else uses 75.
+    qualities: [55, 75],
+  },
+  experimental: {
+    // The stylesheet (about 11 KB compressed) goes inside each page instead of a separate
+    // request that blocks the first paint, which PageSpeed flagged on mobile.
+    inlineCss: true,
   },
   async headers() {
     return [

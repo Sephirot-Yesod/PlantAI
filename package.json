@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "indexnow": "node scripts/indexnow.mjs",
+    "ai-traffic": "node scripts/ai-traffic.mjs",
+    "monthly-check": "node scripts/monthly-check.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

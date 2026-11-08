@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import appPhone from "@/assets/brand/app-phone.webp";
 import basilHero from "@/assets/brand/basil-hero.webp";
 import jungle from "@/assets/brand/jungle.jpg";
@@ -31,34 +32,43 @@ import findMyMatch from "@/assets/screens/find-my-match.webp";
 import healthOverTime from "@/assets/screens/health-over-time.webp";
 import plantsHome from "@/assets/screens/plants-home.webp";
 import { Emoji, Squiggle, type Face } from "@/components/Decor";
+import { faqJsonLd, FaqList } from "@/components/FaqList";
 import { Fragment } from "@/components/Fragment";
 import { Icon, type IconName } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { MoodStrip } from "@/components/MoodStrip";
 import { Phone } from "@/components/Phone";
+import { SectionTitle } from "@/components/SectionTitle";
 import { StepTabs, type Step } from "@/components/StepTabs";
 import { StoreBadges } from "@/components/StoreBadges";
 import { formatReleaseDate, getLatestRelease } from "@/lib/app-store";
+import { appFacts } from "@/lib/facts";
+import { FEATURES } from "@/lib/features";
+import { pageMetadata } from "@/lib/seo";
 import {
   APP_NAME,
   APP_STORE_URL,
   DESCRIPTION,
+  DISAMBIGUATION,
   FAQS,
+  FIRST_RELEASE_DATE,
+  META_DESCRIPTION,
   PLANTIEMOJI_MANUAL_URL,
   PLANTIEMOJI_URL,
   PLAY_URL,
   PLAY_URL_CLEAN,
   PRIVACY_PATH,
   SITE_URL,
-  type Faq,
 } from "@/lib/site";
 
 // Re-read the App Store version and release notes twice a day.
 export const revalidate = 43200;
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = pageMetadata({
+  shareTitle: "Plantalk AI: your AI plant care companion",
+  description: META_DESCRIPTION,
+  path: "/",
+});
 
 const PROBLEMS: {
   face: Face;
@@ -172,38 +182,6 @@ const TRUST: { icon: IconName; title: string; body: string }[] = [
   { icon: "trash", title: "Delete any time", body: "From the app's side menu, or by email. Photos are never used for ads without consent." },
 ];
 
-function withLinks(text: string, links?: Faq["links"]) {
-  if (!links) return text;
-  const escape = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const pattern = new RegExp(`(${Object.keys(links).map(escape).join("|")})`, "g");
-  return text.split(pattern).map((part, i) =>
-    links[part] ? (
-      <a key={i} href={links[part]} className="prose-link">
-        {part}
-      </a>
-    ) : (
-      part
-    ),
-  );
-}
-
-// Centred section title with a native emoji at the end, as on the store.
-function SectionTitle({ children, emoji, sub, id }: { children: React.ReactNode; emoji?: string; sub?: string; id?: string }) {
-  return (
-    <div className="mx-auto max-w-[820px] text-center">
-      <h2 id={id} className="h-section">
-        {children}
-        {emoji && (
-          <span aria-hidden="true" className="ml-3 font-normal">
-            {emoji}
-          </span>
-        )}
-      </h2>
-      {sub && <p className="t-small mx-auto mt-3 max-w-[640px] text-base">{sub}</p>}
-    </div>
-  );
-}
-
 function Check({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex gap-3">
@@ -232,6 +210,7 @@ function StatusPill({ tone, children, className = "" }: { tone: "blue" | "green"
 export default async function Home() {
   const release = await getLatestRelease();
   const releaseDate = formatReleaseDate(release.date);
+  const facts = appFacts(release);
 
   const appLd = {
     "@context": "https://schema.org",
@@ -240,10 +219,17 @@ export default async function Home() {
     name: APP_NAME,
     alternateName: "Plantalk",
     description: DESCRIPTION,
+    disambiguatingDescription: DISAMBIGUATION,
     url: SITE_URL,
     image: `${SITE_URL}/icon.png`,
     applicationCategory: "LifestyleApplication",
+    applicationSubCategory: "Plant care",
     operatingSystem: "iOS 15.0 or later, iPadOS 15.0 or later, Android",
+    availableOnDevice: "iPhone, iPad, Android phones and tablets",
+    inLanguage: "en",
+    softwareVersion: release.version,
+    datePublished: FIRST_RELEASE_DATE,
+    dateModified: release.date.slice(0, 10),
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     installUrl: [APP_STORE_URL, PLAY_URL_CLEAN],
     sameAs: [APP_STORE_URL, PLAY_URL_CLEAN],
@@ -260,11 +246,7 @@ export default async function Home() {
     author: { "@id": `${SITE_URL}/#organization` },
   };
 
-  const faqLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-  };
+  const faqLd = faqJsonLd(FAQS);
 
   return (
     <>
@@ -272,12 +254,16 @@ export default async function Home() {
       <section aria-labelledby="hero-title" className="relative">
         <div className="relative overflow-hidden bg-[#2f4a30]">
           {/* The original site's jungle photo in its natural colours. Behind the text it melts
-              into frosted glass so the black type stays crisp. */}
+              into frosted glass so the black type stays crisp. It's the largest thing in the
+              first view (the page's LCP element), so it's preloaded at high priority, and
+              quality 55 is plenty under the frosted veil. */}
           <Image
             src={jungle}
             alt=""
             fill
-            loading="eager"
+            preload
+            fetchPriority="high"
+            quality={55}
             placeholder="blur"
             sizes="100vw"
             className="hero-photo object-cover"
@@ -293,6 +279,12 @@ export default async function Home() {
                 id="hero-title"
                 className="text-[2.5rem] leading-[1.05] font-bold tracking-[-0.02em] text-balance sm:text-[3.25rem] lg:text-[3.6rem]"
               >
+                {/* The app's name is part of the heading: search engines and AI assistants
+                    often keep only a page's title, heading and first lines. */}
+                <span className="eyebrow mb-4 flex">
+                  {APP_NAME}
+                  <span className="sr-only">{": "}</span>
+                </span>
                 Your AI plant <span className="hl [--hl:var(--color-sun-2)]">care companion</span>
               </h1>
               <p className="mt-5 max-w-[500px] text-[17px] leading-relaxed text-text">
@@ -319,7 +311,7 @@ export default async function Home() {
                   src={basilHero}
                   alt="A basil plant with a Plantiemoji sensor showing a smiling face"
                   fill
-                  preload
+                  loading="eager"
                   placeholder="blur"
                   sizes="(min-width: 1024px) 400px, 80vw"
                   className="object-cover object-[50%_28%]"
@@ -330,7 +322,7 @@ export default async function Home() {
                 src={plantsHome}
                 alt="Plantalk AI home screen with plant cards marked Too dry and Healthy"
                 className="absolute bottom-0 left-0 w-[44%] -rotate-[4deg]"
-                sizes="(min-width: 1024px) 220px, 44vw"
+                sizes="(min-width: 540px) 204px, calc(41vw - 16px)"
               />
               <Emoji face="teal" size={88} className="absolute -top-6 -right-3 rotate-6 drop-shadow-xl" />
             </div>
@@ -406,11 +398,11 @@ export default async function Home() {
           <div className="lime-dots relative flex min-h-[440px] items-end justify-center overflow-hidden">
             <Squiggle width={72} className="absolute top-12 left-[16%] -rotate-12" />
             <Image src={icon} alt="" width={80} height={80} className="absolute top-8 right-8 rounded-[20px] shadow-lg" />
-            <Phone src={discover} alt="Discover screen: Find your plant, with popular plant groups" className="relative w-[240px] translate-y-[16%]" sizes="240px" />
+            <Phone src={discover} alt="Discover screen: Find your plant, with popular plant groups" className="relative w-[240px] translate-y-[16%]" sizes="222px" />
           </div>
           <div className="flex flex-col justify-center bg-pale p-8 sm:p-12">
             <h2 id="app-card-title" className="text-[1.75rem] leading-tight font-bold">
-              Plantalk AI
+              Plantalk AI: Plant Care App
             </h2>
             <p className="mt-3 flex flex-wrap items-baseline gap-3">
               <span className="text-[1.75rem] font-bold text-ink">Free</span>
@@ -552,6 +544,28 @@ export default async function Home() {
               </li>
             ))}
           </ul>
+
+          <nav aria-labelledby="explore-title" className="mt-24">
+            <h3 id="explore-title" className="h-section text-center">
+              Explore the <span className="hl [--hl:var(--color-sky-2)]">Features</span>
+            </h3>
+            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+              {FEATURES.map((f, i) => (
+                <li key={f.slug}>
+                  <Link
+                    href={f.path}
+                    className="group flex h-full flex-col rounded-card bg-white p-6 shadow-[0_10px_30px_-24px_rgb(60_40_10/0.5)] transition-transform hover:-translate-y-0.5"
+                  >
+                    <span className={`flex h-11 w-11 items-center justify-center rounded-full ${TONES[i % TONES.length]}`}>
+                      <Icon name={f.icon} className="h-5 w-5" />
+                    </span>
+                    <span className="mt-4 font-bold text-ink group-hover:underline">{f.label}</span>
+                    <span className="t-small mt-1.5 text-sm">{f.summary}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </section>
 
@@ -572,7 +586,12 @@ export default async function Home() {
               <Check>A warning when soil moisture reads zero</Check>
               <Check>Design emoji faces and install them on the sensor&apos;s screen</Check>
             </ul>
-            <p className="mt-5 text-sm">No sensor? Everything else in the app works without one.</p>
+            <p className="mt-5 text-sm">
+              No sensor? Everything else in the app works without one.{" "}
+              <Link href="/plantiemoji-sensor" className="prose-link">
+                How Plantiemoji works with the app
+              </Link>
+            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={PLANTIEMOJI_URL} className="btn btn-black caret">
                 Shop Plantiemoji
@@ -596,7 +615,7 @@ export default async function Home() {
               src={environment}
               alt="Environment view with live sensor ranges"
               className="absolute right-0 bottom-0 w-[34%] rotate-3"
-              sizes="160px"
+              sizes="145px"
             />
           </div>
         </div>
@@ -642,6 +661,9 @@ export default async function Home() {
               Ask in the app
             </a>
             <p className="text-xs text-muted">Example questions</p>
+            <Link href="/ai-plant-assistant" className="prose-link text-sm">
+              More about the Plantie Assistant
+            </Link>
           </div>
         </div>
       </section>
@@ -690,7 +712,7 @@ export default async function Home() {
       <section id="screenshots" aria-labelledby="screenshots-title" className="pt-20 pb-16 md:pt-28 md:pb-20">
         <div className="wrap flex items-end justify-between gap-6">
           <h2 id="screenshots-title" className="h-section">
-            A <span className="hl [--hl:#ffc9a3]">Closer</span> Look
+            Plantalk AI <span className="hl [--hl:#ffc9a3]">Screenshots</span>
           </h2>
           <a href={APP_STORE_URL} className="flex items-center gap-1 text-sm font-bold whitespace-nowrap hover:underline">
             View All
@@ -742,9 +764,9 @@ export default async function Home() {
       <section id="whats-new" aria-labelledby="whats-new-title" className="bg-blush">
         <div className="wrap grid gap-10 py-20 md:grid-cols-[1fr_1.4fr] md:gap-16 md:py-24">
           <div>
-            <p className="eyebrow">What&apos;s new</p>
+            <p className="eyebrow">Latest update</p>
             <h2 id="whats-new-title" className="h-section mt-3">
-              Version {release.version}
+              What&apos;s New in Plantalk AI {release.version}
             </h2>
             <p className="t-body mt-4">
               Released on the App Store on {releaseDate}. Plantalk AI is updated regularly, and the Android version
@@ -769,24 +791,36 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Key facts in one table, for people comparing apps and for search engines and AI
+          assistants. /llms.txt lists the same facts (lib/facts.ts). */}
+      <section id="at-a-glance" aria-labelledby="glance-title" className="wrap pt-20 md:pt-28">
+        <SectionTitle id="glance-title" sub="The essentials about the app, in one place.">
+          Plantalk AI <span className="hl [--hl:var(--color-sky-2)]">at a Glance</span>
+        </SectionTitle>
+        <dl className="mx-auto mt-10 grid max-w-[880px] gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-2">
+          {facts.map((f) => (
+            <div key={f.label} className="bg-white px-6 py-5">
+              <dt className="text-xs font-semibold tracking-[0.12em] text-muted uppercase">{f.label}</dt>
+              <dd className="mt-1.5 leading-snug font-semibold text-ink">
+                {f.href ? (
+                  <a href={f.href} className="prose-link">
+                    {f.value}
+                  </a>
+                ) : (
+                  f.value
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
       {/* FAQ, styled like the store's product page accordion. */}
       <section id="faq" aria-labelledby="faq-title" className="wrap py-20 md:py-28">
         <SectionTitle id="faq-title" sub="Quick answers about Plantalk AI. Still stuck? Our support team is a message away.">
           Frequently Asked <span className="hl [--hl:#d9c6ff]">Questions</span>
         </SectionTitle>
-        <div className="mx-auto mt-10 max-w-[880px] divide-y divide-ink/10 rounded-card bg-mint px-6 sm:px-8">
-          {FAQS.map((faq) => (
-            <details key={faq.q} className="faq py-5">
-              <summary className="flex cursor-pointer items-start justify-between gap-6 rounded-lg">
-                <h3 className="text-base font-bold">{faq.q}</h3>
-                <svg viewBox="0 0 24 24" className="faq-chevron mt-1 h-5 w-5 flex-none transition-transform" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
-                  <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </summary>
-              <p className="t-small mt-3 text-[15px]">{withLinks(faq.a, faq.links)}</p>
-            </details>
-          ))}
-        </div>
+        <FaqList faqs={FAQS} className="mx-auto mt-10 max-w-[880px]" />
       </section>
 
       <JsonLd data={appLd} />

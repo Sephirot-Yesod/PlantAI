@@ -233,6 +233,23 @@ async function fetchHtml(url: string): Promise<string | null> {
   return null;
 }
 
+const MONTHS = [
+  "january", "february", "march", "april", "may", "june",
+  "july", "august", "september", "october", "november", "december",
+];
+
+/** The "Last updated: November 1, 2026" date in a policy's text, as ISO, or null if it has none. */
+export function policyUpdated(policy: Policy): string | null {
+  for (const block of policy.blocks) {
+    const runs = block.kind === "list" ? block.items.flat() : block.inlines;
+    const text = runs.map((r) => (r.kind === "text" ? r.text : " ")).join("");
+    const m = text.match(/last\s+updated\s*:?\s*([a-z]+)\s+(\d{1,2}),?\s+(\d{4})/i);
+    const month = m ? MONTHS.indexOf(m[1].toLowerCase()) : -1;
+    if (m && month >= 0) return new Date(Date.UTC(Number(m[3]), month, Number(m[2]))).toISOString();
+  }
+  return null;
+}
+
 export function storeUrl(meta: PolicyMeta): string {
   return `${STORE}/pages/${meta.handle}`;
 }

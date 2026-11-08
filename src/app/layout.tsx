@@ -7,9 +7,14 @@ import { SiteHeader } from "@/components/SiteHeader";
 import {
   APP_NAME,
   APP_STORE_ID,
+  APPLE_DEVELOPER_URL,
   COMPANY,
   COMPANY_ADDRESS,
+  INSTAGRAM_URL,
   META_DESCRIPTION,
+  ORG_DESCRIPTION,
+  PLANTIEMOJI_URL,
+  PLAY_DEVELOPER_URL,
   SITE_URL,
   SUPPORT_EMAIL,
 } from "@/lib/site";
@@ -31,8 +36,9 @@ export const metadata: Metadata = {
   },
   description: META_DESCRIPTION,
   applicationName: APP_NAME,
-  // Canonical URLs are set per page, so new pages never inherit the home page's.
-  // Pages should not override openGraph: that drops the shared share image.
+  // Canonical URLs and share tags are set per page with pageMetadata (lib/seo.ts), so new
+  // pages never inherit the home page's. These defaults only reach pages without their own,
+  // such as the 404 page.
   openGraph: {
     type: "website",
     siteName: APP_NAME,
@@ -56,9 +62,16 @@ const organization = {
   "@id": `${SITE_URL}/#organization`,
   name: "Plantalk",
   legalName: COMPANY,
+  description: ORG_DESCRIPTION,
   url: SITE_URL,
   logo: `${SITE_URL}/icon.png`,
   email: SUPPORT_EMAIL,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer support",
+    email: SUPPORT_EMAIL,
+    availableLanguage: "English",
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: COMPANY_ADDRESS.street,
@@ -71,6 +84,8 @@ const organization = {
     { "@type": "Brand", name: "Plantalk AI" },
     { "@type": "Brand", name: "Plantiemoji" },
   ],
+  // Official profiles, so search engines and AI assistants can tie them to this company.
+  sameAs: [APPLE_DEVELOPER_URL, PLAY_DEVELOPER_URL, PLANTIEMOJI_URL, INSTAGRAM_URL],
 };
 
 const website = {
@@ -79,6 +94,9 @@ const website = {
   "@id": `${SITE_URL}/#website`,
   url: SITE_URL,
   name: APP_NAME,
+  alternateName: "Plantalk",
+  description: META_DESCRIPTION,
+  inLanguage: "en",
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
 

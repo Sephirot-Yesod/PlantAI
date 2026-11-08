@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { EmojiRowStrip } from "@/components/Decor";
 import { StoreBadges } from "@/components/StoreBadges";
+import { FEATURES } from "@/lib/features";
 import {
   COMPANY,
   COMPANY_ADDRESS,
   DELETE_ACCOUNT_PATH,
+  INSTAGRAM_URL,
   PLANTIEMOJI_MANUAL_URL,
   PLANTIEMOJI_URL,
   PRIVACY_PATH,
@@ -12,17 +14,19 @@ import {
   TERMS_PATH,
 } from "@/lib/site";
 
-const INSTAGRAM_URL = "https://www.instagram.com/plantiemoji/";
-
 // Pages on this site use client navigation; redirect paths (/privacy, /terms,
 // /delete-account) and external links are plain anchors.
-const isPage = (href: string) => href.startsWith("/#") || href.startsWith("/support");
+const FEATURE_PATHS = new Set(FEATURES.map((f) => f.path));
+const isPage = (href: string) => href.startsWith("/#") || href.startsWith("/support") || FEATURE_PATHS.has(href);
 
 const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
+    title: "Features",
+    links: FEATURES.map((f) => ({ label: f.label, href: f.path })),
+  },
+  {
     title: "App",
     links: [
-      { label: "Features", href: "/#features" },
       { label: "How it works", href: "/#how-it-works" },
       { label: "What's new", href: "/#whats-new" },
       { label: "FAQs", href: "/#faq" },
@@ -59,7 +63,7 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="rounded-b-[40px] bg-lime text-ink">
-        <div className="wrap grid gap-12 pt-14 pb-16 lg:grid-cols-[1fr_1.4fr]">
+        <div className="wrap grid gap-12 pt-14 pb-16 lg:grid-cols-[1fr_2fr]">
           <div>
             <h2 className="max-w-md text-2xl leading-snug font-bold">
               Plantalk AI is free on iPhone, iPad and Android.
@@ -79,7 +83,7 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 xl:grid-cols-5">
             {COLUMNS.map((col) => (
               <nav key={col.title} aria-label={col.title}>
                 <h2 className="text-lg font-bold">{col.title}</h2>
