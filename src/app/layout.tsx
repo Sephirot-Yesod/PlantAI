@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { JsonLd } from "@/components/JsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -18,6 +19,7 @@ import {
   SITE_URL,
   SUPPORT_EMAIL,
 } from "@/lib/site";
+import { consentBootstrap, GA_MEASUREMENT_ID } from "@/lib/analytics";
 import "./globals.css";
 
 // Poppins: the app's type and the Plantiemoji brand guide (Bold headings, Regular text).
@@ -103,6 +105,12 @@ const website = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={poppins.variable}>
+      {GA_MEASUREMENT_ID ? (
+        <head>
+          {/* Consent defaults must be set before Google's script loads (see lib/analytics.ts). */}
+          <script dangerouslySetInnerHTML={{ __html: consentBootstrap(GA_MEASUREMENT_ID) }} />
+        </head>
+      ) : null}
       <body className="font-sans">
         <a
           href="#main"
@@ -118,6 +126,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {/* Vercel Web Analytics only exists on Vercel (VERCEL=1 there). On Cloud Run its
             script URL 404s on every page, so it's left out. */}
         {process.env.VERCEL && <Analytics />}
+        {GA_MEASUREMENT_ID ? <GoogleAnalytics id={GA_MEASUREMENT_ID} /> : null}
       </body>
     </html>
   );

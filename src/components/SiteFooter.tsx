@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { EmojiRowStrip } from "@/components/Decor";
 import { StoreBadges } from "@/components/StoreBadges";
 import { FEATURES } from "@/lib/features";
@@ -13,6 +14,7 @@ import {
   SUPPORT_EMAIL,
   TERMS_PATH,
 } from "@/lib/site";
+import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 
 // Pages on this site use client navigation; redirect paths (/privacy, /terms,
 // /delete-account) and external links are plain anchors.
@@ -116,6 +118,11 @@ export function SiteFooter() {
         <p>
           © {year} {COMPANY}, {COMPANY_ADDRESS.city}, Texas. All rights reserved.
         </p>
+        {GA_MEASUREMENT_ID ? (
+          <p>
+            <CookieSettingsButton />
+          </p>
+        ) : null}
         <p>
           Apple, the Apple logo, iPhone and iPad are trademarks of Apple Inc., registered in the U.S. and other
           countries and regions. App Store is a service mark of Apple Inc. Google Play and the Google Play logo are
