@@ -1,7 +1,7 @@
 // Google Analytics 4 on plantalk.ai (chosen 2026-11-09). Paste the web stream's Measurement ID
 // here (Google Analytics › Admin › Data streams › plantalk.ai). Empty means analytics is off:
 // no Google script, no cookie banner and no "Cookie settings" link.
-export const GA_MEASUREMENT_ID: string = "";
+export const GA_MEASUREMENT_ID: string = "G-PDNHBPD45P";
 
 // Analytics cookies wait for consent in the EEA, the UK and Switzerland, the regions in
 // Google's EU user consent policy. Google matches these codes against the visitor's IP.
