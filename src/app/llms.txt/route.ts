@@ -1,4 +1,4 @@
-import { ANDROID_APK, ANDROID_PATH, androidRequirement, apkSize } from "@/lib/android";
+import { ANDROID_APK, ANDROID_PATH, androidVersion, apkSize, only64Bit } from "@/lib/android";
 import { getLatestRelease } from "@/lib/app-store";
 import { appFacts } from "@/lib/facts";
 import { FEATURES } from "@/lib/features";
@@ -29,7 +29,7 @@ export async function GET() {
   const features = FEATURES.map((f) => `- [${f.label}](${SITE_URL}${f.path}): ${f.summary}`).join("\n");
   const guides = GUIDES.map((g) => `- [${g.label}](${SITE_URL}${g.path}): ${g.summary}`).join("\n");
   const apk = ANDROID_APK
-    ? `\n- [Android APK](${SITE_URL}${ANDROID_PATH}): version ${ANDROID_APK.version} as a direct download (${apkSize(ANDROID_APK)}, ${androidRequirement(ANDROID_APK)}), for Android phones without Google Play`
+    ? `\n- [Android APK](${SITE_URL}${ANDROID_PATH}): version ${ANDROID_APK.version} as a direct download (${apkSize(ANDROID_APK)}, ${androidVersion(ANDROID_APK)}${only64Bit(ANDROID_APK) ? ", 64-bit phones only" : ""}), for Android phones without Google Play`
     : "";
 
   const body = `# ${APP_NAME}
