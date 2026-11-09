@@ -7,7 +7,7 @@ import { PRIVACY_PATH, SUPPORT_EMAIL } from "@/lib/site";
 type Status = { state: "idle" | "sending" | "sent" | "error"; message?: string };
 
 const inputClass =
-  "mt-2 block w-full rounded-chip border border-line bg-white px-4 py-3 text-base text-ink placeholder:text-muted focus:border-ink focus:outline-none focus:ring-2 focus:ring-lime";
+  "mt-2 block w-full rounded-chip border border-ink/50 bg-white px-4 py-3 text-base text-ink placeholder:text-muted focus:border-ink focus:outline-none focus:ring-2 focus:ring-lime";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>({ state: "idle" });

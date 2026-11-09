@@ -36,7 +36,8 @@ export function FaqList({ faqs, className = "" }: { faqs: Faq[]; className?: str
               <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </summary>
-          <p className="t-small mt-3 text-[15px]">{withLinks(faq.a, faq.links)}</p>
+          {/* About 70 characters a line: the panel is 880 px wide on desktop. */}
+          <p className="t-small mt-3 max-w-[68ch] text-[15px]">{withLinks(faq.a, faq.links)}</p>
         </details>
       ))}
     </div>

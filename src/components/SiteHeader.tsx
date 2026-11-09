@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import icon from "@/assets/icon.webp";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
+import { MobileMenu } from "@/components/MobileMenu";
 import { PLANTIEMOJI_URL } from "@/lib/site";
 
 const NAV = [
@@ -46,13 +47,11 @@ export function SiteHeader() {
             </ul>
           </nav>
 
-          <div className="flex shrink-0 items-center gap-1">
-            <Link href="/support" className="rounded-full px-2.5 py-2 text-sm font-bold whitespace-nowrap lg:hidden">
-              Support
-            </Link>
+          <div className="flex shrink-0 items-center gap-1.5">
             <Link href="/#download" className="btn btn-lime btn-sm caret">
               Get the app
             </Link>
+            <MobileMenu items={NAV} />
           </div>
         </div>
       </header>

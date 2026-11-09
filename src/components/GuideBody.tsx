@@ -70,6 +70,28 @@ export function Inline({ text }: { text: string }) {
   return <>{out}</>;
 }
 
+// "**Symptom.** Likely cause: … Fix: …" items (the plant guides' Common Problems) get the
+// cause and the fix on lines of their own, so a problem can be scanned like the problem guides'
+// "How to tell" and "What to do". The words stay exactly as written.
+const CAUSE_FIX = /^(\*\*[^*]+\*\*)\s+Likely cause:\s+([\s\S]+?)\s+Fix:\s+([\s\S]+)$/;
+
+function ListItem({ text }: { text: string }) {
+  const m = CAUSE_FIX.exec(text);
+  if (!m) return <Inline text={text} />;
+  const [, lead, cause, fix] = m;
+  return (
+    <>
+      <Inline text={lead} />
+      <span className="mt-1 block">
+        <span className="font-semibold text-ink">Likely cause:</span> <Inline text={cause} />
+      </span>
+      <span className="mt-1 block">
+        <span className="font-semibold text-ink">Fix:</span> <Inline text={fix} />
+      </span>
+    </>
+  );
+}
+
 function BlockView({ block }: { block: Block }) {
   switch (block.kind) {
     case "heading":
@@ -90,11 +112,14 @@ function BlockView({ block }: { block: Block }) {
       );
     case "list": {
       const List = block.ordered ? "ol" : "ul";
+      const structured = block.items.some((item) => CAUSE_FIX.test(item));
       return (
-        <List className={`mt-4 space-y-2.5 pl-6 ${block.ordered ? "list-decimal marker:font-semibold" : "list-disc"} marker:text-sage`}>
+        <List
+          className={`mt-4 pl-6 ${structured ? "space-y-4" : "space-y-2.5"} ${block.ordered ? "list-decimal marker:font-semibold" : "list-disc"} marker:text-sage`}
+        >
           {block.items.map((item, i) => (
             <li key={i} className="pl-1">
-              <Inline text={item} />
+              <ListItem text={item} />
             </li>
           ))}
         </List>

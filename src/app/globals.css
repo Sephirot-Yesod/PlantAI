@@ -66,6 +66,16 @@
   h3,
   h4 {
     @apply text-ink;
+    /* Even line lengths in headings, and no single word left alone on a paragraph's last line.
+       These are the text-wrap-style longhands on purpose: the text-wrap shorthand would also
+       reset text-wrap-mode, undoing a whitespace-nowrap set on a parent (the header nav). */
+    text-wrap-style: balance;
+  }
+  p,
+  li,
+  dd,
+  figcaption {
+    text-wrap-style: pretty;
   }
   ::selection {
     @apply bg-lime text-ink;

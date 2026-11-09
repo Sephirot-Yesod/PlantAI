@@ -661,7 +661,7 @@ export default async function Home() {
               Ask in the app
             </a>
             <p className="text-xs text-muted">Example questions</p>
-            <Link href="/ai-plant-assistant" className="prose-link text-sm">
+            <Link href="/ai-plant-assistant" className="prose-link inline-block py-1.5 text-sm">
               More about the Plantie Assistant
             </Link>
           </div>
@@ -673,7 +673,7 @@ export default async function Home() {
         <div className="wrap relative grid items-center gap-12 py-16 md:grid-cols-2 md:py-24">
           <div>
             <h2 id="download-title" className="h-section max-w-[520px]">
-              Your Plant&apos;s Health, in <span className="hl [--hl:white]">One Look.</span>{" "}
+              Your Plant&apos;s Health, in <span className="hl [--hl:#d9c6ff]">One Look.</span>{" "}
               <span aria-hidden="true" className="font-normal">📱</span>
             </h2>
             <p className="t-body mt-4 max-w-[520px]">
@@ -714,7 +714,7 @@ export default async function Home() {
           <h2 id="screenshots-title" className="h-section">
             Plantalk AI <span className="hl [--hl:#ffc9a3]">Screenshots</span>
           </h2>
-          <a href={APP_STORE_URL} className="flex items-center gap-1 text-sm font-bold whitespace-nowrap hover:underline">
+          <a href={APP_STORE_URL} className="flex items-center gap-1 py-2 text-sm font-bold whitespace-nowrap hover:underline">
             View All
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
               <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />

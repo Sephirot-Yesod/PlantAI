@@ -113,14 +113,14 @@ export default function SupportPage() {
             <p>
               Pro access is billed by Apple or Google, so you change or cancel it in your store account:
             </p>
-            <ul className="space-y-1.5">
+            <ul className="space-y-1">
               <li>
-                <a href="https://apps.apple.com/account/subscriptions" className="prose-link">
+                <a href="https://apps.apple.com/account/subscriptions" className="prose-link inline-block py-1.5">
                   Manage subscriptions on the App Store
                 </a>
               </li>
               <li>
-                <a href="https://play.google.com/store/account/subscriptions" className="prose-link">
+                <a href="https://play.google.com/store/account/subscriptions" className="prose-link inline-block py-1.5">
                   Manage subscriptions on Google Play
                 </a>
               </li>

@@ -81,13 +81,14 @@ export function SiteFooter() {
                   <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
                 </svg>
               </a>
-              <a href={`mailto:${SUPPORT_EMAIL}`} className="text-sm font-semibold underline underline-offset-4">
+              <a href={`mailto:${SUPPORT_EMAIL}`} className="inline-block py-2 text-sm font-semibold underline underline-offset-4">
                 {SUPPORT_EMAIL}
               </a>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 xl:grid-cols-5">
+          {/* Three columns at most: at five, labels such as "Plant health check" wrapped. */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3">
             {COLUMNS.map((col) => (
               <nav key={col.title} aria-label={col.title}>
                 <h2 className="text-lg font-bold">{col.title}</h2>

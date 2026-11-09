@@ -19,9 +19,10 @@ const TONES = ["bg-sky-2", "bg-sun-2", "bg-blush-2", "bg-lime", "bg-[#d9c6ff]"];
 
 function GuideCards({ guides }: { guides: Guide[] }) {
   return (
-    <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    // Flex rather than grid, so a short last row sits in the middle instead of hanging left.
+    <ul className="mt-10 flex flex-wrap justify-center gap-5">
       {guides.map((g, i) => (
-        <li key={g.slug}>
+        <li key={g.slug} className="w-full sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]">
           <Link
             href={g.path}
             className="group flex h-full flex-col rounded-card bg-white p-7 shadow-[0_10px_30px_-24px_rgb(60_40_10/0.5)] ring-1 ring-black/[0.04] transition-transform hover:-translate-y-0.5"
@@ -109,8 +110,8 @@ export default function GuidesPage() {
       </section>
 
       <section aria-labelledby="method-title" className="wrap py-20 md:py-24">
-        <div className="mx-auto max-w-[760px] text-center">
-          <h2 id="method-title" className="h-section">
+        <div className="mx-auto max-w-[680px]">
+          <h2 id="method-title" className="h-section text-center">
             How These Guides Are Made
           </h2>
           <p className="t-body mt-5">
@@ -124,7 +125,7 @@ export default function GuidesPage() {
       <section aria-labelledby="get-title" className="lime-glow">
         <div className="wrap flex flex-col items-center py-16 text-center md:py-20">
           <h2 id="get-title" className="h-section">
-            Get {APP_NAME} <span className="hl [--hl:white]">Free</span>
+            Get {APP_NAME} <span className="hl [--hl:#d9c6ff]">Free</span>
           </h2>
           <p className="t-body mt-4 max-w-[600px]">
             Care reminders, a health score for every plant and answers to your plant questions. On iPhone, iPad and

@@ -64,6 +64,19 @@ function Hero({ hero }: { hero: Feature["hero"] }) {
   );
 }
 
+function CalloutButtons({ buttons, className = "" }: { buttons?: { label: string; href: string }[]; className?: string }) {
+  if (!buttons?.length) return null;
+  return (
+    <div className={`flex flex-wrap gap-3 ${className}`}>
+      {buttons.map((b, i) => (
+        <a key={b.href} href={b.href} className={`btn caret ${i === 0 ? "btn-black" : "btn-white"}`}>
+          {b.label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function FeaturePage({ feature }: { feature: Feature }) {
   const url = `${SITE_URL}${feature.path}`;
   const related = feature.related.map((slug) => FEATURES.find((f) => f.slug === slug)).filter((f) => f !== undefined);
@@ -133,7 +146,10 @@ export function FeaturePage({ feature }: { feature: Feature }) {
               </a>
             </div>
             <p className="mt-6 text-sm text-muted">
-              Free on iPhone, iPad and Android · Updated {formatReleaseDate(feature.updated)} by the {APP_NAME} team
+              Free on iPhone, iPad and Android
+              <span className="mt-0.5 block">
+                Updated {formatReleaseDate(feature.updated)} by the {APP_NAME} team
+              </span>
             </p>
           </div>
           <Hero hero={feature.hero} />
@@ -142,9 +158,14 @@ export function FeaturePage({ feature }: { feature: Feature }) {
 
       <section id="how" aria-labelledby="how-title" className="wrap scroll-mt-24 py-20 md:py-24">
         <SectionTitle id="how-title">{feature.stepsTitle}</SectionTitle>
+        {/* Each card spans three rows of the list's grid (number, title, text), so titles that
+            wrap to two lines push every card's text down together. */}
         <ol className="mx-auto mt-12 grid max-w-[1120px] gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {feature.steps.map((step, i) => (
-            <li key={step.title} className={`rounded-card p-7 ${STEP_TONES[i % STEP_TONES.length]}`}>
+            <li
+              key={step.title}
+              className={`rounded-card p-7 sm:row-span-3 sm:grid sm:grid-rows-subgrid sm:gap-y-0 ${STEP_TONES[i % STEP_TONES.length]}`}
+            >
               <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full bg-ink text-lg font-bold text-lime">
                 {i + 1}
               </span>
@@ -172,10 +193,13 @@ export function FeaturePage({ feature }: { feature: Feature }) {
             ))}
           </ul>
           {feature.gallery && (
-            <ul className="mt-16 flex flex-wrap items-start justify-center gap-10">
+            <ul className="mt-16 flex flex-wrap justify-center gap-10">
               {feature.gallery.map((g) => (
-                <li key={g.caption} className="w-[300px] max-w-full">
-                  <Fragment src={g.src} alt={g.alt} width={300} className="mx-auto" />
+                <li key={g.caption} className="flex w-[300px] max-w-full flex-col">
+                  {/* Screens differ in height: they stand on one baseline so the captions line up. */}
+                  <div className="flex flex-1 items-end justify-center">
+                    <Fragment src={g.src} alt={g.alt} width={300} className="mx-auto" />
+                  </div>
                   <p className="t-small mt-4 text-center text-sm">{g.caption}</p>
                 </li>
               ))}
@@ -209,24 +233,24 @@ export function FeaturePage({ feature }: { feature: Feature }) {
 
       {feature.callout && (
         <section aria-labelledby="callout-title" className="wrap pt-20 md:pt-24">
-          <div className="grid items-center gap-8 overflow-hidden rounded-card bg-lime p-8 sm:p-12 md:grid-cols-[1.3fr_1fr]">
+          {/* With a picture: text left, picture right. Without one, the buttons take the right
+              side, so the box has no empty half. */}
+          <div
+            className={`grid items-center gap-8 overflow-hidden rounded-card bg-lime p-8 sm:p-12 ${
+              feature.callout.image ? "md:grid-cols-[1.3fr_1fr]" : "md:grid-cols-[minmax(0,1fr)_auto] md:gap-16"
+            }`}
+          >
             <div>
               <h2 id="callout-title" className="h-section">
                 {feature.callout.title}
               </h2>
-              <p className="t-body mt-4">{feature.callout.body}</p>
-              {feature.callout.buttons && (
-                <div className="mt-8 flex flex-wrap gap-3">
-                  {feature.callout.buttons.map((b, i) => (
-                    <a key={b.href} href={b.href} className={`btn caret ${i === 0 ? "btn-black" : "btn-white"}`}>
-                      {b.label}
-                    </a>
-                  ))}
-                </div>
-              )}
+              <p className="t-body mt-4 max-w-[620px]">{feature.callout.body}</p>
+              {feature.callout.image && <CalloutButtons buttons={feature.callout.buttons} className="mt-8" />}
             </div>
-            {feature.callout.image && (
+            {feature.callout.image ? (
               <Fragment src={feature.callout.image.src} alt={feature.callout.image.alt} width={260} className="mx-auto rotate-2" />
+            ) : (
+              <CalloutButtons buttons={feature.callout.buttons} className="md:flex-col md:items-stretch" />
             )}
           </div>
         </section>
@@ -242,18 +266,22 @@ export function FeaturePage({ feature }: { feature: Feature }) {
       {guides.length > 0 && (
         <section aria-labelledby="guides-title" className="wrap pb-20 md:pb-24">
           <SectionTitle id="guides-title">Plant Care Guides</SectionTitle>
-          <ul className="mx-auto mt-10 grid max-w-[1120px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {guides.map((g) => (
-              <li key={g.slug}>
+          {/* Flex rather than grid, so a short last row sits in the middle instead of hanging left. */}
+          <ul className="mx-auto mt-10 flex max-w-[1120px] flex-wrap justify-center gap-4">
+            {guides.map((g, i) => (
+              <li key={g.slug} className="w-full sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]">
                 <Link
                   href={g.path}
-                  className="group flex h-full items-start gap-4 rounded-card border border-line p-5 transition-colors hover:bg-tile"
+                  className="group flex h-full items-center gap-4 rounded-card border border-line p-5 transition-colors hover:bg-tile"
                 >
-                  <Icon name={g.kind === "plant" ? "sprout" : "clinic"} className="mt-0.5 h-5 w-5 flex-none" />
-                  <span>
+                  <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-full ${ICON_TONES[i % ICON_TONES.length]}`}>
+                    <Icon name={g.kind === "plant" ? "sprout" : "clinic"} className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0 flex-1">
                     <span className="block font-bold text-ink group-hover:underline">{g.label}</span>
                     <span className="t-small mt-1 block text-sm">{g.summary}</span>
                   </span>
+                  <Icon name="arrow" className="h-5 w-5 flex-none text-ink" />
                 </Link>
               </li>
             ))}
@@ -289,7 +317,7 @@ export function FeaturePage({ feature }: { feature: Feature }) {
       <section aria-labelledby="get-title" className="lime-glow">
         <div className="wrap flex flex-col items-center py-16 text-center md:py-20">
           <h2 id="get-title" className="h-section">
-            Get {APP_NAME} <span className="hl [--hl:white]">Free</span>
+            Get {APP_NAME} <span className="hl [--hl:#d9c6ff]">Free</span>
           </h2>
           <p className="t-body mt-4 max-w-[600px]">
             On iPhone and iPad with iOS 15 or later, and on Android. Pro is an optional subscription in the app.

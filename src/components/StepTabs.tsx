@@ -75,7 +75,7 @@ export function StepTabs({ steps }: { steps: Step[] }) {
                 on ? "bg-ink text-white" : "text-text hover:bg-tile"
               }`}
             >
-              <span className={`text-[11px] ${on ? "text-white/80" : "text-muted"}`}>{step.act}</span>
+              <span className={`text-xs ${on ? "text-white/80" : "text-muted"}`}>{step.act}</span>
               <span className="text-sm font-bold">{step.title}</span>
             </button>
           );

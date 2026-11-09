@@ -41,13 +41,32 @@ function Runs({ runs }: { runs: Inline[] }) {
   });
 }
 
+/**
+ * The store's policies mark sub-sections with an all-bold paragraph such as "A. Information
+ * You Provide Directly". Those become real subheadings, so long sections don't read as one block.
+ */
+function subheading(b: Block): string | null {
+  if (b.kind !== "paragraph" || !b.inlines.length) return null;
+  if (!b.inlines.every((r) => r.kind === "text" && r.bold && !r.href)) return null;
+  const text = b.inlines.map((r) => (r.kind === "text" ? r.text : "")).join("").trim();
+  return text.length <= 90 && /^([A-Z]|\d+(\.\d+)*)\.\s+\S/.test(text) ? text : null;
+}
+
 function Body({ blocks }: { blocks: Block[] }) {
   return blocks.map((b, i) => {
     if (b.kind === "heading") {
       return (
-        <h2 key={i} className="mt-10 text-xl leading-snug font-bold first:mt-0">
+        <h2 key={i} className="mt-12 text-2xl leading-tight font-bold first:mt-0">
           <Runs runs={b.inlines} />
         </h2>
+      );
+    }
+    const sub = subheading(b);
+    if (sub) {
+      return (
+        <h3 key={i} className="mt-8 text-lg leading-snug font-bold">
+          {sub}
+        </h3>
       );
     }
     if (b.kind === "list") {
@@ -77,7 +96,7 @@ export function PolicyPage({ meta, policy }: { meta: PolicyMeta; policy: Policy 
     <>
       <section className="hero-sky rounded-b-[32px] md:rounded-b-[48px]">
         <div className="wrap pt-14 pb-12 md:pt-20 md:pb-14">
-          <div className="mx-auto max-w-[760px]">
+          <div className="mx-auto max-w-[680px]">
             <p className="eyebrow">Legal</p>
             <h1 className="h-hero mt-3">{policy?.title ?? meta.title}</h1>
           </div>
@@ -85,7 +104,8 @@ export function PolicyPage({ meta, policy }: { meta: PolicyMeta; policy: Policy 
       </section>
 
       <article className="wrap py-12 md:py-16">
-        <div className="mx-auto max-w-[760px] text-base leading-relaxed text-text">
+        {/* 680 px keeps legal text near 75 characters a line. */}
+        <div className="mx-auto max-w-[680px] text-base leading-relaxed text-text">
           {policy ? (
             <Body blocks={policy.blocks} />
           ) : (

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Emoji, Squiggle } from "@/components/Decor";
-import { StoreBadges } from "@/components/StoreBadges";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -28,7 +27,24 @@ export default function NotFound() {
           Get support
         </Link>
       </div>
-      <StoreBadges size="sm" className="mt-12 justify-center" />
+      <nav aria-labelledby="popular-title" className="mt-12">
+        <h2 id="popular-title" className="text-base font-bold">
+          Or try one of these
+        </h2>
+        <ul className="mt-2 flex flex-wrap justify-center gap-x-6">
+          {[
+            { href: "/guides", label: "Plant care guides" },
+            { href: "/plant-identifier", label: "Identify a plant" },
+            { href: "/#faq", label: "Common questions" },
+          ].map((l) => (
+            <li key={l.href}>
+              <Link href={l.href} className="prose-link inline-block py-2">
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </section>
   );
 }

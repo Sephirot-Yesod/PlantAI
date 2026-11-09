@@ -119,7 +119,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     <>
       <section aria-labelledby="guide-title" className="hero-sky rounded-b-[32px] md:rounded-b-[48px]">
         <div className="wrap pt-10 pb-12 md:pt-14 md:pb-16">
-          <div className="mx-auto max-w-[1080px]">
+          <div className="mx-auto max-w-[1120px]">
             <nav aria-label="Breadcrumb">
               <ol className="flex flex-wrap items-center gap-2 text-sm text-muted">
                 <li>
@@ -155,8 +155,9 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       </section>
 
       <div className="wrap py-14 md:py-20">
-        <div className="mx-auto grid max-w-[1080px] gap-12 lg:grid-cols-[minmax(0,1fr)_240px]">
-          <article className="min-w-0 max-w-[760px] text-base leading-relaxed text-text">
+        <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-[minmax(0,1fr)_240px]">
+          {/* 17 px at 680 px wide is about 70 characters a line, an easy reading measure. */}
+          <article className="min-w-0 max-w-[680px] text-[17px] leading-[1.75] text-text">
             <GuideBody blocks={content.blocks} after={{ "how-plantalk-ai-helps": appFigure }} />
 
             <h2 id="sources" className="mt-14 scroll-mt-24 text-2xl leading-tight font-bold text-ink md:text-[28px]">
@@ -237,7 +238,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <section aria-labelledby="get-title" className="lime-glow">
         <div className="wrap flex flex-col items-center py-16 text-center md:py-20">
           <h2 id="get-title" className="h-section">
-            Get {APP_NAME} <span className="hl [--hl:white]">Free</span>
+            Get {APP_NAME} <span className="hl [--hl:#d9c6ff]">Free</span>
           </h2>
           <p className="t-body mt-4 max-w-[600px]">
             Care reminders, a health score for every plant and answers to your plant questions. On iPhone, iPad and
