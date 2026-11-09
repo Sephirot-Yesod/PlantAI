@@ -43,7 +43,7 @@ export const LANGUAGES = "English";
 // When each page's own text last changed, for the sitemap's lastmod. Change a date only when
 // what the page says changes, not for styling. The home page also counts each App Store
 // release, and the legal pages use the "Last updated" line in their own text.
-export const PAGE_UPDATED = { home: "2026-11-08", support: "2026-11-08" } as const;
+export const PAGE_UPDATED = { home: "2026-11-09", support: "2026-11-08" } as const;
 
 // IndexNow (https://www.indexnow.org): served at /<key>.txt by app/<key>.txt/route.ts, so
 // rename that folder if this changes. `npm run indexnow` pings with it after a deploy.
@@ -59,7 +59,7 @@ export const ORG_DESCRIPTION =
   "Plantalk LLC makes Plantalk AI, a plant care app for iPhone, iPad and Android, and Plantiemoji, a plant sensor with an emoji screen.";
 // Unrelated products have similar names, so say plainly which one this is.
 export const DISAMBIGUATION =
-  "Plantalk AI is not affiliated with OpenAI's open-source Plant Talk project or with other apps called PlantTalk.";
+  "Plantalk AI is not affiliated with other products or apps called Plant Talk or PlantTalk.";
 // Alt text of the shared share image (app/opengraph-image.tsx).
 export const OG_ALT = "Plantalk AI: your AI plant care companion. Free on iPhone, iPad and Android.";
 
@@ -126,7 +126,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Is Plantalk AI the same as Plant Talk or PlantTalk?",
-    a: "No. Plantalk AI, one word with one t, is a plant care app made by Plantalk LLC and the companion app for the Plantiemoji sensor. It isn't affiliated with OpenAI's open-source Plant Talk project, which gives a houseplant a voice through ChatGPT, or with other apps called PlantTalk.",
+    a: "No. Plantalk AI, one word with one t, is a plant care app made by Plantalk LLC and the companion app for the Plantiemoji sensor. It isn't affiliated with other products or apps called Plant Talk or PlantTalk.",
   },
 ];
 
