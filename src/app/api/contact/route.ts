@@ -54,9 +54,10 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
-      // onboarding@resend.dev only delivers to the Resend account's own address.
-      // Verify plantalk.ai in Resend to send from your own domain.
-      from: "Plantalk AI website <onboarding@resend.dev>",
+      // plantalk.ai is a verified sending domain in Resend (DKIM on resend._domainkey,
+      // SPF and bounces on send.plantalk.ai), so mail can go to any inbox. If it ever
+      // loses verification, Resend rejects this sender and the form returns 502.
+      from: "Plantalk AI website <website@plantalk.ai>",
       to: process.env.CONTACT_EMAIL || SUPPORT_EMAIL,
       replyTo: email,
       subject: `[Plantalk AI] ${topic}: ${name}`.replace(/[\r\n]+/g, " ").slice(0, 160),
