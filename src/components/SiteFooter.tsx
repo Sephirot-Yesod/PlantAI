@@ -19,7 +19,8 @@ import { GA_MEASUREMENT_ID } from "@/lib/analytics";
 // Pages on this site use client navigation; redirect paths (/privacy, /terms,
 // /delete-account) and external links are plain anchors.
 const FEATURE_PATHS = new Set(FEATURES.map((f) => f.path));
-const isPage = (href: string) => href.startsWith("/#") || href.startsWith("/support") || FEATURE_PATHS.has(href);
+const isPage = (href: string) =>
+  href.startsWith("/#") || href.startsWith("/support") || href.startsWith("/guides") || FEATURE_PATHS.has(href);
 
 const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
@@ -32,6 +33,7 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "How it works", href: "/#how-it-works" },
       { label: "What's new", href: "/#whats-new" },
       { label: "FAQs", href: "/#faq" },
+      { label: "Plant care guides", href: "/guides" },
     ],
   },
   {

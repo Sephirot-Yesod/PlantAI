@@ -10,6 +10,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { StoreBadges } from "@/components/StoreBadges";
 import { formatReleaseDate } from "@/lib/app-store";
 import { FEATURES, type Feature } from "@/lib/features";
+import { getGuide } from "@/lib/guides";
 import { APP_NAME, SITE_URL } from "@/lib/site";
 
 // One layout for the feature pages (content in lib/features.ts): the answer first, then
@@ -66,6 +67,7 @@ function Hero({ hero }: { hero: Feature["hero"] }) {
 export function FeaturePage({ feature }: { feature: Feature }) {
   const url = `${SITE_URL}${feature.path}`;
   const related = feature.related.map((slug) => FEATURES.find((f) => f.slug === slug)).filter((f) => f !== undefined);
+  const guides = feature.guides.map(getGuide).filter((g) => g !== undefined);
   const heading = feature.h1.map((part) => part.text).join("");
 
   const pageLd = {
@@ -236,6 +238,28 @@ export function FeaturePage({ feature }: { feature: Feature }) {
         </SectionTitle>
         <FaqList faqs={feature.faqs} className="mx-auto mt-10 max-w-[880px]" />
       </section>
+
+      {guides.length > 0 && (
+        <section aria-labelledby="guides-title" className="wrap pb-20 md:pb-24">
+          <SectionTitle id="guides-title">Plant Care Guides</SectionTitle>
+          <ul className="mx-auto mt-10 grid max-w-[1120px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {guides.map((g) => (
+              <li key={g.slug}>
+                <Link
+                  href={g.path}
+                  className="group flex h-full items-start gap-4 rounded-card border border-line p-5 transition-colors hover:bg-tile"
+                >
+                  <Icon name={g.kind === "plant" ? "sprout" : "clinic"} className="mt-0.5 h-5 w-5 flex-none" />
+                  <span>
+                    <span className="block font-bold text-ink group-hover:underline">{g.label}</span>
+                    <span className="t-small mt-1 block text-sm">{g.summary}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section aria-labelledby="related-title" className="bg-lilac">
         <div className="wrap py-20 md:py-24">

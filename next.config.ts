@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
   // The Docker build (Cloud Run) sets NEXT_OUTPUT=standalone for a small self-contained
   // server; local `npm run build && npm start` is unchanged.
   output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
+  // The guides' Markdown is read from disk (lib/guide-content.ts), so the standalone server
+  // needs the files too.
+  outputFileTracingIncludes: {
+    "/guides/[slug]": ["./src/content/guides/*.md"],
+  },
   turbopack: {
     root: path.resolve(__dirname),
   },

@@ -8,6 +8,7 @@ const NAV = [
   { href: "/#features", label: "Features" },
   { href: "/#how-it-works", label: "How it works" },
   { href: "/#plantiemoji", label: "Plantiemoji" },
+  { href: "/guides", label: "Guides" },
   { href: "/#faq", label: "FAQ" },
   { href: "/support", label: "Support" },
 ];
@@ -34,7 +35,7 @@ export function SiteHeader() {
           </Link>
 
           <nav aria-label="Main" className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
-            <ul className="flex items-center gap-8 text-base font-bold text-ink">
+            <ul className="flex items-center gap-6 text-base font-bold whitespace-nowrap text-ink xl:gap-8">
               {NAV.map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="rounded-md py-2 hover:underline hover:underline-offset-8">

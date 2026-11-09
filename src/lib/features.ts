@@ -58,6 +58,8 @@ export type Feature = {
   note?: string;
   faqs: Faq[];
   related: string[];
+  /** Plant care guides (slugs in lib/guides.ts) this page links to. */
+  guides: string[];
   updated: string;
 };
 
@@ -136,7 +138,8 @@ export const FEATURES: Feature[] = [
       faq("Is Plantalk AI free?"),
     ],
     related: ["plant-health", "watering-reminders", "ai-plant-assistant"],
-    updated: "2026-11-08",
+    guides: ["monstera-care", "pothos-care", "snake-plant-care", "fiddle-leaf-fig-care", "peace-lily-care"],
+    updated: "2026-11-09",
   },
   {
     slug: "plant-health",
@@ -195,7 +198,8 @@ export const FEATURES: Feature[] = [
       },
     ],
     related: ["ai-plant-assistant", "plantiemoji-sensor", "watering-reminders"],
-    updated: "2026-11-08",
+    guides: ["yellow-leaves", "brown-leaf-tips", "root-rot"],
+    updated: "2026-11-09",
   },
   {
     slug: "watering-reminders",
@@ -248,7 +252,8 @@ export const FEATURES: Feature[] = [
       },
     ],
     related: ["plantiemoji-sensor", "plant-health", "plant-identifier"],
-    updated: "2026-11-08",
+    guides: ["root-rot", "yellow-leaves", "snake-plant-care", "peace-lily-care"],
+    updated: "2026-11-09",
   },
   {
     slug: "ai-plant-assistant",
@@ -303,7 +308,8 @@ export const FEATURES: Feature[] = [
       faq("Is Plantalk AI free?"),
     ],
     related: ["plant-health", "plant-identifier", "watering-reminders"],
-    updated: "2026-11-08",
+    guides: ["yellow-leaves", "brown-leaf-tips", "root-rot"],
+    updated: "2026-11-09",
   },
   {
     slug: "plantiemoji-sensor",
@@ -386,7 +392,8 @@ export const FEATURES: Feature[] = [
       },
     ],
     related: ["watering-reminders", "plant-health", "plant-identifier"],
-    updated: "2026-11-08",
+    guides: ["brown-leaf-tips", "root-rot", "monstera-care"],
+    updated: "2026-11-09",
   },
 ];
 

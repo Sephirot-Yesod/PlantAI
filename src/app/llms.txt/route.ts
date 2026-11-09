@@ -1,6 +1,7 @@
 import { getLatestRelease } from "@/lib/app-store";
 import { appFacts } from "@/lib/facts";
 import { FEATURES } from "@/lib/features";
+import { GUIDE_REVIEWER, GUIDES, GUIDES_PATH } from "@/lib/guides";
 import {
   APP_NAME,
   APP_STORE_URL,
@@ -25,6 +26,7 @@ export async function GET() {
     .join("\n");
   const faq = FAQS.map((f) => `- **${f.q}** ${f.a}`).join("\n");
   const features = FEATURES.map((f) => `- [${f.label}](${SITE_URL}${f.path}): ${f.summary}`).join("\n");
+  const guides = GUIDES.map((g) => `- [${g.label}](${SITE_URL}${g.path}): ${g.summary}`).join("\n");
 
   const body = `# ${APP_NAME}
 
@@ -42,6 +44,12 @@ ${features}
 - [Privacy Policy](${SITE_URL}/privacy)
 - [Terms of Use](${SITE_URL}/terms)
 - [Account deletion](${SITE_URL}/delete-account)
+
+## Plant care guides
+
+Each guide cites its sources and is reviewed by ${GUIDE_REVIEWER.name}, ${GUIDE_REVIEWER.affiliation}. All guides: ${SITE_URL}${GUIDES_PATH}
+
+${guides}
 
 ## Get the app
 

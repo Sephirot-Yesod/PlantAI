@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getLatestRelease } from "@/lib/app-store";
 import { FEATURES } from "@/lib/features";
+import { GUIDES, GUIDES_PATH } from "@/lib/guides";
 import { getPolicy, policyUpdated, type PolicyKey } from "@/lib/policies";
 import { PAGE_UPDATED, SITE_URL } from "@/lib/site";
 
@@ -36,6 +37,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: iso(f.updated),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    {
+      url: `${SITE_URL}${GUIDES_PATH}`,
+      lastModified: latest(...GUIDES.map((g) => g.reviewed)),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    ...GUIDES.map((g) => ({
+      url: `${SITE_URL}${g.path}`,
+      lastModified: iso(g.reviewed),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
     { url: `${SITE_URL}/support`, lastModified: iso(PAGE_UPDATED.support), changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy`, lastModified: privacy, changeFrequency: "yearly", priority: 0.3 },
