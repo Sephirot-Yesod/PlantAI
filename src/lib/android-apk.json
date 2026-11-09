@@ -1,0 +1,14 @@
+{
+  "file": "plantalk-ai-1.0.7.apk",
+  "version": "1.0.7",
+  "versionCode": 40,
+  "bytes": 63524539,
+  "sha256": "7acd0d896ac0e5a526b871443dc9b51da524c2996c6e0c023b68531981091737",
+  "certSha256": "F6:2A:DF:69:70:50:5C:34:19:4D:D1:01:08:20:95:4D:3B:50:20:4D:B9:C8:44:3A:02:F9:94:0C:84:66:0E:EB",
+  "minSdk": 24,
+  "abis": [
+    "arm64-v8a"
+  ],
+  "sameKeyAsPlay": null,
+  "updated": "2026-11-09"
+}

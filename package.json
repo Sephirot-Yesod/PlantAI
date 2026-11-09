@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/android-apk.mjs check",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "indexnow": "node scripts/indexnow.mjs",
     "ai-traffic": "node scripts/ai-traffic.mjs",
-    "monthly-check": "node scripts/monthly-check.mjs"
+    "monthly-check": "node scripts/monthly-check.mjs",
+    "apk": "node scripts/android-apk.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

@@ -56,12 +56,13 @@ function clearAnalyticsCookies() {
 }
 
 // Which store a link leads to, for the store_click event. /download sends each phone to its
-// own store.
+// own store; /downloads/*.apk is the Android app file offered at /android.
 function storeOf(link: HTMLAnchorElement) {
   const url = new URL(link.href, location.href);
   if (url.hostname === "apps.apple.com") return "app_store";
   if (url.hostname === "play.google.com") return "google_play";
   if (url.origin === location.origin && url.pathname === "/download") return "download_link";
+  if (url.origin === location.origin && /^\/downloads\/[^/]+\.apk$/.test(url.pathname)) return "android_apk";
   return null;
 }
 

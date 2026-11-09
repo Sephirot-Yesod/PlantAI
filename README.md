@@ -21,8 +21,10 @@ Hosted on Cloud Run in its own GCP project, `plantalk-website` (region `us-centr
 
 ```bash
 gcloud run deploy plantalk-website --source . --region us-central1 --project plantalk-website \
-  --memory 2Gi --cpu 2 --min-instances 1 --max-instances 3 --port 8080
+  --memory 2Gi --cpu 2 --min-instances 1 --max-instances 3 --port 8080 --timeout 1800
 ```
+
+The 30-minute request timeout (the default is 5) lets a slow phone connection finish downloading the Android APK. Pages answer in well under a second either way.
 
 After a deploy that changes what pages say, run `npm run indexnow` (or `npm run indexnow -- /support` for single pages). It tells Bing and the other [IndexNow](https://www.indexnow.org) search engines to recrawl now; the key file is served at `/<INDEXNOW_KEY>.txt`. If you change a page's text, also update its date in `PAGE_UPDATED` (`src/lib/site.ts`), which feeds the sitemap's lastmod.
 
@@ -54,6 +56,7 @@ Keep the service at 2 GiB and 2 CPUs: on-demand image optimization ran a 512 MiB
 | Support page and contact form | `src/app/support/page.tsx`, `src/components/ContactForm.tsx`, `src/app/api/contact/route.ts` |
 | "What's new" | `src/lib/app-store.ts`: read from Apple's lookup API, refreshed every 12 hours, with a stored fallback in `site.ts` |
 | Smart store link | `/download` sends iPhones to the App Store and Android phones to Google Play |
+| Android APK | `/android` offers Google Play or a direct download of the app file, served from `/downloads/<file>` (`app/downloads/[file]/route.ts`, chunked past Cloud Run's 32 MiB response cap, with resumable byte ranges). The file lives in `downloads/`, kept out of git but uploaded by `gcloud run deploy --source .`; its details are in `src/lib/android-apk.json` (`null` = no download, no page, no links). To post a new version, download the **Signed, universal APK** in Play Console (App bundle explorer › the release › Downloads), run `npm run apk -- add <file.apk>`, then build, commit the JSON and deploy. `npm run apk -- info <file.apk>` only inspects a file; `npm run apk -- remove` takes the download off. Every build first checks that the file matches the JSON (`prebuild`). Clicks send `store_click` with `store: android_apk` |
 | Legal pages | `/privacy`, `/terms`, `/delete-account` show the policies published on the Plantiemoji store (`lib/policies.ts`, `components/PolicyPage.tsx`). They refresh at most every 6 hours, keep only headings, paragraphs, lists, bold and links, and render them as text. Edit a policy in Shopify, not here. A failed refresh keeps the last good copy |
 | Redirects | `next.config.ts`: the old store addresses `/pages/privacy-policy` (used by both app store listings), `/pages/terms-of-use` and `/pages/account-deletion` go to the legal pages above; every other Shopify path (`/pages/*`, `/policies/*`, `/products/*`…) goes to the store |
 | Share image | `src/app/opengraph-image.tsx` |
@@ -68,7 +71,7 @@ Keep the service at 2 GiB and 2 CPUs: on-demand image optimization ran a 512 MiB
 | Painted emoji faces | `src/assets/faces` and `src/assets/brand/emoji-row.webp` were cut from 2x renders of the Figma prototype. Replace them with original exports from the designers when you have them (same file names) |
 | UI fragments | `src/assets/fragments`: close crops of real app UI (task list, light range, health chart, plant cards, calendar, quiz, weather tip…) cut from the App Store screenshots, shown with `components/Fragment.tsx` so the page doesn't repeat whole phones |
 | Other brand art | `src/assets/brand`: flat smiling face (store favicon), squiggle, sensor photo, basil photo and phone shot from plantiemoji.com |
-| QR codes | `src/assets/qr` (App Store, Google Play with `utm_medium=qr`). Made with macOS Core Image and checked by decoding; regenerate if the store links change |
+| QR codes | `src/assets/qr` (App Store, Google Play with `utm_medium=qr`, and `android.svg` for plantalk.ai/android). Made with macOS Core Image and checked by decoding; regenerate if the store links change |
 
 ## Updating screenshots
 

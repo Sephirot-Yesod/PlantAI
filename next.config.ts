@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   // needs the files too.
   outputFileTracingIncludes: {
     "/guides/[slug]": ["./src/content/guides/*.md"],
+    // The Android app file offered at /android (scripts/android-apk.mjs puts it there).
+    "/downloads/[file]": ["./downloads/*.apk"],
   },
   turbopack: {
     root: path.resolve(__dirname),

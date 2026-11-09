@@ -22,6 +22,8 @@ const PATHS = {
   bluetooth: "M7 7l10 10-5 4V3l5 4L7 17",
   sprout: "M12 21v-9M12 12C12 8 9 5 4 5c0 4 3 7 8 7zM12 14c0-3.5 2.5-6 7-6 0 3.5-2.5 6-7 6z",
   plus: "M12 5v14M5 12h14",
+  download: "M12 4v11M7 10.5l5 5 5-5M5 20h14",
+  refresh: "M19.5 12a7.5 7.5 0 1 1-2.2-5.3M19.5 4.5v4h-4",
 } as const;
 
 export type IconName = keyof typeof PATHS;

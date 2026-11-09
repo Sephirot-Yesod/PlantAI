@@ -1,3 +1,4 @@
+import { ANDROID_APK, ANDROID_PATH, androidRequirement, apkSize } from "@/lib/android";
 import { getLatestRelease } from "@/lib/app-store";
 import { appFacts } from "@/lib/facts";
 import { FEATURES } from "@/lib/features";
@@ -27,6 +28,9 @@ export async function GET() {
   const faq = FAQS.map((f) => `- **${f.q}** ${f.a}`).join("\n");
   const features = FEATURES.map((f) => `- [${f.label}](${SITE_URL}${f.path}): ${f.summary}`).join("\n");
   const guides = GUIDES.map((g) => `- [${g.label}](${SITE_URL}${g.path}): ${g.summary}`).join("\n");
+  const apk = ANDROID_APK
+    ? `\n- [Android APK](${SITE_URL}${ANDROID_PATH}): version ${ANDROID_APK.version} as a direct download (${apkSize(ANDROID_APK)}, ${androidRequirement(ANDROID_APK)}), for Android phones without Google Play`
+    : "";
 
   const body = `# ${APP_NAME}
 
@@ -54,7 +58,7 @@ ${guides}
 ## Get the app
 
 - [App Store](${APP_STORE_URL}): iPhone and iPad
-- [Google Play](${PLAY_URL_CLEAN}): Android phones and tablets
+- [Google Play](${PLAY_URL_CLEAN}): Android phones and tablets${apk}
 
 ## Plantiemoji
 

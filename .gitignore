@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# The Android APK offered at /android: too big for git, and Play Console can always produce
+# it again. It still goes to Cloud Build (.gcloudignore doesn't list it). See scripts/android-apk.mjs.
+/downloads/*.apk
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

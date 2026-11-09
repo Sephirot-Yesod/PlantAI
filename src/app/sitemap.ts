@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ANDROID_APK, ANDROID_PATH } from "@/lib/android";
 import { getLatestRelease } from "@/lib/app-store";
 import { FEATURES } from "@/lib/features";
 import { GUIDES, GUIDES_PATH } from "@/lib/guides";
@@ -50,6 +51,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    ...(ANDROID_APK
+      ? [{ url: `${SITE_URL}${ANDROID_PATH}`, lastModified: iso(ANDROID_APK.updated), changeFrequency: "monthly" as const, priority: 0.6 }]
+      : []),
     { url: `${SITE_URL}/support`, lastModified: iso(PAGE_UPDATED.support), changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/privacy`, lastModified: privacy, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/terms`, lastModified: terms, changeFrequency: "yearly", priority: 0.3 },

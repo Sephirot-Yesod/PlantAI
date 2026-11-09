@@ -1,3 +1,5 @@
+import { ANDROID_APK, ANDROID_PATH } from "./android";
+
 // Single source of truth for facts about Plantalk AI.
 // Everything here comes from the App Store and Google Play listings, the app's
 // version history and the privacy policy. Change facts here, not in pages.
@@ -90,6 +92,16 @@ export const FAQS: Faq[] = [
     q: "Which phones and tablets does it work on?",
     a: "iPhone and iPod touch with iOS 15 or later, iPad with iPadOS 15 or later, and Android devices through Google Play. The app is in English. Features can differ slightly between the iPhone and Android versions.",
   },
+  // Only while /android offers the APK (lib/android.ts).
+  ...(ANDROID_APK
+    ? [
+        {
+          q: "Can I install Plantalk AI on Android without Google Play?",
+          a: "Yes. You can download the app file (APK) at plantalk.ai/android and install it yourself. It's the same app as on Google Play. Google Play is still the easier choice if your phone has it, because it keeps the app up to date.",
+          links: { "plantalk.ai/android": ANDROID_PATH },
+        },
+      ]
+    : []),
   {
     q: "Can Plantalk AI identify a plant from a photo?",
     a: "Yes. Tap + on the Plants screen, then take a photo or choose one from your library. Plantalk AI shows what it detected, you confirm, and the plant gets its own profile with Overview, Environment and Visual health views.",

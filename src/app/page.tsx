@@ -41,6 +41,7 @@ import { Phone } from "@/components/Phone";
 import { SectionTitle } from "@/components/SectionTitle";
 import { StepTabs, type Step } from "@/components/StepTabs";
 import { StoreBadges } from "@/components/StoreBadges";
+import { ANDROID_APK, ANDROID_PATH } from "@/lib/android";
 import { formatReleaseDate, getLatestRelease } from "@/lib/app-store";
 import { appFacts } from "@/lib/facts";
 import { FEATURES } from "@/lib/features";
@@ -691,6 +692,14 @@ export default async function Home() {
               ))}
             </div>
             <StoreBadges className="mt-8" />
+            {ANDROID_APK && (
+              <p className="mt-4 text-sm text-muted">
+                No Google Play on your Android phone?{" "}
+                <Link href={ANDROID_PATH} className="prose-link inline-block py-1">
+                  Download the APK
+                </Link>
+              </p>
+            )}
           </div>
           <div className="relative mx-auto w-full max-w-[460px]">
             <div className="overflow-hidden rounded-[40px] rounded-tl-[160px] bg-[#f3f3f3] shadow-[0_40px_70px_-40px_rgb(0_0_0/0.45)]">

@@ -1,4 +1,6 @@
 # Never upload local secrets or build output to Cloud Build.
+# Don't add .gitignore's rules here: downloads/*.apk is ignored by git on purpose but must be
+# uploaded, because /android serves it (scripts/android-apk.mjs).
 .gcloudignore
 .git
 .gitignore
